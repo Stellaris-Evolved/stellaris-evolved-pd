@@ -1,0 +1,19 @@
+has_stellaris_evolved_pd = {
+	always = yes
+}
+
+tec_has_pd_habitats_active = {
+	has_global_flag = planetarydiversityhabitats
+}
+
+tec_has_pd_arcolgies_active = {
+	has_global_flag = planetarydiversityarcs
+}
+
+tec_has_pd_exotics_active = {
+	has_global_flag = planetarydiversityexotics
+}
+
+tec_has_pd_uniques_active = {
+	has_global_flag = planetarydiversityuniques
+}

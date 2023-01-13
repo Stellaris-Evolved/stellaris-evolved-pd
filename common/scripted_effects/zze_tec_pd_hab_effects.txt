@@ -1,0 +1,432 @@
+tec_pdplanethab_set_industrial_focus_flags =  {
+	if = {
+		limit = {
+			has_designation = col_dome_factory
+		}
+		set_planet_flag = factory_planet
+	}
+	else_if = {
+		limit = {
+			has_designation = col_dome_foundry
+		}
+		set_planet_flag = foundry_planet
+	}
+}
+
+tec_pdplanethab_convert_district = {
+	export_trigger_value_to_variable = {
+		trigger = num_districts
+		parameters = {
+			type = $DISTRICT1$
+		}
+		variable = convert_districts_variable
+	}
+	divide_variable = { which = convert_districts_variable value = $DIVIDE$ }
+	floor_variable = convert_districts_variable
+	while = {
+		count = convert_districts_variable
+		add_district = $DISTRICT2$
+	}
+	clear_variable = convert_districts_variable
+}
+
+tec_pdplanethab_clear_district = {
+	export_trigger_value_to_variable = {
+		trigger = num_districts
+		parameters = {
+			type = $DISTRICT$
+		}
+		variable = clear_districts_variable
+	}
+	while = {
+		count = clear_districts_variable
+		remove_district = $DISTRICT$
+	}
+	clear_variable = clear_districts_variable
+}
+
+
+
+tec_pdplanethab_set_ecu_industrial_districts = {
+	if = {
+		limit = {
+			has_planet_flag = factory_planet
+		}
+		remove_planet_flag = factory_planet
+		swap_districts_effect = {
+			DISTRICT1 = district_tec_hab_arcology_foundry
+			DISTRICT2 = district_tec_hab_arcology_industry
+		}
+	}
+	else_if = {
+		limit = {
+			has_planet_flag = foundry_planet
+		}
+		remove_planet_flag = foundry_planet
+	}
+	else = {
+		split_districts_effect = {
+			DISTRICT1 = district_tec_hab_arcology_foundry
+			DISTRICT2 = district_tec_hab_arcology_industry
+		}
+	}
+}
+
+tec_pdplanethab_convert_housing_to_ecu_housing = {
+	# Housing conversion
+	if = {
+		limit = {
+			exists = from
+			from = {
+				OR = {
+					is_megacorp = yes
+					tec_is_trade_gestalt = yes
+				}
+			}
+		}
+		tec_pdplanethab_convert_district = {
+			DISTRICT1 = district_tec_hab_arcology_housing
+			DISTRICT2 = district_tec_arcology_trade 
+			DIVIDE = 1.5
+		}
+	}
+	else = {
+		tec_pdplanethab_convert_district = {
+			DISTRICT1 = district_tec_hab_arcology_housing
+			DISTRICT2 = district_arcology_housing
+			DIVIDE = 1.5
+		}
+	}
+	
+	tec_pdplanethab_clear_district = {
+		DISTRICT = district_pdhab_housing
+	}
+
+	# Trade conversion
+
+	if = {
+		limit = {
+			exists = from
+			from = {
+				OR = {
+					is_megacorp = yes
+					tec_is_trade_gestalt = yes
+				}
+			}
+		}
+		tec_pdplanethab_convert_district = {
+			DISTRICT1 = district_tec_hab_arcology_trade
+			DISTRICT2 = district_tec_arcology_trade
+			DIVIDE = 2
+		}
+	}
+	else = {
+		tec_pdplanethab_convert_district = {
+			DISTRICT1 = district_tec_hab_arcology_trade
+			DISTRICT2 = district_arcology_housing
+			DIVIDE = 2
+		}
+	}
+	
+	tec_pdplanethab_clear_district = {
+		DISTRICT = district_tec_hab_arcology_trade
+	}
+
+	# Maintenance conversion
+
+	if = {
+		limit = {
+			exists = from
+			from = {
+				OR = {
+					is_megacorp = yes
+					tec_is_trade_gestalt = yes
+				}
+			}
+		}
+		tec_pdplanethab_convert_district = {
+			DISTRICT1 = district_tec_hab_arcology_maintenance
+			DISTRICT2 = district_tec_arcology_trade
+			DIVIDE = 2
+		}
+	}
+	else = {
+		tec_pdplanethab_convert_district = {
+			DISTRICT1 = district_tec_hab_arcology_maintenance
+			DISTRICT2 = district_arcology_housing
+			DIVIDE = 2
+		}
+	}
+	
+	tec_pdplanethab_clear_district = {
+		DISTRICT = district_tec_hab_arcology_maintenance
+	}
+
+}
+
+
+tec_pdplanethab_convert_leisure_to_ecu_leisure = {
+	# Leisure conversion district_tec_hab_arcology_leisure
+	if = {
+		limit = {
+			exists = from
+			from = {
+				is_regular_empire = no
+				NOT = {
+					has_valid_civic = civic_machine_servitor
+				}
+			}
+		}
+		tec_pdplanethab_convert_district = {
+			DISTRICT1 = district_tec_hab_arcology_leisure
+			DISTRICT2 = district_tec_arcology_unity_gestalt
+			DIVIDE = 2
+		}
+	}
+	else_if = {
+		limit = {
+			exists = from
+			from = {
+				is_regular_empire = yes
+				is_spiritualist = yes
+			}
+		}
+		tec_pdplanethab_convert_district = {
+			DISTRICT1 = district_tec_hab_arcology_leisure
+			DISTRICT2 = district_tec_arcology_faith
+			DIVIDE = 2
+		}
+	}
+	else_if = {
+		limit = {
+			exists = from
+			from = {
+				has_valid_civic = civic_machine_servitor
+			}
+		}
+		tec_pdplanethab_convert_district = {
+			DISTRICT1 = district_tec_hab_arcology_leisure
+			DISTRICT2 = district_arcology_organic_housing
+			DIVIDE = 2
+		}
+	}
+	else = {
+		tec_pdplanethab_convert_district = {
+			DISTRICT1 = district_tec_hab_arcology_leisure
+			DISTRICT2 = district_arcology_leisure
+			DIVIDE = 2
+		}
+	}
+	
+	tec_pdplanethab_clear_district = {
+		DISTRICT = district_tec_hab_arcology_leisure
+	}
+}
+
+tec_pdplanethab_ensure_planet_size = {
+	export_trigger_value_to_variable = {
+		trigger = planet_size
+		variable = initial_size
+	}
+	set_planet_size = 1000
+}
+
+tec_pdplanethab_ensure_planet_size_end = {
+	set_planet_size = initial_size
+	clear_variable = initial_size
+}
+
+tec_pdplanethab_clear_habitat_specific_data = {
+	remove_planet_flag = tec_arcology_habitat
+	remove_planet_flag = tec_civil_habitat
+	remove_planet_flag = tec_industrial_habitat
+	remove_planet_flag = pd_farming_hab
+	remove_planet_flag = pd_energy_hab
+	remove_planet_flag = pd_mining_hab
+	remove_planet_flag = pd_science_hab
+	
+	remove_modifier = pm_tec_arcology_habitat
+
+	if = {
+		limit = { 
+			has_modifier = pm_tec_engineered_habitat
+		}
+		remove_modifier = pm_tec_engineered_habitat
+		add_modifier = {
+			modifier = pm_tec_engineered_weather
+		}
+	}
+	# regular
+	if = {
+		limit = {
+			owner = {
+				is_fallen_empire = no 
+				is_gestalt = no
+			}
+		}
+		switch = {
+			trigger = has_building
+			building_hab_major_capital = {
+				remove_building = building_hab_major_capital
+				add_building = building_major_capital
+			}
+			building_hab_system_capital = {
+				remove_building = building_hab_system_capital
+				add_building = building_system_capital
+			}
+		}
+	}
+	# hive
+	else_if = {
+		limit = {
+			owner = {
+				is_fallen_empire = no 
+				is_hive_empire = yes
+				tec_is_biohive = no
+				tec_is_cybernetic_hive = No
+			}
+		}
+		switch = {
+			trigger = has_building
+			building_tec_hab_hive_major_capital = {
+				remove_building = building_tec_hab_hive_major_capital
+				add_building = building_hive_major_capital
+			}
+			building_tec_hab_hive_system_capital = {
+				remove_building = building_tec_hab_hive_system_capital
+				add_building = building_hive_system_capital
+			}
+		}
+	}
+	# biohive
+	else_if = {
+		limit = {
+			owner = {
+				tec_is_biohive = yes
+				is_fallen_empire = no 
+			}
+		}
+		switch = {
+			trigger = has_building
+			building_tec_hab_biohive_major_capital = {
+				remove_building = building_tec_hab_biohive_major_capital
+				add_building = building_tec_biohive_major_capital
+			}
+			building_tec_hab_biohive_system_capital = {
+				remove_building = building_tec_hab_biohive_system_capital
+				add_building = building_tec_biohive_system_capital
+			}
+		}
+	}
+	# cyberhive
+	else_if = {
+		limit = {
+			owner = {
+				tec_is_cybernetic_hive = yes
+				is_fallen_empire = no 
+			}
+		}
+		switch = {
+			trigger = has_building
+			building_tec_hab_cyberhive_major_capital = {
+				remove_building = building_tec_hab_cyberhive_major_capital
+				add_building = building_tec_cyberhive_major_capital
+			}
+			building_tec_hab_cyberhive_system_capital = {
+				remove_building = building_tec_hab_cyberhive_system_capital
+				add_building = building_tec_cyberhive_system_capital
+			}
+		}
+	}
+	# machine
+	else_if = {
+		limit = {
+			owner = {
+				is_machine_empire = yes
+				is_fallen_empire = no
+			}
+		}
+		switch = {
+			trigger = has_building
+			building_tec_hab_machine_major_capital = {
+				remove_building = building_tec_hab_machine_major_capital
+				add_building = building_tec_machine_major_capital
+			}
+			building_tec_hab_machine_system_capital = {
+				remove_building = building_tec_hab_machine_system_capital
+				add_building = building_tec_machine_system_capital
+			}
+		}
+	}
+	
+	validate_planet_buildings_and_districts = yes 
+}
+
+tec_pdplanethab_remove_terraforming_modifiers = {
+	remove_modifier = hab_terraforming_candidate
+	remove_modifier = hab_pdhabsubglacialocean
+	remove_modifier = pdterra_storm
+	remove_modifier = pdterra_tidallocked
+	remove_modifier = pdterra_glacio
+	remove_modifier = pdterra_lanthanide
+	remove_modifier = pdterra_rogue
+	remove_modifier = pdterra_karst
+	remove_modifier = pdterra_geothermal
+	remove_modifier = pdterra_superhabitable
+	remove_modifier = pdterra_salt
+	remove_modifier = pdterra_primal
+	remove_modifier = pdterra_aquatic
+	remove_modifier = pdterra_lichen
+	remove_modifier = pdterra_megaflora
+	remove_modifier = pdterra_biolumen
+	remove_modifier = pdterra_aquifer
+	remove_modifier = pdterra_reef
+	remove_modifier = pdterra_coral
+	remove_modifier = pdterra_supercon
+}
+
+
+
+tec_void_dweller_auto_colonize = {
+	if = {
+		limit = { 
+			$OWNER$ = {
+				OR = {
+					has_origin = origin_void_dwellers
+					is_ai = yes
+				}
+			}
+		}
+		create_colony = {
+			owner = $OWNER$
+		}
+		while = {
+			count = $OWNER$.modifier:colony_start_num_pops_add
+			create_pop = {
+				species = $OWNER$.owner_main_species
+			}
+		}
+	}
+}
+
+tec_evolved_planethab_arcology_texture_effect = {
+	switch = {
+		trigger = is_planet_class
+		pc_pd_barren_cold_hab = {
+			set_planet_entity = { entity = barren_cold_habitat_arcology_entity }
+		}
+		pc_pd_barren_hab = {
+			set_planet_entity = { entity = barren_habitat_arcology_entity }
+		}
+		pc_pd_frozen_hab = {
+			set_planet_entity = { entity = frozen_habitat_arcology_entity }
+		}
+		pc_pd_molten_hab = {
+			set_planet_entity = { entity = molten_habitat_arcology_entity }
+		}
+		pc_pd_toxic_hab = {
+			set_planet_entity = { entity = toxic_habitat_arcology_entity }
+		}
+		default = {}
+	}
+}

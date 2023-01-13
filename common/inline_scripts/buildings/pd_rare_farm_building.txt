@@ -1,0 +1,43 @@
+	allow = {
+		has_upgraded_capital = yes
+	}
+
+	planet_modifier = {
+        planet_farmers_food_produces_add = 0.5
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_technology = tech_food_processing_1 }
+		}
+		planet_farmers_food_produces_add = 0.5
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_technology = tech_food_processing_2 }
+		}
+		planet_farmers_food_produces_add = 1
+	}
+
+	inline_script = {
+		script = jobs/inline_evolved_farmer
+		regular_count = 2
+		regular_aquatic_count = 2
+		hive_count = 2
+		hive_aquatic_count = 2
+		machine_count = 2
+		mult = 1
+		display = with_desc
+		trigger = ""
+	}
+	
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/resources/inline_evolved_resource_cost
+			tier = 3
+		}
+	}	

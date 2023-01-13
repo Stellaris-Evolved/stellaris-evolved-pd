@@ -1,0 +1,46 @@
+allow = {
+	has_upgraded_capital = yes
+}
+	
+planet_modifier = {
+	planet_miners_minerals_produces_add = 0.5
+}
+
+triggered_planet_modifier = {
+	potential = {
+		exists = owner
+		owner = { has_technology = tech_mineral_purification_1 }
+	}
+	planet_miners_minerals_produces_add = 0.5
+}
+
+triggered_planet_modifier = {
+	potential = {
+		exists = owner
+		owner = { has_technology = tech_mineral_purification_2 }
+	}
+	planet_miners_minerals_produces_add = 1
+}
+
+inline_script = {
+	script = jobs/inline_evolved_miner
+	regular_count = 2
+	regular_aquatic_count = 2
+	hive_count = 2
+	hive_aquatic_count = 2
+	machine_count = 2
+	mult = 1
+	display = with_desc
+	trigger = ""
+}
+	
+resources = {
+	category = planet_buildings
+	cost = {
+		minerals = 800
+	}
+	inline_script = {
+		script = buildings/resources/inline_evolved_resource_cost
+		tier = 3
+	}
+}	

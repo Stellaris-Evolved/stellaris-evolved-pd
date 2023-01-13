@@ -1,0 +1,902 @@
+@base_cost = 300
+@city_cost = 500
+@pdarcjobs = 6
+@pdarcsplit = 3
+
+###Housing
+
+#Industrial
+district_corp_industrial = {
+	base_buildtime = 600
+	is_capped_by_modifier = no
+
+	show_on_uncolonized = {
+		uses_district_set = pdcorpoarc
+	}
+
+	potential = {
+		uses_district_set = pdcorpoarc
+	}
+
+	allow = {
+		NOT = { has_modifier = resort_colony }
+		NOT = { has_modifier = slave_colony }
+	}
+
+	conversion_ratio = 1
+	convert_to = {
+		district_arcology_arms_industry
+	}
+
+	resources = {
+		category = planet_districts_industrial
+		cost = {
+			minerals = 1000
+			rare_crystals = 50
+		}
+		upkeep = {
+			energy = 5
+			rare_crystals = 1
+		}
+
+		inline_script = districts/resources/inline_evolved_industrial_maintenance_upkeep
+	}
+
+	planet_modifier = {
+		planet_housing_add = 6
+	}
+
+	inline_script = {
+		script = districts/inline_evolved_industrial_split_jobs
+		count = 3
+		mult = 1
+		trigger = ""
+		display = with_desc
+	}
+
+	inline_script = districts/effects/inline_evolved_industrial_maintenance
+}
+
+#Alloys
+
+district_mf_alloy = {
+	base_buildtime = 600
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		OR = {
+			uses_district_set = pdmachinefactory
+			uses_district_set = pdmachinefort 
+		}
+	}
+	
+	potential = {
+		OR = {
+			uses_district_set = pdmachinefactory
+			uses_district_set = pdmachinefort
+		}
+		owner = { 
+			exists = owner
+			is_machine_empire = yes
+		}
+	}
+	
+	conversion_ratio = 1
+	convert_to = {
+		district_city
+		district_nexus
+		district_hive
+		district_arcology_housing
+	}	
+	
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = 1000
+			volatile_motes = 50
+		}
+		upkeep = {
+			energy = 5
+			volatile_motes = 1
+		}		
+		inline_script = districts/resources/inline_evolved_industrial_maintenance_upkeep
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 6
+	}
+
+	inline_script = {
+		script = jobs/inline_evolved_foundry
+		count = 6
+		mult = 1
+		trigger = ""
+		display = with_desc
+	}
+
+	inline_script = districts/effects/inline_evolved_industrial_maintenance
+}
+
+district_bioforge_stomach = {
+	base_buildtime = 600
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		OR = {
+			uses_district_set = pdbioforge
+			uses_district_set = pdfloraforge
+			uses_district_set = pdnecrohive
+			uses_district_set = pdbiofort
+			uses_district_set = pdflorafort
+		}
+	}
+	
+	potential = {
+		OR = {
+			uses_district_set = pdbioforge
+			uses_district_set = pdfloraforge
+			uses_district_set = pdnecrohive
+			uses_district_set = pdbiofort
+			uses_district_set = pdflorafort
+		}
+		owner = { 
+			exists = owner
+			is_hive_empire = yes
+		}
+	}
+	
+	conversion_ratio = 1
+	convert_to = {
+		district_city
+		district_nexus
+		district_hive
+		district_arcology_housing
+	}	
+	
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = 1000
+			volatile_motes = 50
+		}
+		upkeep = {
+			energy = 5
+			volatile_motes = 1
+		}		
+		inline_script = districts/resources/inline_evolved_industrial_maintenance_upkeep
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 6
+	}
+
+	inline_script = {
+		script = jobs/inline_evolved_foundry
+		count = 6
+		mult = 1
+		trigger = ""
+		display = with_desc
+	}
+
+	inline_script = districts/effects/inline_evolved_industrial_maintenance
+}
+
+#Consumer Goods
+
+#Bureaucratic
+
+district_mf_replicator = {
+	base_buildtime = 600
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		exists = from
+		from = { 
+			is_machine_empire = yes 
+			NOT =  { has_valid_civic = civic_machine_servitor }
+		}
+		OR = {
+			uses_district_set = pdmachinefactory
+			uses_district_set = pdmachinefort
+			uses_district_set = pdecocity
+		}
+		from = {
+			is_machine_empire = yes
+		}
+	}
+	
+	potential = {
+		OR = {
+			uses_district_set = pdmachinefactory
+			uses_district_set = pdmachinefort
+			uses_district_set = pdecocity
+		}
+		owner = { 
+			exists = owner
+			is_machine_empire = yes
+			NOT = { has_valid_civic = civic_machine_servitor }
+		}
+	}
+	
+	conversion_ratio = 1
+	convert_to = {
+		district_city
+		district_nexus
+		district_hive
+		district_arcology_housing
+	}	
+	
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = 1000
+			rare_crystals = 50
+		}
+		upkeep = {
+			energy = 5
+			rare_crystals = 1
+		}		
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 6
+	}
+
+	inline_script = {
+		script = jobs/inline_evolved_coordinator
+		count = 6
+		mult = 1
+		display = with_desc
+		trigger = ""
+	}
+}
+
+district_bioforge_maintenance = {
+	base_buildtime = 600
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		OR = {
+			uses_district_set = pdbioforge
+			uses_district_set = pdbiofort
+			uses_district_set = pdfloraforge
+			uses_district_set = pdflorafort
+		}
+	}
+	
+	potential = {
+		OR = {
+			uses_district_set = pdbioforge
+			uses_district_set = pdbiofort
+			uses_district_set = pdfloraforge
+			uses_district_set = pdflorafort
+		}
+		owner = { 
+			exists = owner
+			is_hive_empire = yes
+		}
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 6
+	}
+	
+	conversion_ratio = 1
+	convert_to = {
+		district_city
+		district_nexus
+		district_hive
+		district_arcology_housing
+	}	
+	
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = 1000
+			exotic_gases = 50
+		}
+		upkeep = {
+			energy = 5
+			exotic_gases = 1
+		}		
+	}
+
+	inline_script = {
+		script = jobs/inline_evolved_synapse
+		count = 6
+		mult = 1
+		display = with_desc
+		trigger = ""
+	}
+}
+
+#Military Support
+
+district_pdmilarc_naval = {
+	base_buildtime = 600
+	is_capped_by_modifier = no
+
+
+	show_on_uncolonized = {
+		uses_district_set = pdmilarc
+	}
+
+	potential = {
+		uses_district_set = pdmilarc
+		owner = { 
+			exists = owner
+			is_regular_empire = yes
+		}
+	}
+	
+	conversion_ratio = 1
+	convert_to = {
+		district_city
+		district_nexus
+		district_hive
+	}	
+	
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = 1000
+			rare_crystals = 50
+		}
+		upkeep = {
+			energy = 5
+			rare_crystals = 1
+		}		
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 6
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { 
+				is_regular_empire = yes
+			}
+		}
+		modifier = {
+			job_naval_admin_add = @pdarcjobs
+		}
+	}	
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_hive_empire = yes }
+		}
+		modifier = {
+			job_naval_admin_hive_add = @pdarcjobs
+		}
+	}	
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_machine_empire = yes }
+		}
+		modifier = {
+			job_naval_admin_hive_add = @pdarcjobs
+		}
+	}	
+	
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { 
+				is_regular_empire = yes
+			}
+		}
+		text = job_naval_admin_effect_desc
+	}
+	
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_hive_empire = yes }
+		}
+		text = job_naval_admin_hive_effect_desc
+	}
+	
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_machine_empire = yes }
+		}
+		text = job_naval_admin_hive_effect_desc
+	}
+}
+
+district_pdbiofort_naval = {
+	base_buildtime = 600
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		OR = {
+			uses_district_set = pdbiofort
+			uses_district_set = pdflorafort
+		}
+	}
+	
+	potential = {
+		OR = {
+			uses_district_set = pdbiofort
+			uses_district_set = pdflorafort
+		}
+		owner = { 
+			exists = owner
+			is_hive_empire = yes
+		}
+	}
+	
+	conversion_ratio = 1
+	convert_to = {
+		district_city
+		district_nexus
+		district_hive
+	}	
+	
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = 1000
+			volatile_motes = 50
+		}
+		upkeep = {
+			energy = 5
+			volatile_motes = 1
+		}		
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 10
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_hive_empire = yes }
+		}
+		modifier = {
+			job_naval_admin_hive_add = @pdarcjobs
+		}
+	}	
+	
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_hive_empire = yes }
+		}
+		text = job_naval_admin_hive_effect_desc
+	}
+}
+
+district_pdmachinefort_naval = {
+	base_buildtime = 600
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		OR = {
+		uses_district_set = pdmachinefort
+		uses_district_set = pdmachinecapital
+		uses_district_set = pdmilarc
+		}
+	}
+	
+	potential = {
+		OR = {
+		uses_district_set = pdmachinefort
+		uses_district_set = pdmachinecapital
+		uses_district_set = pdmilarc
+		}
+		owner = { 
+			exists = owner
+			is_machine_empire = yes
+		}
+	}
+	
+	conversion_ratio = 1
+	convert_to = {
+		district_city
+		district_nexus
+		district_hive
+	}	
+	
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = 1000
+			volatile_motes = 50
+		}
+		upkeep = {
+			energy = 5
+			volatile_motes = 1
+		}		
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 10
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_machine_empire = yes }
+		}
+		modifier = {
+			job_naval_admin_hive_add = @pdarcjobs
+		}
+	}	
+	
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_machine_empire = yes }
+		}
+		text = job_naval_admin_hive_effect_desc
+	}	
+}
+
+#Research
+
+district_arcology_research_complex = {
+	base_buildtime = 600
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = { 
+		OR = {
+			uses_district_set = pdecocity 
+			uses_district_set = pdtechnoarch
+		}
+	}
+	
+	potential = { 
+		OR = {
+			uses_district_set = pdecocity 
+			uses_district_set = pdtechnoarch
+		}
+	}
+	
+	conversion_ratio = 1
+	convert_to = {
+		district_city
+		district_nexus
+		district_hive
+	}	
+	
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = 1000
+			exotic_gases = 50
+		}
+		upkeep = {
+			energy = 5
+			exotic_gases = 1
+		}		
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 6
+	}
+
+	inline_script = {
+		script = jobs/inline_evolved_researcher_split
+		count = 6
+		count_half = 3
+		mult = 1
+		display = with_desc
+		trigger = ""
+	}
+}
+
+district_machine_research_district = {
+	base_buildtime = 600
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = { uses_district_set = pdmachinefactory }
+	
+	potential = { uses_district_set = pdmachinefactory }
+	
+	conversion_ratio = 1
+	convert_to = {
+		district_city
+		district_nexus
+		district_hive
+	}	
+	
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = 1000
+			exotic_gases = 50
+		}
+		upkeep = {
+			energy = 5
+			exotic_gases = 1
+		}		
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 6
+	}
+
+	inline_script = {
+		script = jobs/inline_evolved_researcher_split
+		count = 6
+		count_half = 3
+		mult = 1
+		display = with_desc
+		trigger = ""
+	}
+}
+
+district_bioforge_brain = {
+	base_buildtime = 600
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		OR = {
+			uses_district_set = pdbioforge
+			uses_district_set = pdfloraforge
+			uses_district_set = pdnecrohive
+		}
+	}
+	
+	potential = {
+		OR = {
+			uses_district_set = pdbioforge
+			uses_district_set = pdfloraforge
+			uses_district_set = pdnecrohive
+		}
+		owner = { 
+			exists = owner
+			is_hive_empire = yes
+		}
+	}
+	
+	conversion_ratio = 1
+	convert_to = {
+		district_city
+		district_nexus
+		district_hive
+		district_arcology_housing
+	}	
+	
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = 1000
+			exotic_gases = 50
+		}
+		upkeep = {
+			energy = 5
+			exotic_gases = 1
+		}		
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 6
+	}
+
+	inline_script = {
+		script = jobs/inline_evolved_researcher_split
+		count = 6
+		count_half = 3
+		mult = 1
+		display = with_desc
+		trigger = ""
+	}
+}
+
+#Trade
+
+district_arcology_pdtrade = {
+	base_buildtime = 600
+	is_capped_by_modifier = no
+
+	show_on_uncolonized = {
+		OR= {
+			uses_district_set = pdecocity
+			uses_district_set = pdcorpoarc
+		}
+		from = {
+			is_regular_empire = yes
+		}
+	}
+
+	potential = {
+		OR= {
+			uses_district_set = pdecocity
+			uses_district_set = pdcorpoarc
+		}
+		owner = {
+			exists = owner
+			is_regular_empire = yes
+		}
+	}
+
+	conversion_ratio = 1
+
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = 1000
+			rare_crystals = 50
+		}
+		upkeep = {
+			energy = 5
+			rare_crystals = 1
+		}
+	}
+
+	planet_modifier = {
+		planet_housing_add = 6
+	}
+
+	inline_script = {
+		script = jobs/inline_evolved_clerk
+		count = 4
+		mult = 1
+		display = with_desc
+		trigger = ""
+	}
+
+	inline_script = {
+		script = jobs/inline_evolved_job
+		job = merchant
+		count = 2
+		mult = 1
+		display = with_desc
+		trigger = ""
+	}
+}
+
+#SRs
+
+#Leisure/Maintence/Temple/Culture
+
+district_pdhivefort_synapse = {
+	base_buildtime = 600
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		OR = {
+			uses_district_set = pdbiofort
+			uses_district_set = pdbioforge
+			uses_district_set = pdflorafort
+			uses_district_set = pdfloraforge
+		}
+	}
+	
+	potential = {
+		OR = {
+			uses_district_set = pdbiofort
+			uses_district_set = pdbioforge
+			uses_district_set = pdflorafort
+			uses_district_set = pdfloraforge
+		}
+		owner = { 
+			exists = owner
+			is_hive_empire = yes
+		}
+	}
+	
+	conversion_ratio = 1
+	convert_to = {
+		district_city
+		district_nexus
+		district_hive
+	}	
+	
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = 1000
+			rare_crystals = 50
+		}
+		upkeep = {
+			energy = 5
+			rare_crystals = 1
+		}		
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 6
+	}
+
+	inline_script = {
+		script = jobs/inline_evolved_maintenance_drone
+		count = 4
+		mult = 1
+		display = with_desc
+		trigger = ""
+	}
+
+	inline_script = {
+		script = jobs/inline_evolved_patrol_drone
+		count = 2
+		mult = 1
+		display = with_desc
+		trigger = ""
+	}
+}
+
+district_pdmachinefort_synapse = {
+	base_buildtime = 600
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		OR = {
+			uses_district_set = pdmachinefactory
+			uses_district_set = pdmachinefort
+			uses_district_set = pdmachinecapital
+			uses_district_set = pdecocity
+			uses_district_set = pdmilarc
+			uses_district_set = city_world
+		}
+		from = {
+			is_machine_empire = yes
+		}
+	}
+	
+	potential = {
+		OR = {
+			uses_district_set = pdmachinefactory
+			uses_district_set = pdmachinefort
+			uses_district_set = pdmachinecapital
+			uses_district_set = pdecocity
+			uses_district_set = pdmilarc
+			uses_district_set = city_world
+		}
+		owner = { 
+			exists = owner
+			is_machine_empire = yes
+		}
+	}
+	
+	conversion_ratio = 1
+	convert_to = {
+		district_city
+		district_nexus
+		district_hive
+	}	
+	
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = 1000
+			rare_crystals = 50
+		}
+		upkeep = {
+			energy = 5
+			rare_crystals = 1
+		}		
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 8
+	}
+	
+	inline_script = {
+		script = jobs/inline_evolved_maintenance_drone
+		count = 6
+		mult = 1
+		display = with_desc
+		trigger = ""
+	}
+
+	inline_script = {
+		script = jobs/inline_evolved_patrol_drone
+		count = 2
+		mult = 1
+		display = with_desc
+		trigger = ""
+	}
+}
+
+

@@ -1,0 +1,198 @@
+tec_pd_arc_allows_capital_arcologies = {
+	optimize_memory
+	OR = {
+		is_planet_class = pc_city
+		is_planet_class = pc_ecocity
+		is_planet_class = pc_milarc
+		is_planet_class = pc_ringworld_habitable
+		is_planet_class = pc_corpoarc
+		is_planet_class = pc_hive
+		is_planet_class = pc_bioforge
+		is_planet_class = pc_biofort
+		is_planet_class = pc_megafloratol
+		is_planet_class = pc_megafloraforge
+		is_planet_class = pc_megaflorafort
+		is_planet_class = pc_machine
+		is_planet_class = pc_machine_factory
+		is_planet_class = pc_machine_fort
+		is_planet_class = pc_pd_techno_arc
+		
+		and = {
+			tec_is_habitat = yes
+			has_planet_flag = tec_arcology_habitat
+		}
+		tec_is_hive_world = yes
+		tec_is_machine_world = yes
+		tec_is_ecoworld = yes
+		tec_is_elysium = yes
+		tec_is_modded_space_arcology = yes
+	}
+}
+
+tec_pd_arc_allows_normal_capital_arcologies = {
+	optimize_memory
+	tec_pd_arc_allows_corp_capital_arcologies = no
+	OR = {
+		is_democracy = yes
+		is_oligarchy = yes
+	}
+}
+
+tec_pd_arc_allows_palace_capital_arcologies = {
+	optimize_memory
+	tec_pd_arc_allows_corp_capital_arcologies = no
+	OR = {
+		is_autocracy = yes
+	}
+}
+
+tec_pd_arc_allows_corp_capital_arcologies = {
+	optimize_memory
+	OR = {
+		is_megacorp = yes
+	}
+}
+
+tec_pd_arc_allows_hive_capital_arcologies = {
+	optimize_memory
+	is_hive_empire = yes 
+	NOT = { has_origin = origin_pd_tree_of_life }
+}
+
+tec_pd_arc_allows_treehive_capital_arcologies = {
+	optimize_memory
+	is_hive_empire = yes 
+	has_origin = origin_pd_tree_of_life
+}
+
+tec_pd_arc_allows_machine_capital_arcologies = {
+	optimize_memory
+	is_hive_empire = yes 
+	has_origin = origin_pd_tree_of_life
+}
+
+
+tec_pd_arc_uses_city_planet_entity = {
+	optimize_memory
+	OR = {
+		AND = {
+			is_planet_class = pc_city
+			NOR = { 
+				has_planet_flag = tec_ecumenopolis_spec_militarized
+				has_planet_flag = tec_ecumenopolis_spec_science
+				#	has_planet_flag = tec_ecumenopolis_was_relic_planet
+			}
+			exists = owner
+			NOT = {
+				owner = { is_megacorp = yes }
+			}
+		}
+	}
+}
+
+tec_pd_arc_uses_ecocity_planet_entity = {
+	optimize_memory
+	OR = {
+		is_planet_class = pc_ecocity
+		tec_is_ecoworld = yes
+		AND = {
+			is_planet_class = pc_city
+			has_planet_flag = tec_ecumenopolis_spec_science
+		}
+	}
+}
+
+tec_pd_arc_uses_milarc_planet_entity = {
+	optimize_memory
+	OR = {
+		is_planet_class = pc_milarc		
+		AND = {
+			is_planet_class = pc_city
+			has_planet_flag = tec_ecumenopolis_spec_militarized
+		}
+	}
+}
+
+tec_pd_arc_uses_corpoarc_planet_entity = {
+	optimize_memory
+	OR = {
+		is_planet_class = pc_corpoarc
+		AND = {
+			is_planet_class = pc_city
+			exists = owner
+			owner = { is_megacorp = yes }
+			NOT = { 
+				has_planet_flag = tec_ecumenopolis_spec_science 
+				has_planet_flag = tec_ecumenopolis_spec_militarized
+			}
+		}
+	}
+}
+
+tec_pd_arc_ecoworld_project_allow = {
+	optimize_memory
+	custom_tooltip = {
+		fail_text = decision_tec_ecoworld_project_requirements
+		OR = {
+			check_variable_arithmetic = {
+				which = value:farming_districts_value
+				   value >= 6
+			}
+			check_variable_arithmetic = {
+				which = value:mining_districts_value
+				   value >= 6
+			}
+			check_variable_arithmetic = {
+				which = value:generators_districts_value
+				   value >= 6
+			}
+		}
+	}
+	custom_tooltip = {
+		fail_text = decision_tec_arcology_blocker_tweaks
+		OR = {
+			num_uncleared_blockers < 1
+			owner = {
+				tec_can_enact_overstrip = yes
+			}
+		}
+	}
+}
+
+tec_pd_arc_no_spot = {
+	NOR = { 
+		has_deposit = d_pd_necro_arc_spot 
+		has_deposit = d_pd_shroud_arc_spot 
+		has_deposit = d_pd_capital_spot 
+	}
+}
+
+tec_pd_arc_no_special_arcology_deposit = {
+	NOR = { 
+		has_deposit = d_pd_necro_arc 
+		has_deposit = d_pd_shroud_arc 
+	}
+}
+
+tec_pd_arc_no_capital_arcology_deposit = {
+	NOR = { 
+		has_deposit = d_pd_capital_arc
+		has_deposit = d_pd_boardroom_arc
+		has_deposit = d_pd_palace_arc
+		has_deposit = d_pd_biohivecap_arc
+		has_deposit = d_pd_florahivecap_arc
+		has_deposit = d_pd_machinecap_arc
+	}
+}
+
+
+tec_pd_arc_no_atmosphere = {
+	NOR = {
+		has_modifier = pdammoniaatmosphere
+		has_modifier = pdsulfuratmosphere
+		has_modifier = pdmethaneatmosphere
+		has_modifier = pdashatmosphere
+		has_modifier = hyceanfloodedhabitat
+		has_modifier = hyceanfloodedworld
+	}
+}

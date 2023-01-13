@@ -1,0 +1,41 @@
+	allow = {
+		has_upgraded_capital = yes
+	}
+
+	inline_script = {
+		script = modifiers/inline_evolved_artisan_efficiency
+		trigger = ""
+		mult = 0.5
+	}
+
+	inline_script = {
+		script = modifiers/inline_evolved_artisan_efficiency
+		trigger = "
+			owner = { has_technology = tech_luxuries_1 }
+		"
+		mult = 0.5
+	}
+
+	inline_script = {
+		script = modifiers/inline_evolved_artisan_efficiency
+		trigger = "
+			owner = { has_technology = tech_luxuries_2 }
+		"
+		mult = 1
+	}
+
+	inline_script = {
+		script = jobs/inline_evolved_artisan
+		count = 2
+		mult = 1
+		trigger = ""
+		display = with_desc
+	}
+	
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/resources/inline_evolved_resource_cost
+			tier = 3
+		}
+	}		
