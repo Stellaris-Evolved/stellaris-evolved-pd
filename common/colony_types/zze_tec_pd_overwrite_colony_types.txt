@@ -1,0 +1,133 @@
+#root = planet
+
+
+
+# Habitat Energy
+col_dome_energy = {
+	icon = GFX_colony_type_habitat_energy
+
+	potential = {
+		OR = {
+			is_planet_class = pc_pd_barren_cold_hab
+			is_planet_class = pc_pd_barren_hab
+			is_planet_class = pc_pd_frozen_hab
+			is_planet_class = pc_pd_gas_giant_hab
+			is_planet_class = pc_pd_hothouse_hab
+			is_planet_class = pc_pd_toxic_hab
+			is_planet_class = pc_pd_molten_hab
+			is_planet_class = pc_pd_asteroid_hab
+		}
+		exists = owner
+	}
+	planet_modifier = {
+		planet_district_hab_energy_build_speed_mult = 0.25
+		planet_technician_produces_mult = 0.1
+	}
+
+	inline_script = colony_types/effects/inline_evolved_resolution_greatergood
+
+	# Evolved
+		inline_script = colony_types/effects/inline_evolved_tec_land_of_plenty_generator
+		inline_script = colony_types/effects/inline_evolved_tec_planets_t2a_generator
+	# / 
+	weight_modifier = {
+		base = 200
+		modifier = {
+			factor = 2
+			owner = { has_monthly_income = { resource = energy value < 0 } }
+		}
+		modifier = {
+			factor = 3
+			num_districts = { type = district_pdhab_energy value >= 4 }
+		}
+	}
+}
+
+# Habitat Mining
+col_dome_mining = {
+	icon = GFX_colony_type_habitat_mining
+
+	potential = {
+		OR = {
+			is_planet_class = pc_pd_barren_cold_hab
+			is_planet_class = pc_pd_barren_hab
+			is_planet_class = pc_pd_frozen_hab
+			is_planet_class = pc_pd_gas_giant_hab
+			is_planet_class = pc_pd_hothouse_hab
+			is_planet_class = pc_pd_toxic_hab
+			is_planet_class = pc_pd_molten_hab
+			is_planet_class = pc_pd_asteroid_hab
+		}
+	}
+	planet_modifier = {
+		planet_district_hab_mining_build_speed_mult = 0.25
+		planet_miners_produces_mult = 0.1
+	}
+
+	inline_script = colony_types/effects/inline_evolved_resolution_greatergood
+
+	# Evolved
+		inline_script = colony_types/effects/inline_evolved_tec_land_of_plenty_mining
+
+		inline_script = colony_types/effects/inline_evolved_tec_planets_t2a_mining
+	# /
+
+	weight_modifier = {
+		base = 5000 
+		modifier = {
+			factor = 2
+			owner = { has_monthly_income = { resource = minerals value < 0 } }
+		}
+		modifier = {
+			factor = 2
+			has_designation = col_dome_mining
+		}
+		modifier = {
+			factor = 3
+			num_districts = { type = district_pdhab_mining value >= 4 }
+		}
+	}
+}
+
+# Habitat Food
+col_dome_food = {
+	icon = GFX_colony_type_habitat_food
+
+	potential = {
+		OR = {
+			is_planet_class = pc_pd_barren_cold_hab
+			is_planet_class = pc_pd_barren_hab
+			is_planet_class = pc_pd_frozen_hab
+			is_planet_class = pc_pd_gas_giant_hab
+			is_planet_class = pc_pd_hothouse_hab
+			is_planet_class = pc_pd_toxic_hab
+			is_planet_class = pc_pd_molten_hab
+			is_planet_class = pc_pd_asteroid_hab
+		}
+		exists = owner
+	}
+	planet_modifier = {
+		planet_farmers_produces_mult = 0.2
+	}
+
+	inline_script = colony_types/effects/inline_evolved_resolution_greatergood
+
+	# Evolved
+		inline_script = colony_types/effects/inline_evolved_tec_land_of_plenty_farming
+
+		inline_script = colony_types/effects/inline_evolved_tec_planets_t2a_farming
+	# /
+
+
+	weight_modifier = {
+		base = 200
+		modifier = {
+			factor = 2
+			owner = { has_monthly_income = { resource = food value < 0 } }
+		}
+		modifier = {
+			factor = 3
+			num_districts = { type = district_pdhab_food value >= 4 }
+		}
+	}
+}
