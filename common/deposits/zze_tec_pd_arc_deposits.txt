@@ -1466,21 +1466,6 @@ d_pd_shroud_arc = {
 		planet_priests_unity_produces_add = 0.5
 	}
 
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { 
-				NOR= {
-					has_country_flag = composer_covenant_confirmed
-					has_country_flag = eater_covenant_confirmed  
-					has_country_flag = instrument_covenant_confirmed
-					has_country_flag = whisperers_covenant_confirmed
-				}	
-			}
-		}
-		planet_priests_unity_produces_add = 0.5
-	}
-	
 	potential = {
 		tec_has_pd_arcolgies_active = yes
 		OR = {
