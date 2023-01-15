@@ -1,3 +1,5 @@
+# deposits/pd_necro_deposits
+
 triggered_planet_modifier = {
 	potential = {
 		exists = owner
@@ -14,7 +16,7 @@ inline_script = {
 	script = jobs/inline_evolved_synapse
 	count = 2
 	mult = 1
-	display = with_desc
+	display = no_desc
 	trigger = "
 		owner = { 
 			has_origin = origin_necrophage
@@ -97,7 +99,7 @@ inline_script = {
 	script = jobs/inline_evolved_synapse
 	count = 2
 	mult = 1
-	display = with_desc
+	display = no_desc
 	trigger = "
 		exists = owner
 		owner = { 

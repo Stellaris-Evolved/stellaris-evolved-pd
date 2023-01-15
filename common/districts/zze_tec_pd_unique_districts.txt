@@ -893,16 +893,24 @@ district_techno_industrial = {
 			rare_crystals = 1
 		}
 
+		inline_script = districts/resources/inline_evolved_tec_unleashed_industrialization_resources
 		inline_script = districts/resources/inline_evolved_industrial_maintenance_upkeep
-
-		inline_script = districts/inline_evolved_unleashed_industrialization_resources
 	}
 
 	planet_modifier = {
 		planet_housing_add = 8
 	}
 
-	inline_script = districts/inline_evolved_industrial_districts_modifiers
+	# Traditions
+		inline_script = districts/effects/inline_evolved_tec_artifice_final_1
+	# /
+	# Civics
+		inline_script = districts/effects/inline_evolved_tec_unleashed_industrialization
+	# /
+	# Edicts
+		inline_script = districts/effects/inline_evolved_industrial_maintenance
+	# /
+
 
 
 	inline_script = {

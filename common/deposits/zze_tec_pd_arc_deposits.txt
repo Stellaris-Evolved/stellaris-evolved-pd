@@ -784,7 +784,7 @@ d_pd_biohivecap_arc = {
 			"
 			count = 3
 			mult = 1
-			display = with_desc
+			display = no_desc
 		}
 
 		inline_script = {
@@ -795,7 +795,7 @@ d_pd_biohivecap_arc = {
 			"
 			count = 2
 			mult = 1
-			display = with_desc
+			display = no_desc
 		}
 		# Traditions and etc
 		inline_script = { # Statecraft - Admin Drone - uses 1 per (tier - 1) / 2 jobs formula
@@ -812,7 +812,7 @@ d_pd_biohivecap_arc = {
 			job = tec_hive_admin_drone
 			count = 2
 			mult = 1
-			display = with_desc
+			display = no_desc
 		}
 	# /
 
@@ -825,7 +825,7 @@ d_pd_biohivecap_arc = {
 			"
 			count = 8
 			mult = 1
-			display = with_desc
+			display = no_desc
 		}
 
 		inline_script = {
@@ -837,7 +837,7 @@ d_pd_biohivecap_arc = {
 			"
 			count = 6
 			mult = 1
-			display = with_desc
+			display = no_desc
 		}
 
 		inline_script = {
@@ -852,7 +852,7 @@ d_pd_biohivecap_arc = {
 			"
 			count = -3
 			mult = 1
-			display = with_desc
+			display = no_desc
 		}
 
 
@@ -957,7 +957,7 @@ d_pd_industrial_sector = {
 		"
 		count = 6
 		mult = 1
-		display = with_desc
+		display = no_desc
 	}
 
 	inline_script = {
@@ -968,7 +968,7 @@ d_pd_industrial_sector = {
 		"
 		count = 6
 		mult = 1
-		display = with_desc
+		display = no_desc
 	}
 
 	inline_script = {
@@ -979,7 +979,7 @@ d_pd_industrial_sector = {
 		"
 		count = 6
 		mult = 1
-		display = with_desc
+		display = no_desc
 	}
 
 	potential = {
@@ -1037,7 +1037,7 @@ d_pd_florahivecap_arc = {
 			"
 			count = 3
 			mult = 1
-			display = with_desc
+			display = no_desc
 		}
 
 		inline_script = {
@@ -1048,7 +1048,7 @@ d_pd_florahivecap_arc = {
 			"
 			count = 2
 			mult = 1
-			display = with_desc
+			display = no_desc
 		}
 		# Traditions and etc
 		inline_script = { # Statecraft - Admin Drone - uses 1 per (tier - 1) / 2 jobs formula
@@ -1065,7 +1065,7 @@ d_pd_florahivecap_arc = {
 			job = tec_hive_admin_drone
 			count = 2
 			mult = 1
-			display = with_desc
+			display = no_desc
 		}
 	# /
 
@@ -1078,7 +1078,7 @@ d_pd_florahivecap_arc = {
 			"
 			count = 8
 			mult = 1
-			display = with_desc
+			display = no_desc
 		}
 
 		inline_script = {
@@ -1090,7 +1090,7 @@ d_pd_florahivecap_arc = {
 			"
 			count = 6
 			mult = 1
-			display = with_desc
+			display = no_desc
 		}
 
 		inline_script = {
@@ -1105,7 +1105,7 @@ d_pd_florahivecap_arc = {
 			"
 			count = -3
 			mult = 1
-			display = with_desc
+			display = no_desc
 		}
 
 
@@ -1235,7 +1235,7 @@ d_pd_machinecap_arc = {
 			"
 			count = 3
 			mult = 1
-			display = with_desc
+			display = no_desc
 		}
 
 		# You are a rare case, sweetie
@@ -1252,7 +1252,7 @@ d_pd_machinecap_arc = {
 			job = tec_reimaginator_drone
 			count = 1
 			mult = 1
-			display = with_desc
+			display = no_desc
 		}
 	# /
 
@@ -1265,7 +1265,7 @@ d_pd_machinecap_arc = {
 			"
 			count = 8
 			mult = 1
-			display = with_desc
+			display = no_desc
 		}
 
 		inline_script = {
@@ -1276,7 +1276,7 @@ d_pd_machinecap_arc = {
 			"
 			count = 6
 			mult = 1
-			display = with_desc
+			display = no_desc
 		}
 
 		inline_script = {
@@ -1288,7 +1288,7 @@ d_pd_machinecap_arc = {
 			"
 			count = -3
 			mult = 1
-			display = with_desc
+			display = no_desc
 		}
 
 
@@ -1358,8 +1358,8 @@ d_pd_verticalfarm_arc = {
 				OR = {
 					is_machine_empire = no
 					OR = {
-						has_civic = civic_machine_servitor }
-						has_civic = civic_machine_assimilator }
+						has_civic = civic_machine_servitor 
+						has_civic = civic_machine_assimilator
 					}
 				}
 			}
@@ -1370,7 +1370,7 @@ d_pd_verticalfarm_arc = {
 		hive_aquatic_count = 6
 		machine_count = 6
 		mult = 1
-		display = with_desc
+		display = no_desc
 	}
 
 	potential = {
