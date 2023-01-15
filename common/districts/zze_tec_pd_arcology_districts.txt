@@ -696,64 +696,15 @@ district_bioforge_brain = {
 #Trade
 
 district_arcology_pdtrade = {
-	base_buildtime = 600
 	is_capped_by_modifier = no
 
-	show_on_uncolonized = {
-		OR= {
-			uses_district_set = pdecocity
-			uses_district_set = pdcorpoarc
-		}
-		from = {
-			is_regular_empire = yes
-		}
-	}
-
-	potential = {
-		OR= {
-			uses_district_set = pdecocity
-			uses_district_set = pdcorpoarc
-		}
-		owner = {
-			exists = owner
-			is_regular_empire = yes
-		}
-	}
-
 	conversion_ratio = 1
-
-	resources = {
-		category = planet_districts
-		cost = {
-			minerals = 1000
-			rare_crystals = 50
-		}
-		upkeep = {
-			energy = 5
-			rare_crystals = 1
-		}
+	convert_to = {
+		district_tec_arcology_trade
+		district_arcology_housing
 	}
-
-	planet_modifier = {
-		planet_housing_add = 6
-	}
-
-	inline_script = {
-		script = jobs/inline_evolved_clerk
-		count = 4
-		mult = 1
-		display = with_desc
-		trigger = ""
-	}
-
-	inline_script = {
-		script = jobs/inline_evolved_job
-		job = merchant
-		count = 2
-		mult = 1
-		display = with_desc
-		trigger = ""
-	}
+	
+	inline_script = districts/inline_evolved_disabled
 }
 
 #SRs
@@ -761,142 +712,27 @@ district_arcology_pdtrade = {
 #Leisure/Maintence/Temple/Culture
 
 district_pdhivefort_synapse = {
-	base_buildtime = 600
 	is_capped_by_modifier = no
-	
-	show_on_uncolonized = {
-		OR = {
-			uses_district_set = pdbiofort
-			uses_district_set = pdbioforge
-			uses_district_set = pdflorafort
-			uses_district_set = pdfloraforge
-		}
-	}
-	
-	potential = {
-		OR = {
-			uses_district_set = pdbiofort
-			uses_district_set = pdbioforge
-			uses_district_set = pdflorafort
-			uses_district_set = pdfloraforge
-		}
-		owner = { 
-			exists = owner
-			is_hive_empire = yes
-		}
-	}
 	
 	conversion_ratio = 1
 	convert_to = {
-		district_city
-		district_nexus
-		district_hive
+		district_tec_arcology_maintenance
+		district_arcology_leisure
 	}	
 	
-	resources = {
-		category = planet_districts
-		cost = {
-			minerals = 1000
-			rare_crystals = 50
-		}
-		upkeep = {
-			energy = 5
-			rare_crystals = 1
-		}		
-	}
-	
-	planet_modifier = {
-		planet_housing_add = 6
-	}
-
-	inline_script = {
-		script = jobs/inline_evolved_maintenance_drone
-		count = 4
-		mult = 1
-		display = with_desc
-		trigger = ""
-	}
-
-	inline_script = {
-		script = jobs/inline_evolved_patrol_drone
-		count = 2
-		mult = 1
-		display = with_desc
-		trigger = ""
-	}
+	inline_script = districts/inline_evolved_disabled
 }
 
 district_pdmachinefort_synapse = {
-	base_buildtime = 600
 	is_capped_by_modifier = no
-	
-	show_on_uncolonized = {
-		OR = {
-			uses_district_set = pdmachinefactory
-			uses_district_set = pdmachinefort
-			uses_district_set = pdmachinecapital
-			uses_district_set = pdecocity
-			uses_district_set = pdmilarc
-			uses_district_set = city_world
-		}
-		from = {
-			is_machine_empire = yes
-		}
-	}
-	
-	potential = {
-		OR = {
-			uses_district_set = pdmachinefactory
-			uses_district_set = pdmachinefort
-			uses_district_set = pdmachinecapital
-			uses_district_set = pdecocity
-			uses_district_set = pdmilarc
-			uses_district_set = city_world
-		}
-		owner = { 
-			exists = owner
-			is_machine_empire = yes
-		}
-	}
 	
 	conversion_ratio = 1
 	convert_to = {
-		district_city
-		district_nexus
-		district_hive
+		district_tec_arcology_maintenance
+		district_arcology_leisure
 	}	
 	
-	resources = {
-		category = planet_districts
-		cost = {
-			minerals = 1000
-			rare_crystals = 50
-		}
-		upkeep = {
-			energy = 5
-			rare_crystals = 1
-		}		
-	}
-	
-	planet_modifier = {
-		planet_housing_add = 8
-	}
-	
-	inline_script = {
-		script = jobs/inline_evolved_maintenance_drone
-		count = 6
-		mult = 1
-		display = with_desc
-		trigger = ""
-	}
-
-	inline_script = {
-		script = jobs/inline_evolved_patrol_drone
-		count = 2
-		mult = 1
-		display = with_desc
-		trigger = ""
-	}
+	inline_script = districts/inline_evolved_disabled
 }
 
 
