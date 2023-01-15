@@ -129,33 +129,15 @@ tec_pd_arc_uses_corpoarc_planet_entity = {
 	}
 }
 
-tec_pd_arc_ecoworld_project_allow = {
-	optimize_memory
-	custom_tooltip = {
-		fail_text = decision_tec_ecoworld_project_requirements
-		OR = {
-			check_variable_arithmetic = {
-				which = value:farming_districts_value
-				   value >= 6
-			}
-			check_variable_arithmetic = {
-				which = value:mining_districts_value
-				   value >= 6
-			}
-			check_variable_arithmetic = {
-				which = value:generators_districts_value
-				   value >= 6
-			}
-		}
-	}
-	custom_tooltip = {
-		fail_text = decision_tec_arcology_blocker_tweaks
-		OR = {
-			num_uncleared_blockers < 1
-			owner = {
-				tec_can_enact_overstrip = yes
-			}
-		}
+tec_pd_arc_allows_necro_arcologies = {
+	OR = {
+		tec_is_memorialist_empire = yes
+		tec_is_death_cult = yes
+		tec_is_zombie_empire = yes
+		tec_is_reanimator_empire = yes
+		has_valid_civic = civic_tec_hive_necrophage
+		has_valid_civic = civic_hive_cordyceptic_drones
+		has_origin = origin_necrophage
 	}
 }
 

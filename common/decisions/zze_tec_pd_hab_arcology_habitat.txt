@@ -599,13 +599,13 @@ decision_tec_pdplanethab_arcology_project_admin = {
 			# factory conversion
 
 			tec_pdplanethab_convert_district = {
-				DISTRICT1 = district_tec_hab_arcology_factory
+				DISTRICT1 = district_tec_hab_arcology_industry
 				DISTRICT2 = district_arcology_civilian_industry
 				DIVIDE = 2
 			}
 
 			tec_pdplanethab_clear_district = {
-				DISTRICT = district_tec_hab_arcology_factory
+				DISTRICT = district_tec_hab_arcology_industry
 			}
 
 			# research conversion

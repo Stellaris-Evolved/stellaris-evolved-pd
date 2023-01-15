@@ -179,7 +179,7 @@ tec_pdplanethab_convert_leisure_to_ecu_leisure = {
 		}
 		tec_pdplanethab_convert_district = {
 			DISTRICT1 = district_tec_hab_arcology_leisure
-			DISTRICT2 = district_tec_arcology_unity_gestalt
+			DISTRICT2 = district_tec_arcology_maintenance
 			DIVIDE = 2
 		}
 	}
@@ -254,108 +254,6 @@ tec_pdplanethab_clear_habitat_specific_data = {
 		remove_modifier = pm_tec_engineered_habitat
 		add_modifier = {
 			modifier = pm_tec_engineered_weather
-		}
-	}
-	# regular
-	if = {
-		limit = {
-			owner = {
-				is_fallen_empire = no 
-				is_gestalt = no
-			}
-		}
-		switch = {
-			trigger = has_building
-			building_hab_major_capital = {
-				remove_building = building_hab_major_capital
-				add_building = building_major_capital
-			}
-			building_hab_system_capital = {
-				remove_building = building_hab_system_capital
-				add_building = building_system_capital
-			}
-		}
-	}
-	# hive
-	else_if = {
-		limit = {
-			owner = {
-				is_fallen_empire = no 
-				is_hive_empire = yes
-				tec_is_biohive = no
-				tec_is_cybernetic_hive = No
-			}
-		}
-		switch = {
-			trigger = has_building
-			building_tec_hab_hive_major_capital = {
-				remove_building = building_tec_hab_hive_major_capital
-				add_building = building_hive_major_capital
-			}
-			building_tec_hab_hive_system_capital = {
-				remove_building = building_tec_hab_hive_system_capital
-				add_building = building_hive_system_capital
-			}
-		}
-	}
-	# biohive
-	else_if = {
-		limit = {
-			owner = {
-				tec_is_biohive = yes
-				is_fallen_empire = no 
-			}
-		}
-		switch = {
-			trigger = has_building
-			building_tec_hab_biohive_major_capital = {
-				remove_building = building_tec_hab_biohive_major_capital
-				add_building = building_tec_biohive_major_capital
-			}
-			building_tec_hab_biohive_system_capital = {
-				remove_building = building_tec_hab_biohive_system_capital
-				add_building = building_tec_biohive_system_capital
-			}
-		}
-	}
-	# cyberhive
-	else_if = {
-		limit = {
-			owner = {
-				tec_is_cybernetic_hive = yes
-				is_fallen_empire = no 
-			}
-		}
-		switch = {
-			trigger = has_building
-			building_tec_hab_cyberhive_major_capital = {
-				remove_building = building_tec_hab_cyberhive_major_capital
-				add_building = building_tec_cyberhive_major_capital
-			}
-			building_tec_hab_cyberhive_system_capital = {
-				remove_building = building_tec_hab_cyberhive_system_capital
-				add_building = building_tec_cyberhive_system_capital
-			}
-		}
-	}
-	# machine
-	else_if = {
-		limit = {
-			owner = {
-				is_machine_empire = yes
-				is_fallen_empire = no
-			}
-		}
-		switch = {
-			trigger = has_building
-			building_tec_hab_machine_major_capital = {
-				remove_building = building_tec_hab_machine_major_capital
-				add_building = building_tec_machine_major_capital
-			}
-			building_tec_hab_machine_system_capital = {
-				remove_building = building_tec_hab_machine_system_capital
-				add_building = building_tec_machine_system_capital
-			}
 		}
 	}
 	

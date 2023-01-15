@@ -72,6 +72,13 @@ district_pdexotic_generator = {
 		# Automated production
 			inline_script = {
 				script = districts/resources/inline_evolved_tec_automation_energy
+				trigger = "
+					exists = owner
+					owner = { tec_is_automated_empire = yes }
+					planet = {
+						tec_planet_allows_automation = yes
+					}
+				"
 				base = 6
 			}
 		# /
@@ -189,6 +196,13 @@ district_pdexotic_generator_uncapped = {
 		# Automated production
 			inline_script = {
 				script = districts/resources/inline_evolved_tec_automation_energy
+				trigger = "
+					exists = owner
+					owner = { tec_is_automated_empire = yes }
+					planet = {
+						tec_planet_allows_automation = yes
+					}
+				"
 				base = 6
 			}
 		# /
@@ -327,6 +341,13 @@ district_pdexotic_mining = {
 		# Automated production
 			inline_script = {
 				script = districts/resources/inline_evolved_tec_automation_minerals
+				trigger = "
+					exists = owner
+					owner = { tec_is_automated_empire = yes }
+					planet = {
+						tec_planet_allows_automation = yes
+					}
+				"
 				base = 4
 			}
 			inline_script = districts/resources/inline_evolved_tec_automated_upkeep
@@ -394,33 +415,9 @@ district_pdexotic_mining = {
 		"
 	}
 
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = {
-				has_valid_civic = civic_tec_eco_keepers
-			}
-		}
-		modifier = {
-			planet_amenities_add = -1
-		}
-	}
+	inline_script = districts/effects/inline_evolved_tec_eco_keepers_mining
 
-	inline_script = {
-		script = jobs/inline_evolved_miner
-		regular_count = 1
-		regular_aquatic_count = 0
-		hive_count = 0
-		hive_aquatic_count = 0
-		machine_count = 0
-		mult = 1
-		display = no_desc
-		trigger = "
-			owner = {
-				has_valid_civic = civic_mining_guilds
-			}
-		"
-	}
+	inline_script = districts/effects/inline_evolved_mining_guilds
 }
 
 district_pdexotic_farming = {
@@ -480,6 +477,13 @@ district_pdexotic_farming = {
 		# Automated production
 			inline_script = {
 				script = districts/resources/inline_evolved_tec_automation_food
+				trigger = "
+					exists = owner
+					owner = { tec_is_automated_empire = yes }
+					planet = {
+						tec_planet_allows_automation = yes
+					}
+				"
 				base = 6
 			}
 			inline_script = districts/resources/inline_evolved_tec_automated_upkeep

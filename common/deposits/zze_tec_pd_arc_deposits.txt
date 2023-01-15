@@ -729,7 +729,6 @@ d_pd_boardroom_arc = {
 			megacorp_count_half = 2
 			mult = 1
 		}
-		}
 	# /
 	
 	potential = {
@@ -1429,6 +1428,42 @@ d_pd_shroud_arc = {
 	
 	planet_modifier = {
 		planet_max_districts_mult = -0.1
+		planet_telepaths_unity_produces_add = 1
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { 
+				is_megacorp = no
+				is_spiritualist = no
+				has_make_spiritualist_perk = no
+			}
+		}
+		planet_administrators_unity_produces_add = 0.5
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { 
+				is_megacorp = yes
+			}
+		}
+		planet_managers_unity_produces_add = 0.5
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { 
+				OR = {
+					is_spiritualist = yes
+					has_make_spiritualist_perk = yes
+				}
+			}
+		}
+		planet_priests_unity_produces_add = 0.5
 	}
 
 	triggered_planet_modifier = {
