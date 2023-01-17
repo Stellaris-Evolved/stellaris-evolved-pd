@@ -1,0 +1,1128 @@
+#Floating Jobs
+eludium_expert = {	
+	category = worker
+	condition_string = WORKER_JOB_TRIGGER
+	building_icon = building_eludium_mines
+	clothes_texture_index = 2
+
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+		is_sapient = yes
+	}
+
+	possible_precalc = can_fill_worker_job
+
+	resources = {
+		category = planet_sr_miners
+		produces = {
+			sr_eludium = 2
+		}
+	}
+
+	weight = {
+		weight = @specialist_job_weight # Important job
+		mult = value:job_weights_modifier|JOB|mote_harvester|RESOURCE|volatile_motes|
+		modifier = {
+			factor = 10
+			is_enslaved = yes
+			can_take_servant_job = no
+			NOT = { has_slavery_type = { type = slavery_indentured } }
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				is_non_sapient_robot = yes
+				is_shackled_robot = yes
+			}
+			can_take_servant_job = no
+			owner = { has_technology = tech_droid_workers }
+		}
+		modifier = {
+			factor = 200
+			OR = {
+				is_non_sapient_robot = yes
+				is_shackled_robot = yes
+			}
+			can_take_servant_job = no
+			owner = { NOT = { has_technology = tech_droid_workers } }
+		}
+		modifier = {
+			factor = 0.1
+			can_take_servant_job = yes
+		}
+	}
+}
+# eludium_drone 
+
+#Graveyard Jobs
+# graveyard_driller 
+
+# graveyard_drone
+
+#Crucible Jobs
+crucible_foundry = {
+	category = specialist
+	condition_string = SPECIALIST_JOB_TRIGGER
+	building_icon = building_foundry_1
+	clothes_texture_index = 3
+
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+	}
+
+	possible_precalc = can_fill_specialist_job
+	possible = {
+		hidden_trigger = { exists = owner }
+		owner = {
+			is_gestalt = no
+		}
+	}
+
+	resources = {
+		category = planet_metallurgists
+
+		#Crucible
+		produces = {
+			trigger = {
+				planet = { is_planet_class = pc_crucible }
+			}
+			alloys = 3
+		}
+		upkeep = {
+			trigger = {
+				planet = { is_planet_class = pc_crucible }
+			}
+			energy = 6
+		}
+
+		#Clean Crucible
+		produces = {
+			trigger = {
+				planet = { is_planet_class = pc_clean_crucible }
+			}
+			alloys = 4
+		}
+		upkeep = {
+			trigger = {
+				planet = { is_planet_class = pc_clean_crucible }
+			}
+			energy = 8
+		}
+
+		#Clean Crucible
+		produces = {
+			trigger = {
+				planet = { is_planet_class = pc_shroud_crucible }
+			}
+			alloys = 5
+		}
+		upkeep = {
+			trigger = {
+				planet = { is_planet_class = pc_shroud_crucible }
+			}
+			energy = 6
+			sr_zro = 0.2
+		}
+
+		inline_script = {
+			script = jobs/resources/inline_evolved_material_foundry_requisition_resources
+			minerals = 2
+			food = 0
+			alloys = @requisitorium_alloys_reduction
+			mult = 1
+		}
+	}
+
+	overlord_resources = {
+		category = planet_requisitioned_alloys
+		inline_script = {
+			script = jobs/resources/inline_evolved_material_foundry_requisition_overlord_resources
+			alloys = @requisitorium_alloys_overlord
+			mult = 1
+		}
+	}
+
+	inline_script = jobs/effects/type/inline_evolved_foundry_effect
+	
+
+	weight = {
+		weight = @specialist_job_weight # Fairly important job
+		mult = value:job_weights_modifier|JOB|foundry|RESOURCE|alloys|
+		modifier = {
+			factor = 2
+			is_enslaved = yes
+			can_take_servant_job = no
+		}
+		modifier = {
+			factor = 5
+			has_job = foundry
+		}
+	}
+}
+crucible_fabricator = {
+	category = complex_drone
+	condition_string = DRONE_JOB_TRIGGER
+	building_icon = building_foundry_1
+
+	possible_pre_triggers = {
+		has_owner = yes
+		is_enslaved = no
+		is_being_purged = no
+		is_being_assimilated = no
+		is_sapient = yes
+	}
+
+	possible_precalc = can_fill_drone_job
+
+	possible = { can_think = yes }
+
+	resources = {
+		category = planet_metallurgists
+
+		#Crucible
+		produces = {
+			trigger = {
+				planet = { is_planet_class = pc_crucible }
+			}
+			alloys = 4
+		}
+		upkeep = {
+			trigger = {
+				planet = { is_planet_class = pc_crucible }
+			}
+			energy = 8
+		}
+
+		#Clean Crucible
+		produces = {
+			trigger = {
+				planet = { is_planet_class = pc_clean_crucible }
+			}
+			alloys = 5
+		}
+		upkeep = {
+			trigger = {
+				planet = { is_planet_class = pc_clean_crucible }
+			}
+			energy = 10
+		}
+
+		#Clean Crucible
+		produces = {
+			trigger = {
+				planet = { is_planet_class = pc_shroud_crucible }
+			}
+			alloys = 6
+		}
+		upkeep = {
+			trigger = {
+				planet = { is_planet_class = pc_shroud_crucible }
+			}
+			energy = 8
+			sr_zro = 0.2
+		}
+		
+		inline_script = {
+			script = jobs/resources/inline_evolved_material_foundry_requisition_resources
+			minerals = 2
+			food = 0
+			alloys = @requisitorium_alloys_reduction
+			mult = 1
+		}
+	}
+
+	overlord_resources = {
+		category = planet_requisitioned_alloys
+		inline_script = {
+			script = jobs/resources/inline_evolved_material_foundry_requisition_overlord_resources
+			alloys = @requisitorium_alloys_overlord
+			mult = 1
+		}
+	}
+
+	inline_script = jobs/effects/type/inline_evolved_foundry_drone_effect
+
+	weight = {
+		weight = @complex_drone_job_weight
+		mult = value:job_weights_modifier|JOB|fabricator|RESOURCE|alloys|
+		modifier = {
+			factor = 0.9
+			exists = owner
+			years_passed < 1
+			owner = { has_valid_civic = civic_machine_assimilator }
+			has_trait = trait_cybernetic
+		}
+	}
+}
+crucible_alloy_drone = {
+	category = complex_drone
+	condition_string = DRONE_JOB_TRIGGER
+	building_icon = building_foundry_1
+
+	possible_pre_triggers = {
+		has_owner = yes
+		is_enslaved = no
+		is_being_purged = no
+		is_being_assimilated = no
+		is_sapient = yes
+	}
+
+	possible_precalc = can_fill_drone_job
+
+	possible = { can_think = yes }
+
+	resources = {
+		category = planet_metallurgists
+
+		#Crucible
+		produces = {
+			trigger = {
+				planet = { is_planet_class = pc_crucible }
+			}
+			alloys = 3
+		}
+		upkeep = {
+			trigger = {
+				planet = { is_planet_class = pc_crucible }
+			}
+			energy = 6
+		}
+
+		#Clean Crucible
+		produces = {
+			trigger = {
+				planet = { is_planet_class = pc_clean_crucible }
+			}
+			alloys = 4
+		}
+		upkeep = {
+			trigger = {
+				planet = { is_planet_class = pc_clean_crucible }
+			}
+			energy = 8
+		}
+
+		#Clean Crucible
+		produces = {
+			trigger = {
+				planet = { is_planet_class = pc_shroud_crucible }
+			}
+			alloys = 5
+		}
+		upkeep = {
+			trigger = {
+				planet = { is_planet_class = pc_shroud_crucible }
+			}
+			energy = 6
+			sr_zro = 0.2
+		}
+		inline_script = {
+			script = jobs/resources/inline_evolved_material_foundry_requisition_resources
+			minerals = 2
+			food = 0
+			alloys = @requisitorium_alloys_reduction
+			mult = 1
+		}
+	}
+
+	overlord_resources = {
+		category = planet_requisitioned_alloys
+		inline_script = {
+			script = jobs/resources/inline_evolved_material_foundry_requisition_overlord_resources
+			alloys = @requisitorium_alloys_overlord
+			mult = 1
+		}
+	}
+
+	inline_script = jobs/effects/type/inline_evolved_foundry_drone_effect
+	weight = {
+		weight = @complex_drone_job_weight
+		mult = value:job_weights_modifier|JOB|alloy_drone|RESOURCE|alloys|
+	}
+}
+
+#Techno Jobs
+# pd_lm_refiner 
+
+# pd_lm_refiner_drone 
+
+techno_eng = {	
+	category = specialist
+	condition_string = SPECIALIST_JOB_TRIGGER
+	building_icon = building_subsurface_assembly
+	clothes_texture_index = 2
+
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+		is_sapient = yes
+	}
+
+	possible_precalc = can_fill_specialist_job
+	possible = {
+		complex_specialist_job_check_trigger = yes
+	}
+
+	inline_script = {
+		script = modifiers/inline_evolved_assembly_robotic
+		trigger = "
+			planet = { 
+				OR = {
+					tec_has_robotic_buildings = yes
+					tec_has_machine_buildings = yes
+				}
+			}
+		"
+		mult = 0.5
+	}
+
+	resources = {
+		category = planet_researchers
+		produces = {
+			engineering_research = 6
+			society_research = 6
+		}
+		produces = {
+			trigger = {
+				planet = { 
+					OR = {
+						is_planet_class = pc_technoorganic 
+						is_planet_class = pc_pd_techno_arc 
+					}
+				}
+			}
+			engineering_research = -2
+			society_research = -2
+			sr_living_metal = 1
+		}
+		produces = {
+			trigger = {
+				planet = {
+					OR = {
+						tec_has_robotic_buildings = yes
+						tec_has_machine_buildings = yes
+					}
+				}
+			}
+			engineering_research = -2
+			society_research = -2
+		}
+		upkeep = {
+			consumer_goods = 2
+		}
+	}
+
+	inline_script = jobs/effects/inline_evolved_tec_corporate_robocorp
+	inline_script = jobs/effects/type/inline_evolved_researcher_effect
+
+	weight = {
+		weight = @specialist_job_weight
+		mult = value:job_weights_research_modifier|JOB|researcher|
+		modifier = {
+			factor = 0.2
+			has_citizenship_rights = no
+			NOT = { has_trait = trait_mechanical }
+		}
+		modifier = {
+			factor = 2
+			has_living_standard = { type = living_standard_academic_privilege }
+		}
+		modifier = {
+			factor = 0.1
+			can_take_servant_job = yes
+		}
+		modifier = {
+			factor = 1.5
+			has_job = researcher
+		}
+		modifier = {
+			factor = 0.8
+			is_enslaved = yes
+			has_slavery_type = { type = slavery_indentured }
+		}
+	}
+}
+techno_drone = {	
+	category = complex_drone
+	condition_string = SPECIALIST_JOB_TRIGGER
+	building_icon = building_subsurface_assembly
+	clothes_texture_index = 2
+
+	possible_pre_triggers = {
+		has_owner = yes
+		is_enslaved = no
+		is_being_purged = no
+		is_being_assimilated = no
+		is_sapient = yes
+	}
+
+	possible_precalc = can_fill_specialist_job
+
+	possible = { can_think = yes }
+
+	inline_script = {
+		script = modifiers/inline_evolved_assembly_robotic
+		trigger = "
+			planet = { 
+				OR = {
+					tec_has_robotic_buildings = yes
+					tec_has_machine_buildings = yes
+				}
+			}
+		"
+		mult = 0.5
+	}
+
+	resources = {
+		category = planet_researchers
+		produces = {
+			engineering_research = 6
+			society_research = 6
+		}
+		produces = {
+			trigger = {
+				planet = { 
+					OR = {
+						is_planet_class = pc_technoorganic 
+						is_planet_class = pc_pd_techno_arc 
+					}
+				}
+			}
+			engineering_research = -2
+			society_research = -2
+			sr_living_metal = 1
+		}
+		produces = {
+			trigger = {
+				planet = { 
+					OR = {
+						tec_has_robotic_buildings = yes
+						tec_has_machine_buildings = yes
+					} 
+				}
+			}
+			engineering_research = -2
+			society_research = -2
+		}
+		upkeep = {
+			energy = 2
+			minerals = 2
+		}
+	}
+
+	inline_script = jobs/effects/type/inline_evolved_brain_drone_effect
+	inline_script = jobs/effects/type/inline_evolved_calculator_effect
+	inline_script = jobs/effects/inline_evolved_tec_machine_reimaginators_assembler
+
+	weight = {
+		weight = @complex_drone_job_weight
+		mult = value:job_weights_research_modifier|JOB|brain_drone|
+		modifier = {
+			factor = 0.9
+			exists = owner
+			years_passed < 1
+			owner = { has_valid_civic = civic_machine_assimilator }
+			has_trait = trait_cybernetic
+		}
+	}
+}
+
+#Zro Mine
+pdzro_harvester = {	
+	category = worker
+	condition_string = WORKER_JOB_TRIGGER
+	building_icon = building_pdzro_harvester
+	clothes_texture_index = 2
+
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+		is_sapient = yes
+	}
+
+	possible_precalc = can_fill_worker_job
+	possible = {
+		hidden_trigger = { exists = owner }
+		owner = { is_gestalt = no }
+	}
+
+	
+	resources = {
+		category = planet_researchers
+		produces = {
+			sr_zro = 2
+		}
+	}
+
+	inline_script = jobs/effects/type/inline_evolved_researcher_effect
+
+	weight = {
+		weight = @specialist_job_weight # Important job
+		mult = value:job_weights_modifier|JOB|crystal_miner|RESOURCE|rare_crystals|
+		modifier = {
+			factor = 10
+			is_enslaved = yes
+			can_take_servant_job = no
+			NOT = { has_slavery_type = { type = slavery_indentured } }
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				is_non_sapient_robot = yes
+				is_shackled_robot = yes
+			}
+			can_take_servant_job = no
+			owner = { has_technology = tech_droid_workers }
+		}
+		modifier = {
+			factor = 200
+			OR = {
+				is_non_sapient_robot = yes
+				is_shackled_robot = yes
+			}
+			can_take_servant_job = no
+			owner = { NOT = { has_technology = tech_droid_workers } }
+		}
+		modifier = {
+			factor = 0.1
+			can_take_servant_job = yes
+		}
+	}
+}
+pdzro_drone = {	
+	category = complex_drone
+	condition_string = DRONE_JOB_TRIGGER
+	building_icon = building_pdzro_harvester
+
+	possible_pre_triggers = {
+		has_owner = yes
+		is_enslaved = no
+		is_being_purged = no
+		is_being_assimilated = no
+		is_sapient = yes
+	}
+
+	possible_precalc = can_fill_drone_job
+
+	possible = { can_think = yes }
+	
+	resources = {
+		category = planet_researchers
+		produces = {
+			sr_zro = 2
+		}
+		upkeep = {
+			energy = 1
+		}	
+	}
+	inline_script = jobs/effects/type/inline_evolved_brain_drone_effect
+	inline_script = jobs/effects/type/inline_evolved_calculator_effect
+	
+	weight = {
+		weight = @complex_drone_job_weight
+		mult = value:job_weights_modifier|JOB|translucer_drone|RESOURCE|rare_crystals|
+		modifier = {
+			factor = 0.9
+			exists = owner
+			years_passed < 1
+			owner = { has_valid_civic = civic_machine_assimilator }
+			has_trait = trait_cybernetic
+		}
+	}
+}
+# pdzro_dealer
+
+# pdzro_dealer_drone 
+
+# overlord_pdzro_dealer 
+
+# overlord_pdzro_dealer_drone 
+
+#Scrapyard Jobs
+pd_scrap_miner = {
+	category = worker
+	condition_string = WORKER_JOB_TRIGGER
+	building_icon = building_mineral_purification_plant
+	icon = miner
+
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+		is_sapient = yes
+	}
+
+	possible_precalc = can_fill_worker_job
+
+	resources = {
+		category = planet_miners
+		produces = {
+			minerals = 2
+			alloys = 1
+		}
+		inline_script = {
+			script = jobs/resources/inline_evolved_material_miner_requisition_resources
+			minerals = @[ requisitorium_minerals_reduction / 2 ]
+			mult = 1
+		}
+	}
+
+	overlord_resources = {
+		category = planet_requisitioned_minerals
+		inline_script = {
+			script = jobs/resources/inline_evolved_material_miner_requisition_overlord_resources
+			minerals = @[ requisitorium_minerals_overlord / 2 ]
+			mult = 1
+		}
+	}
+
+	inline_script = jobs/effects/type/inline_evolved_miner_effect
+
+	weight = {
+		weight = @worker_job_weight
+		mult = value:job_weights_multiple_resources_modifier|JOB|pd_scrap_miner|RESOURCE1|minerals|WEIGHT1|0.7|RESOURCE2|alloys|WEIGHT2|0.3|
+		modifier = {
+			factor = 10
+			is_enslaved = yes
+			can_take_servant_job = no
+			NOT = { has_slavery_type = { type = slavery_indentured } }
+		}
+		modifier = {
+			factor = 3
+			OR = {
+				is_non_sapient_robot = yes
+				is_shackled_robot = yes
+			}
+			can_take_servant_job = no
+			owner = { has_technology = tech_droid_workers }
+		}
+		modifier = {
+			factor = 200
+			OR = {
+				is_non_sapient_robot = yes
+				is_shackled_robot = yes
+			}
+			can_take_servant_job = no
+			owner = { NOT = { has_technology = tech_droid_workers } }
+		}
+		modifier = {
+			factor = 0.25
+			can_take_servant_job = yes
+		}
+		# low income modifier
+		modifier = {
+			factor = 1.1
+			exists = planet
+			planet = {
+				has_available_jobs = "pd_scrap_miner"
+			}
+			exists = owner
+			owner = {
+				is_ai = yes
+				has_monthly_income = {
+					resource = minerals
+					value < 0
+				}
+			}
+		}
+	}
+}
+pd_scrap_miner_drone = {
+	category = simple_drone
+	condition_string = DRONE_JOB_TRIGGER
+	building_icon = building_mineral_purification_plant
+	icon = miner
+
+	possible_pre_triggers = {
+		has_owner = yes
+		is_enslaved = no
+		is_being_purged = no
+		is_being_assimilated = no
+		is_sapient = yes
+	}
+
+	possible_precalc = can_fill_drone_job
+
+	resources = {
+		category = planet_miners
+		produces = {
+			minerals = 2
+			alloys = 1
+		}
+
+		inline_script = {
+			script = jobs/resources/inline_evolved_material_miner_requisition_resources
+			minerals = @[ requisitorium_minerals_reduction / 2 ]
+			mult = 1
+		}
+	}
+
+	overlord_resources = {
+		category = planet_requisitioned_minerals
+		inline_script = {
+			script = jobs/resources/inline_evolved_material_miner_requisition_overlord_resources
+			minerals = @[ requisitorium_minerals_overlord / 2 ]
+			mult = 1
+		}
+	}
+	inline_script = jobs/effects/type/inline_evolved_mining_drone_effect
+
+	weight = {
+		weight = @simple_drone_job_weight
+		mult = value:job_weights_multiple_resources_modifier|JOB|pd_scrap_miner_drone|RESOURCE1|minerals|WEIGHT1|0.7|RESOURCE2|alloys|WEIGHT2|0.3|
+		modifier = {
+			factor = 1.1
+			exists = owner
+			years_passed < 1
+			owner = { has_valid_civic = civic_machine_assimilator }
+			has_trait = trait_cybernetic
+		}
+		modifier = {
+			factor = 1.2
+			has_job = scrap_miner_drone
+		}
+		modifier = {
+			factor = 0.9
+			NOT = { has_job = pd_scrap_miner_drone }
+			owner = {
+				has_monthly_income = {
+					resource = minerals
+					value > 85
+				}
+			}
+		}
+	}
+}
+pd_scrap_tech = {
+	category = worker
+	condition_string = WORKER_JOB_TRIGGER
+	building_icon = building_energy_grid
+	icon = technician
+
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+		is_sapient = yes
+	}
+
+	possible_precalc = can_fill_worker_job
+
+	planet_modifier = {
+		pop_environment_tolerance = -0.01
+	}
+
+	resources = {
+		category = planet_technician
+		produces = {
+			energy = 4
+		}
+		produces = {
+			trigger = {
+				owner = { has_technology = tech_rare_crystals }
+			}
+			rare_crystals = 0.1
+		}
+		produces = {
+			trigger = {
+				owner = { has_technology = tech_volatile_motes }
+			}
+			volatile_motes = 0.1
+		}
+		produces = {
+			trigger = {
+				owner = { has_technology = tech_exotic_gases }
+			}
+			exotic_gases = 0.1
+		}
+		inline_script = {
+			script = jobs/resources/inline_evolved_energy_requisition_resources
+			energy = @requisitorium_energy_reduction
+			mult = 1
+		}
+	}
+
+	overlord_resources = {
+		category = planet_requisitioned_energy
+		inline_script = {
+			script = jobs/resources/inline_evolved_energy_requisition_overlord_resources
+			energy = @requisitorium_energy_overlord
+			mult = 1
+		}
+	}
+
+	inline_script = jobs/effects/type/inline_evolved_technician_effect
+
+	weight = {
+		weight = @worker_job_weight
+		mult = value:job_weights_multiple_resources_modifier|JOB|pd_scrap_tech|RESOURCE1|energy|WEIGHT1|1.0|RESOURCE2|alloys|WEIGHT2|0.3|
+		modifier = {
+			factor = 10
+			is_enslaved = yes
+			can_take_servant_job = no
+			NOT = { has_slavery_type = { type = slavery_indentured } }
+		}
+		modifier = {
+			factor = 3
+			OR = {
+				is_non_sapient_robot = yes
+				is_shackled_robot = yes
+			}
+			can_take_servant_job = no
+			owner = { has_technology = tech_droid_workers }
+		}
+		modifier = {
+			factor = 200
+			OR = {
+				is_non_sapient_robot = yes
+				is_shackled_robot = yes
+			}
+			can_take_servant_job = no
+			owner = { NOT = { has_technology = tech_droid_workers } }
+		}
+		modifier = {
+			factor = 0.25
+			can_take_servant_job = yes
+		}
+		# low income modifier
+		modifier = {
+			factor = 1.1
+			exists = planet
+			planet = {
+				has_available_jobs = "pd_scrap_tech"
+			}
+			exists = owner
+			owner = {
+				is_ai = yes
+				has_monthly_income = {
+					resource = energy
+					value < 0
+				}
+			}
+		}
+	}
+}
+pd_scrap_tech_drone = {
+	category = simple_drone
+	condition_string = DRONE_JOB_TRIGGER
+	building_icon = building_mineral_purification_plant
+	icon = technician
+
+	possible_pre_triggers = {
+		has_owner = yes
+		is_enslaved = no
+		is_being_purged = no
+		is_being_assimilated = no
+		is_sapient = yes
+	}
+
+	possible_precalc = can_fill_drone_job
+
+	planet_modifier = {
+		pop_environment_tolerance = -0.01
+	}
+
+	resources = {
+		category = planet_technician
+		produces = {
+			energy = 4
+		}
+		produces = {
+			trigger = {
+				owner = { has_technology = tech_rare_crystals }
+			}
+			rare_crystals = 0.1
+		}
+		produces = {
+			trigger = {
+				owner = { has_technology = tech_volatile_motes }
+			}
+			volatile_motes = 0.1
+		}
+		produces = {
+			trigger = {
+				owner = { has_technology = tech_exotic_gases }
+			}
+			exotic_gases = 0.1
+		}
+
+		inline_script = {
+			script = jobs/resources/inline_evolved_energy_requisition_resources
+			energy = @requisitorium_energy_reduction
+			mult = 1
+		}
+	}
+
+	overlord_resources = {
+		category = planet_requisitioned_energy
+		inline_script = {
+			script = jobs/resources/inline_evolved_energy_requisition_overlord_resources
+			energy = @requisitorium_energy_overlord
+			mult = 1
+		}
+	}
+
+	inline_script = jobs/effects/type/inline_evolved_technician_drone_effect
+
+	weight = {
+		weight = @simple_drone_job_weight
+		mult = value:job_weights_multiple_resources_modifier|JOB|pd_scrap_tech_drone|RESOURCE1|energy|WEIGHT1|0.7|RESOURCE2|alloys|WEIGHT2|0.3|
+		modifier = {
+			factor = 1.1
+			exists = owner
+			years_passed < 1
+			owner = { has_valid_civic = civic_machine_assimilator }
+			has_trait = trait_cybernetic
+		}
+		modifier = {
+			factor = 1.2
+			has_job = scrap_miner_drone
+		}
+		modifier = {
+			factor = 0.9
+			NOT = { has_job = pd_scrap_tech_drone }
+			owner = {
+				has_monthly_income = {
+					resource = minerals
+					value > 85
+				}
+			}
+		}
+	}
+}
+
+pd_scrap_recycler = {
+	category = specialist
+	condition_string = SPECIALIST_JOB_TRIGGER
+	building_icon = building_research_lab_1
+	clothes_texture_index = 3
+	icon = researcher
+
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+		is_sapient = yes
+	}
+
+	possible_precalc = can_fill_specialist_job
+	possible = {
+		complex_specialist_job_check_trigger = yes
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			always = yes
+		}
+		planet_amenities_add = 1
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+	}
+
+	resources = {
+		category = planet_researchers
+		produces = {
+			physics_research = 1
+			engineering_research = 2
+			society_research = 1
+			consumer_goods = 1
+		}
+		produces = {
+			trigger = {
+				owner = { host_has_dlc = "Ancient Relics Story Pack" }
+				planet = { is_planet_class = pc_pd_scrapyard }
+			}
+			minor_artifacts = 0.005
+		}
+	}
+
+	inline_script = jobs/effects/type/inline_evolved_researcher_effect
+
+	weight = {
+		weight = @specialist_job_weight
+		mult = value:job_weights_research_modifier|JOB|researcher|
+		modifier = {
+			factor = 0.2
+			has_citizenship_rights = no
+			NOT = { has_trait = trait_mechanical }
+		}
+		modifier = {
+			factor = 2
+			has_living_standard = { type = living_standard_academic_privilege }
+		}
+		modifier = {
+			factor = 0.1
+			can_take_servant_job = yes
+		}
+		modifier = {
+			factor = 1.5
+			has_job = researcher
+		}
+		modifier = {
+			factor = 0.8
+			is_enslaved = yes
+			has_slavery_type = { type = slavery_indentured }
+		}
+	}
+}
+pd_scrap_recycler_drone = {
+	category = complex_drone
+	condition_string = DRONE_JOB_TRIGGER
+	building_icon = building_research_lab_1
+	icon = researcher
+
+	possible_pre_triggers = {
+		has_owner = yes
+		is_enslaved = no
+		is_being_purged = no
+		is_being_assimilated = no
+		is_sapient = yes
+	}
+
+	possible_precalc = can_fill_drone_job
+
+	triggered_planet_modifier = {
+		potential = {
+			always = yes
+		}
+		planet_amenities_add = 2
+		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
+	}
+
+	resources = {
+		category = planet_researchers
+		produces = {
+			physics_research = 1
+			engineering_research = 2
+			society_research = 1
+			consumer_goods = 1
+		}
+		produces = {
+			trigger = {
+				owner = { host_has_dlc = "Ancient Relics Story Pack" }
+				planet = { is_planet_class = pc_pd_scrapyard }
+			}
+			minor_artifacts = 0.005
+		}
+	}
+
+	inline_script = jobs/effects/type/inline_evolved_brain_drone_effect
+	inline_script = jobs/effects/type/inline_evolved_calculator_effect
+
+	weight = {
+		weight = @complex_drone_job_weight
+		mult = value:job_weights_research_modifier|JOB|brain_drone|
+		modifier = {
+			factor = 0.9
+			exists = owner
+			years_passed < 1
+			owner = { has_valid_civic = civic_machine_assimilator }
+			has_trait = trait_cybernetic
+		}
+	}
+}
