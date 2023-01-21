@@ -1,0 +1,38 @@
+[h1]Changes and Additions[/h1]
+
+[h2]General Changes[/h2]
+[list]
+[*] Support all around for Evolved civics, ethics, traditions and mechanics for districts, buildings and jobs where possible.
+[/list]
+
+[h2]PD More Arcologies Additions[/h2]
+[list]
+[*] Use PD planet entities for some of the Evolved ecumenopolis specializations.
+[*] Allow capital arcologies on elysiums and arcology habitats.
+[/list]
+
+[h2]PD Habitats Additions[/h2]
+[list]
+[*] Allows the planetary habitats to be upgraded to Habitat Arcologies using the "Arcology Project" ascension perk instead of the "Sidereal Arcologies".
+[*] If the Planetary Arcology Habitat is fully encased in arcology districts, you can upgrade the planetary habitat finally to an Ecumenopolis using a decision. After all the planet is fully covered in domes and infrastructure, might as well go to the next level!
+[*] Planetary habitats now get automatically colonized if void dwellers.
+[*] Planetary Arcology Habitats now sport new textures created by Borsk, showing your progress in ecumenopolizing the habitat.
+[/list]
+
+[h1]Mod Load Order[/h1]
+[list]
+[*] Planetary Diversity & Submods
+[*] Stellaris Evolved - Alpha
+[*] Stellaris Evolved - Planetary Diversity Patch
+[/list]
+
+[h1]Contacts And Links[/h1]
+[list]
+[*] Discord: MrRoAdd#4232
+[*] Github: https://github.com/Stellaris-Evolved/stellaris-evolved-pd/
+[*] Contributions, bug reports and fixes are appreciated!
+[/list]
+
+[h1]Thanks[/h1]
+Gatekeeper - Providing useful triggers and inlines for compatbility.
+Borsk on Discord - For his help on improvements to the patch.
