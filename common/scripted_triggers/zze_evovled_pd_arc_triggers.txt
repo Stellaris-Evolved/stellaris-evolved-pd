@@ -67,8 +67,7 @@ tec_pd_arc_allows_treehive_capital_arcologies = {
 
 tec_pd_arc_allows_machine_capital_arcologies = {
 	optimize_memory
-	is_hive_empire = yes 
-	has_origin = origin_pd_tree_of_life
+	is_machine_empire = yes 
 }
 
 
