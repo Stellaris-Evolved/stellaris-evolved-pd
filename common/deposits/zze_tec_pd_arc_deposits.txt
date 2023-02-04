@@ -879,7 +879,7 @@ d_pd_biohivecap_arc = {
 					planet = { is_capital = yes }
 				}
 				modifier = {	
-					job_tec_cloner_add = 3
+					job_tec_cloner_drone_add = 3
 				}
 			}
 
@@ -892,7 +892,7 @@ d_pd_biohivecap_arc = {
 					planet = { is_capital = yes }
 				}
 				modifier = {	
-					job_tec_cloner_add = 3
+					job_tec_cloner_drone_add = 3
 				}
 			}
 
@@ -1132,7 +1132,7 @@ d_pd_florahivecap_arc = {
 					planet = { is_capital = yes }
 				}
 				modifier = {	
-					job_tec_cloner_add = 3
+					job_tec_cloner_drone_add = 3
 				}
 			}
 
@@ -1145,7 +1145,7 @@ d_pd_florahivecap_arc = {
 					planet = { is_capital = yes }
 				}
 				modifier = {	
-					job_tec_cloner_add = 3
+					job_tec_cloner_drone_add = 3
 				}
 			}
 

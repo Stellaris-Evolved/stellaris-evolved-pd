@@ -163,6 +163,7 @@ tec_pd_arc_no_capital_arcology_deposit = {
 		has_deposit = d_pd_biohivecap_arc
 		has_deposit = d_pd_florahivecap_arc
 		has_deposit = d_pd_machinecap_arc
+		has_deposit = d_pd_roguecap_arc
 	}
 }
 

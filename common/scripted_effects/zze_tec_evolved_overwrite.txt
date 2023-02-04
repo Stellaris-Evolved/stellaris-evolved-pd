@@ -1,0 +1,44 @@
+tec_ecu_logic_start = {
+	optimize_memory
+	tec_ecu_deposits_handler_before = yes
+	clear_deposits = yes
+
+	tec_ecu_create_atmosphere = yes
+
+	change_pc = $change_pc$
+
+	tec_ecu_clean_modifiers = yes
+	tec_ecu_planet_entity = yes
+
+	[[relic]
+		tec_handle_relic_flag = yes
+	]
+}
+
+tec_ecu_create_atmosphere = {
+	IF = {
+		limit = { is_planet_class = pc_pd_hycean }
+		IF = { limit = { NOT = { has_modifier = hyceanfloodedworld } }	add_modifier = { modifier = hyceanfloodedworld	} }
+		remove_modifier = pd_hycean
+	}
+	IF = {
+		limit = { is_planet_class = pc_ammonia }
+		IF = { limit = { NOT = { has_modifier = pdammoniaatmosphere } }	add_modifier = { modifier = pdammoniaatmosphere	} }
+		remove_modifier = ammonia
+	}
+	IF = {
+		limit = { is_planet_class = pc_sulfur }
+		IF = { limit = { NOT = { has_modifier = pdsulfuratmosphere } }	add_modifier = { modifier = pdsulfuratmosphere	} }
+		remove_modifier = pdsulfur
+	}
+	IF = {
+		limit = { is_planet_class = pc_methane }
+		IF = { limit = { NOT = { has_modifier = pdmethaneatmosphere } }	add_modifier = { modifier = pdmethaneatmosphere	} }
+		remove_modifier = methane
+	}
+	IF = {
+		limit = { is_planet_class = pc_ash }
+		IF = { limit = { NOT = { has_modifier = pdashatmosphere } }	add_modifier = { modifier = pdashatmosphere	} }
+		remove_modifier = ash
+	}
+}

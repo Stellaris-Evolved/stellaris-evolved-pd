@@ -15,282 +15,167 @@ tec_pd_arc_planet_entity_and_atomsphere_city = {
 		}
 	}
 	IF = {
-		limit = { owner = { has_trait = trait_pc_ammonia_preference } }
-		IF = { limit = { NOT = { has_modifier = pdammoniaatmosphere } }	add_modifier = { modifier = pdammoniaatmosphere	} }
-		remove_modifier = ammonia
+		limit = { owner = { has_origin = origin_pd_shroud has_tradition = tr_psionics_finish } }
+		set_planet_entity = { picture = pc_shroudcity entity = pdshroudcity_planet_01_entity }
+		add_deposit = d_pd_shroud_arc
+	}
+
+	IF = {
+		limit = { has_modifier = hyceanfloodedworld }
 		set_planet_entity = { 
-			picture = pc_ammoniacity 
-			entity = ammonia_arc_planet_01_entity
+			picture = pc_hyceancity 
+			entity = hyceancity_planet_01_entity 
 		}
 	}
 	IF = {
-		limit = { owner = { has_trait = trait_pc_sulfur_preference } }
-		IF = { limit = { NOT = { has_modifier = pdsulfuratmosphere } }	add_modifier = { modifier = pdsulfuratmosphere	} }
-		remove_modifier = pdsulfur
+		limit = { has_modifier = pdammoniaatmosphere }
+		set_planet_entity = { 
+			picture = pc_ammoniacity 
+			entity = ammonia_arc_planet_01_entity 
+		}
+	}
+	IF = {
+		limit = { has_modifier = pdsulfuratmosphere }
 		set_planet_entity = { 
 			picture = pc_sulfurcity 
 			entity = sulfur_arc_planet_01_entity
 		}
 	}
 	IF = {
-		limit = { owner = { has_trait = trait_pc_methane_preference } }
-		IF = { limit = { NOT = { has_modifier = pdmethaneatmosphere } }	add_modifier = { modifier = pdmethaneatmosphere	} }
-		remove_modifier = methane
-		set_planet_entity = {
+		limit = { has_modifier = pdmethaneatmosphere }
+		set_planet_entity = { 
 			picture = pc_methanecity 
 			entity = methane_arc_planet_01_entity 
 		}
 	}
 	IF = {
-		limit = { owner = { has_trait = trait_pc_ash_preference } }
-		IF = { limit = { NOT = { has_modifier = pdashatmosphere } }	add_modifier = { modifier = pdashatmosphere	} }
-		remove_modifier = ash
+		limit = { has_modifier = pdashatmosphere } 
 		set_planet_entity = { 
 			picture = pc_ashcity 
-			entity = ash_arc_planet_01_entity
+			entity = ash_arc_planet_01_entity 
 		}
-	}
-	IF = {
-		limit = { owner = { has_origin = origin_pd_shroud has_ascension_perk = ap_transcendence } }
-		set_planet_entity = { picture = pc_shroudcity entity = pdshroudcity_planet_01_entity }
-		add_deposit = d_pd_shroud_arc
 	}
 }
 
 tec_pd_arc_planet_entity_and_atomsphere_ecocity = {
 	optimize_memory
+	pd_create_eco_arc_effect = yes
 	IF = {
-		limit = {
-			has_planet_flag = planet_earth
-		}
-		set_planet_entity = {
-			entity = "ecocity_planet_02_earth_entity"
-			picture = pc_ecocity
+		limit = { has_modifier = hyceanfloodedworld }
+		set_planet_entity = { 
+			picture = pc_hyceanecocity 
+			entity = hyceanecocity_planet_01_entity 
 		}
 	}
 	IF = {
-		limit = {
-			has_planet_flag = pdmars
-		}
-		set_planet_entity = {
-			entity = "ecocity_planet_03_mars_entity"
-			picture = pc_ecocity
+		limit = { has_modifier = pdammoniaatmosphere }
+		set_planet_entity = { 
+			picture = pc_ammoniacity 
+			entity = ecocity_ammonia_planet_01_entity 
 		}
 	}
 	IF = {
-		limit = {
-			has_planet_flag = pdvenus
-		}
-		set_planet_entity = {
-			entity = "ecocity_planet_04_venus_entity"
-			picture = pc_ecocity
-		}
-	}
-	IF = {
-		limit = { 
-			owner = { NOT = { has_trait = trait_pc_aquatic_preference } }
-			NOT = { has_planet_flag = planet_earth }
-			NOT = { has_planet_flag = pdmars }
-			NOT = { has_planet_flag = pdvenus }
-		 }
-		set_planet_entity = {
-			entity = "ecocity_planet_01_entity"
-			picture = pc_ecocity
-		}
-	}
-	IF = {
-		limit = { owner = { has_trait = trait_pc_aquatic_preference } }
-		set_planet_entity = {
-			entity = aquaticecocity_planet_01_entity
-			picture = pc_aquaticcity
-		}
-		set_planet_flag = pdaquapicture
-	}
-	IF = {
-		limit = { owner = { has_trait = trait_pc_ammonia_preference } }
-		IF = { limit = { NOT = { has_modifier = pdammoniaatmosphere } }	add_modifier = { modifier = pdammoniaatmosphere	} }
-		remove_modifier = ammonia
-		set_planet_entity = { picture = pc_ammoniacity entity = ecocity_ammonia_planet_01_entity }
-	}
-	IF = {
-		limit = { owner = { has_trait = trait_pc_sulfur_preference } }
-		IF = { limit = { NOT = { has_modifier = pdsulfuratmosphere } }	add_modifier = { modifier = pdsulfuratmosphere	} }
-		remove_modifier = pdsulfur
+		limit = { has_modifier = pdsulfuratmosphere }
 		set_planet_entity = { 
 			picture = pc_sulfurcity 
 			entity = ecocity_sulfur_planet_01_entity
 		}
 	}
 	IF = {
-		limit = { owner = { has_trait = trait_pc_methane_preference } }
-		IF = { limit = { NOT = { has_modifier = pdmethaneatmosphere } }	add_modifier = { modifier = pdmethaneatmosphere	} }
-		remove_modifier = methane
+		limit = { has_modifier = pdmethaneatmosphere }
 		set_planet_entity = { 
 			picture = pc_methanecity 
 			entity = ecocity_methane_planet_01_entity 
 		}
 	}
 	IF = {
-		limit = { owner = { has_trait = trait_pc_ash_preference } }
-		IF = { limit = { NOT = { has_modifier = pdashatmosphere } }	add_modifier = { modifier = pdashatmosphere	} }
-		remove_modifier = ash
+		limit = { has_modifier = pdashatmosphere } 
 		set_planet_entity = { 
 			picture = pc_ashcity 
 			entity = ecocity_ash_planet_01_entity 
 		}
 	}
-	IF = {
-		limit = { owner = { has_origin = origin_pd_shroud has_ascension_perk = ap_transcendence } }
-		set_planet_entity = { picture = pc_shroudcity entity = ecoshroud_planet_01_entity }
-		add_deposit = d_pd_shroud_arc
-	}
 }
 
 tec_pd_arc_planet_entity_and_atomsphere_milarc = {
 	optimize_memory
+	pd_create_mil_arc_effect = yes
+
 	IF = {
-		limit = {
-			has_planet_flag = planet_earth
-		}
-		set_planet_entity = {
-			entity = "milarc_planet_02_earth_entity"
+		limit = { has_modifier = hyceanfloodedworld }
+		set_planet_entity = { 
+			picture = pc_hyceancity 
+			entity = hyceanmilarc_planet_01_entity 
 		}
 	}
 	IF = {
-		limit = {
-			has_planet_flag = pdmars
-		}
-		set_planet_entity = {
-			entity = "milarc_planet_02_mars_entity"
-		}
-	}
-	IF = {
-		limit = {
-			has_planet_flag = pdvenus
-		}
-		set_planet_entity = {
-			entity = "milarc_planet_02_venus_entity"
+		limit = { has_modifier = pdammoniaatmosphere }
+		set_planet_entity = { 
+			picture = pc_ammoniamilarc 
+			entity = milarc_ammonia_planet_01_entity 
 		}
 	}
 	IF = {
-		limit = { 
-			owner = { NOT = { has_trait = trait_pc_aquatic_preference } }
-			NOT = { has_planet_flag = planet_earth }
-			NOT = { has_planet_flag = pdmars }
-			NOT = { has_planet_flag = pdvenus }
-		 }
-		set_planet_entity = {
-			entity = "milarc_planet_01_entity"
-		}
-	}
-	IF = {
-		limit = { owner = { has_trait = trait_pc_aquatic_preference } }
-		set_planet_entity = {
-			entity = "aquaticmilarc_planet_01_entity"
-			picture = "pc_aquaticcity"
-		}
-		set_planet_flag = pdaquapicture
-	}
-	IF = {
-		limit = { owner = { has_trait = trait_pc_ammonia_preference } }
-		IF = { limit = { NOT = { has_modifier = pdammoniaatmosphere } }	add_modifier = { modifier = pdammoniaatmosphere	} }
-		remove_modifier = ammonia
-		set_planet_entity = { picture = pc_ammoniamilarc entity = milarc_ammonia_planet_01_entity }
-	}
-	IF = {
-		limit = { owner = { has_trait = trait_pc_sulfur_preference } }
-		IF = { limit = { NOT = { has_modifier = pdsulfuratmosphere } }	add_modifier = { modifier = pdsulfuratmosphere	} }
-		remove_modifier = pdsulfur
+		limit = { has_modifier = pdsulfuratmosphere }
 		set_planet_entity = { 
 			picture = pc_sulfurmilarc 
 			entity = milarc_sulfur_planet_01_entity
 		}
 	}
 	IF = {
-		limit = { owner = { has_trait = trait_pc_methane_preference } }
-		IF = { limit = { NOT = { has_modifier = pdmethaneatmosphere } }	add_modifier = { modifier = pdmethaneatmosphere	} }
-		remove_modifier = methane
+		limit = { has_modifier = pdmethaneatmosphere }
 		set_planet_entity = { 
-			picture = pc_methanermilarc 
+			picture = pc_methanemilarc 
 			entity = milarc_methane_planet_01_entity 
 		}
-		set_planet_entity = { picture = pc_methanecity entity = milarc_methane_planet_01_entity }
 	}
 	IF = {
-		limit = { owner = { has_trait = trait_pc_ash_preference } }
-		IF = { limit = { NOT = { has_modifier = pdashatmosphere } }	add_modifier = { modifier = pdashatmosphere	} }
-		remove_modifier = ash
+		limit = { has_modifier = pdashatmosphere } 
 		set_planet_entity = { 
-			picture = pc_ashmilarc
+			picture = pc_ashmilarc 
 			entity = milarc_ash_planet_01_entity 
 		}
-	}
-	IF = {
-		limit = { owner = { has_origin = origin_pd_shroud has_ascension_perk = ap_transcendence } }
-		set_planet_entity = { picture = pc_shroudmilarc entity = milarcshroud_planet_01_entity }
-		add_deposit = d_pd_shroud_arc
 	}
 }
 
 tec_pd_arc_planet_entity_and_atomsphere_corpoarc = {
 	optimize_memory
-	IF = {
-		limit = { 
-			owner = { NOT = { has_trait = trait_pc_aquatic_preference } }
-		}
-		set_planet_entity = {
-			entity = "corpoarc_planet_01_entity"
-		}
-	}
+	pd_create_corpo_arc_effect = yes
 
 	IF = {
-		limit = { owner = { has_trait = trait_pc_aquatic_preference } }
-		set_planet_entity = {
-			entity = "aquaticcity_planet_01_entity"
-			picture = "pc_aquaticcorpoarc"
+		limit = { has_modifier = hyceanfloodedworld }
+		set_planet_entity = { 
+			picture = pc_hyceancorpoarc 
+			entity = hyceancity_planet_01_entity 
 		}
-		set_planet_flag = pdaquapicture
 	}
 	IF = {
-		limit = { owner = { has_trait = trait_pc_ammonia_preference } }
-		IF = { limit = { NOT = { has_modifier = pdammoniaatmosphere } }	add_modifier = { modifier = pdammoniaatmosphere	} }
-		remove_modifier = ammonia
+		limit = { has_modifier = pdammoniaatmosphere }
 		set_planet_entity = { 
 			picture = pc_ammoniacorpoarc 
-			entity = ammonia_arc_planet_01_entity
+			entity = ammonia_arc_planet_01_entity 
 		}
 	}
 	IF = {
-		limit = { owner = { has_trait = trait_pc_sulfur_preference } }
-		IF = { limit = { NOT = { has_modifier = pdsulfuratmosphere } }	add_modifier = { modifier = pdsulfuratmosphere	} }
-		remove_modifier = pdsulfur
+		limit = { has_modifier = pdsulfuratmosphere }
 		set_planet_entity = { 
 			picture = pc_sulfurcorpoarc 
 			entity = sulfur_arc_planet_01_entity
 		}
 	}
 	IF = {
-		limit = { owner = { has_trait = trait_pc_methane_preference } }
-		IF = { limit = { NOT = { has_modifier = pdmethaneatmosphere } }	add_modifier = { modifier = pdmethaneatmosphere	} }
-		remove_modifier = methane
+		limit = { has_modifier = pdmethaneatmosphere }
 		set_planet_entity = { 
 			picture = pc_methanecorpoarc 
 			entity = methane_arc_planet_01_entity 
 		}
 	}
 	IF = {
-		limit = { owner = { has_trait = trait_pc_ash_preference } }
-		IF = { limit = { NOT = { has_modifier = pdashatmosphere } }	add_modifier = { modifier = pdashatmosphere	} }
-		remove_modifier = ash
+		limit = { has_modifier = pdashatmosphere } 
 		set_planet_entity = { 
 			picture = pc_ashcorpoarc 
 			entity = ash_arc_planet_01_entity 
 		}
-	}
-	IF = {
-		limit = { owner = { has_origin = origin_pd_shroud has_ascension_perk = ap_transcendence } }
-		set_planet_entity = { picture = pc_shroudcorpoarc entity = pdshroudcity_planet_01_entity }
-		add_deposit = d_pd_shroud_arc
 	}
 }
 
