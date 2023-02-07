@@ -54,7 +54,7 @@ d_ecogarden = {
 	}
 
 	potential = {
-		tec_has_pd_arcolgies_active = yes
+		has_planetary_diversity_arcologies = yes
 		is_planet_class = pc_ecocity
 	}
 	
@@ -119,7 +119,7 @@ d_milarc = {
 	}
 
 	potential = {
-		tec_has_pd_arcolgies_active = yes
+		has_planetary_diversity_arcologies = yes
 		is_planet_class = pc_milarc
 	}
 	
@@ -261,7 +261,7 @@ d_corpoarc = {
 	}
 
 	potential = {
-		tec_has_pd_arcolgies_active = yes
+		has_planetary_diversity_arcologies = yes
 		is_planet_class = pc_corpoarc
 	}
 	
@@ -416,7 +416,7 @@ d_pd_capital_arc = {
 	# /
 
 	potential = {
-		tec_has_pd_arcolgies_active = yes
+		has_planetary_diversity_arcologies = yes
 		OR = {
 			is_planet_class = pc_ecocity
 			is_planet_class = pc_milarc
@@ -574,7 +574,7 @@ d_pd_palace_arc = {
 	# /
 
 	potential = {
-		tec_has_pd_arcolgies_active = yes
+		has_planetary_diversity_arcologies = yes
 		OR = {
 			is_planet_class = pc_ecocity
 			is_planet_class = pc_milarc
@@ -732,7 +732,7 @@ d_pd_boardroom_arc = {
 	# /
 	
 	potential = {
-		tec_has_pd_arcolgies_active = yes
+		has_planetary_diversity_arcologies = yes
 		OR = {
 			is_planet_class = pc_ecocity
 			is_planet_class = pc_milarc
@@ -925,7 +925,7 @@ d_pd_biohivecap_arc = {
 	# /
 
 	potential = {
-		tec_has_pd_arcolgies_active = yes
+		has_planetary_diversity_arcologies = yes
 		OR = {
 			is_planet_class = pc_hive
 			is_planet_class = pc_bioforge
@@ -1179,7 +1179,7 @@ d_pd_florahivecap_arc = {
 
 
 	potential = {
-		tec_has_pd_arcolgies_active = yes
+		has_planetary_diversity_arcologies = yes
 		OR = {
 			is_planet_class = pc_megafloratol
 			is_planet_class = pc_megafloraforge
@@ -1318,7 +1318,7 @@ d_pd_machinecap_arc = {
 		# /
 	# /
 	potential = {
-		tec_has_pd_arcolgies_active = yes
+		has_planetary_diversity_arcologies = yes
 		OR = {
 			is_planet_class = pc_machine
 			is_planet_class = pc_machine_factory
@@ -1405,7 +1405,7 @@ d_pd_necro_arc = {
 
 
 	potential = {
-		tec_has_pd_arcolgies_active = yes
+		has_planetary_diversity_arcologies = yes
 		OR = {
 			is_planet_class = pc_city
 			is_planet_class = pc_ecocity
@@ -1467,7 +1467,7 @@ d_pd_shroud_arc = {
 	}
 
 	potential = {
-		tec_has_pd_arcolgies_active = yes
+		has_planetary_diversity_arcologies = yes
 		OR = {
 			is_planet_class = pc_city
 			is_planet_class = pc_ecocity

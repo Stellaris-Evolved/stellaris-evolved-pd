@@ -35,7 +35,7 @@ ap_arcology_project = {
 		custom_tooltip = "tec_decision_arcology_project_extra_effects"
 		if = {
 			limit = { 
-				tec_has_pd_habitats_active = yes
+				has_planetary_diversity_planetaryhabitats = yes
 			}
 			custom_tooltip = "tec_blank"
 			custom_tooltip = "tec_blank"

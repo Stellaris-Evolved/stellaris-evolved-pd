@@ -8,7 +8,7 @@ ap_florahive_worlds = {
 	}
 
 	potential = {
-		tec_has_pd_arcolgies_active = yes
+		has_planetary_diversity_arcologies = yes
 		is_hive_empire = yes
 		has_origin = origin_pd_tree_of_life
 		NOT = {

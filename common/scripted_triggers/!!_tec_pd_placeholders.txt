@@ -1,0 +1,6 @@
+has_planetary_diversity = { always = no }
+has_planetary_diversity_shroud = { always = no }
+has_planetary_diversity_arcologies = { always = no }
+has_planetary_diversity_exotics = { always = no }
+has_planetary_diversity_uniques = { always = no }
+has_planetary_diversity_planetaryhabitats = { always = no }
