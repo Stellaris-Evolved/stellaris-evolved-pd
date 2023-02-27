@@ -325,6 +325,9 @@ tec_evolved_planethab_arcology_texture_effect = {
 		pc_pd_toxic_hab = {
 			set_planet_entity = { entity = toxic_habitat_arcology_entity }
 		}
+		pc_pd_asteroid_hab = {
+			set_planet_entity = { entity = asteroid_habitat_arcology_entity }
+		}
 		default = {}
 	}
 }
