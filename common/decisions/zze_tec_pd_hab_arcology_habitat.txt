@@ -29,9 +29,6 @@ decision_tec_pdplanethab_arcology_civil = {
 		tec_is_arcology_habitat = no
 		owner = { 
 			has_ascension_perk = ap_arcology_project
-			NOT = {
-				has_ethic = ethic_fanatic_green
-			}
 		}
 	}
 
@@ -55,12 +52,14 @@ decision_tec_pdplanethab_arcology_civil = {
 			NOT = { has_modifier = military_pd_habitat_reg_asteroid }
 			NOT = { has_modifier = military_pd_habitat_ges_asteroid }
 		}
+		NOT = { has_planet_flag = tec_block_other_specialziations }
 	}
 
 	effect = {
 		# Make habitat
 		custom_tooltip = decision_tec_pdplanethab_arcology_civil_effects
 		hidden_effect = {
+			remove_planet_flag = tec_block_other_specialziations
 			tec_ecu_faction_demands = yes
 			#
 			set_planet_flag = tec_arcology_habitat
@@ -192,8 +191,22 @@ decision_tec_pdplanethab_arcology_civil = {
 		}
 	}
 
+	on_queued = {
+		set_planet_flag = tec_block_other_specialziations
+	}
+
+	on_unqueued = {
+		remove_planet_flag = tec_block_other_specialziations
+	}
+
 	ai_weight = {
 		weight = 100
+		add = value:research_combined_value|FACTOR|2|
+		add = value:unity_combined_value|FACTOR|2|
+		modifier = {
+			factor = 0
+			tec_ai_can_sidereal_habitat = no
+		}
 	}
 }
 
@@ -245,12 +258,14 @@ decision_tec_pdplanethab_arcology_industrial = {
 			NOT = { has_modifier = military_pd_habitat_reg_asteroid }
 			NOT = { has_modifier = military_pd_habitat_ges_asteroid }
 		}
+		NOT = { has_planet_flag = tec_block_other_specialziations }
 	}
 
 	effect = {
 		# Make habitat
 		custom_tooltip = decision_tec_pdplanethab_arcology_industrial_effects
 		hidden_effect = {
+			remove_planet_flag = tec_block_other_specialziations
 			# Faction flags
 			tec_ecu_faction_demands = yes
 			#
@@ -429,8 +444,21 @@ decision_tec_pdplanethab_arcology_industrial = {
 		}
 	}
 
+	on_queued = {
+		set_planet_flag = tec_block_other_specialziations
+	}
+
+	on_unqueued = {
+		remove_planet_flag = tec_block_other_specialziations
+	}
+
 	ai_weight = {
 		weight = 100
+		add = value:industrial_districts_value|FACTOR|4|
+		modifier = {
+			factor = 0
+			tec_ai_can_sidereal_habitat = no
+		}
 	}
 }
 
@@ -471,12 +499,14 @@ decision_tec_pdplanethab_arcology_project_militarized = {
 			free_district_slots < 1
 		}
 		num_uncleared_blockers < 1
+		NOT = { has_planet_flag = tec_block_other_specialziations }
 	}
 
 	effect = {
 		# Make city-planet
 		custom_tooltip = decision_tec_pdplanethab_arcology_project_militarized_effects
 		hidden_effect = {
+			remove_planet_flag = tec_block_other_specialziations
 			set_planet_flag = tec_ecumenopolis_spec_militarized
 			set_planet_flag = tec_ecumenopolis_militarized_army
 
@@ -524,8 +554,25 @@ decision_tec_pdplanethab_arcology_project_militarized = {
 		}
 	}
 
+	on_queued = {
+		set_planet_flag = tec_block_other_specialziations
+	}
+
+	on_unqueued = {
+		remove_planet_flag = tec_block_other_specialziations
+	}
+
 	ai_weight = {
-		weight = 100
+		weight = 0
+		add = value:industrial_districts_value|FACTOR|2|ALLOY_ONLY|yes|
+		add = value:stronghold_buildings_value|FACTOR|3|
+		modifier = {
+			OR = {
+				has_fortress_designation = yes
+				has_foundry_designation = yes
+			}
+			add = 10
+		}
 	}
 }
 
@@ -569,12 +616,14 @@ decision_tec_pdplanethab_arcology_project_admin = {
 			free_district_slots < 1
 		}
 		num_uncleared_blockers < 1
+		NOT = { has_planet_flag = tec_block_other_specialziations }
 	}
 
 	effect = {
 		# Make city-planet
 		custom_tooltip = decision_tec_pdplanethab_arcology_project_admin_effects
 		hidden_effect = {
+			remove_planet_flag = tec_block_other_specialziations
 			set_planet_flag = tec_ecumenopolis_spec_admin
 
 			tec_pdplanethab_clear_habitat_specific_data = yes
@@ -644,8 +693,25 @@ decision_tec_pdplanethab_arcology_project_admin = {
 		}
 	}
 
+	on_queued = {
+		set_planet_flag = tec_block_other_specialziations
+	}
+
+	on_unqueued = {
+		remove_planet_flag = tec_block_other_specialziations
+	}
+
 	ai_weight = {
-		weight = 100
+		weight = 0
+		add = value:unity_combined_value|FACTOR|3|
+		add = value:industrial_districts_value|FACTOR|2|CG_ONLY|yes|
+		modifier = {
+			OR = {
+				has_factory_designation = yes
+				has_unity_designation = yes
+			}
+			add = 10
+		}
 	}
 }
 
@@ -686,12 +752,14 @@ decision_tec_pdplanethab_arcology_project_science = {
 			free_district_slots < 1
 		}
 		num_uncleared_blockers < 1
+		NOT = { has_planet_flag = tec_block_other_specialziations }
 	}
 
 	effect = {
 		# Make city-planet
 		custom_tooltip = decision_tec_pdplanethab_arcology_project_science_effects
 		hidden_effect = {
+			remove_planet_flag = tec_block_other_specialziations
 			set_planet_flag = tec_ecumenopolis_spec_science
 			set_planet_flag = tec_ecumenopolis_refinery_nospec
 			
@@ -740,8 +808,25 @@ decision_tec_pdplanethab_arcology_project_science = {
 		}
 	}
 
+	on_queued = {
+		set_planet_flag = tec_block_other_specialziations
+	}
+
+	on_unqueued = {
+		remove_planet_flag = tec_block_other_specialziations
+	}
+
 	ai_weight = {
-		weight = 100
+		weight = 0
+		add = value:research_combined_value|FACTOR|3|
+		add = value:refinery_combined_value|FACTOR|3|
+		modifier = {
+			OR = {
+				has_research_designation = yes
+				has_refinery_designation = yes
+			}
+			add = 10
+		}
 	}
 }
 

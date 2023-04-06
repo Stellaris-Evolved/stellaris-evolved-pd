@@ -10,19 +10,58 @@ triggered_planet_modifier = {
 			tec_is_ringworld = yes
 			tec_is_elysium = yes
 			tec_is_modded_space_arcology = yes
+			AND = {
+				tec_is_habitat = yes
+				tec_is_arcology_habitat = yes
+			}
 		}
 	}
 	planet_max_districts_add = 1
 }
 
-triggered_planet_modifier = {
-	potential = {
-		tec_is_habitat = yes
-		tec_is_arcology_habitat = yes
-	}
-	planet_max_districts_add = 2
-}
 
 country_modifier = {
 	planet_stability_add = 5
+}
+
+inline_script = {
+	script = jobs/inline_evolved_politician
+	trigger = "
+		OR = {
+			tec_is_ringworld = yes
+			tec_is_elysium = yes
+			tec_is_modded_space_arcology = yes
+		}
+	"
+	display = no_desc
+	count = 2
+	mult = 1
+}
+
+inline_script = {
+	script = jobs/inline_evolved_synapse
+	trigger = "
+		OR = {
+			tec_is_ringworld = yes
+			tec_is_elysium = yes
+			tec_is_modded_space_arcology = yes
+		}
+	"
+	display = no_desc
+	count = 2
+	mult = 1
+}
+
+inline_script = {
+	script = jobs/inline_evolved_coordinator
+	trigger = "
+		OR = {
+			tec_is_ringworld = yes
+			tec_is_elysium = yes
+			tec_is_modded_space_arcology = yes
+		}
+	"
+	display = no_desc
+	count = 2
+	mult = 1
 }

@@ -20,8 +20,27 @@ col_dome_energy = {
 		exists = owner
 	}
 	planet_modifier = {
-		planet_district_hab_energy_build_speed_mult = 0.25
+		planet_building_tec_energrid_1_build_speed_mult = 0.25
 		planet_technician_produces_mult = 0.1
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			tec_is_arcology_habitat = no
+		}
+		modifier = {
+			planet_district_pdhab_energy_unlimited_build_speed_mult = 0.25
+			planet_district_pdhab_energy_build_speed_mult = 0.25
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			tec_is_arcology_habitat = yes
+		}
+		modifier = {
+			planet_district_tec_hab_arcology_maintenance_build_speed_mult = 0.25
+		}
 	}
 
 	inline_script = colony_types/effects/inline_evolved_resolution_greatergood
@@ -31,14 +50,21 @@ col_dome_energy = {
 		inline_script = colony_types/effects/inline_evolved_tec_planets_t2a_generator
 	# / 
 	weight_modifier = {
-		base = 200
 		modifier = {
-			factor = 2
-			owner = { has_monthly_income = { resource = energy value < 0 } }
+			add = @stickiness
+			has_designation = col_dome_energy
 		}
+		add = value:generator_combined_value|FACTOR|2|
 		modifier = {
-			factor = 3
-			num_districts = { type = district_pdhab_energy value >= 4 }
+			factor = 0
+			exists = sector
+			sector = {
+				has_any_sector_focus = yes
+				NOR = {
+					has_sector_focus = "balanced"
+					has_sector_focus = "production"
+				}
+			}
 		}
 	}
 }
@@ -58,9 +84,12 @@ col_dome_mining = {
 			is_planet_class = pc_pd_molten_hab
 			is_planet_class = pc_pd_asteroid_hab
 		}
+		tec_is_arcology_habitat = no
 	}
 	planet_modifier = {
-		planet_district_hab_mining_build_speed_mult = 0.25
+		planet_building_tec_stripmine_1_build_speed_mult = 0.25
+		planet_district_pdhab_mining_unlimited_build_speed_mult = 0.25
+		planet_district_pdhab_mining_build_speed_mult = 0.25
 		planet_miners_produces_mult = 0.1
 	}
 
@@ -73,18 +102,21 @@ col_dome_mining = {
 	# /
 
 	weight_modifier = {
-		base = 5000 
 		modifier = {
-			factor = 2
-			owner = { has_monthly_income = { resource = minerals value < 0 } }
-		}
-		modifier = {
-			factor = 2
+			add = @stickiness
 			has_designation = col_dome_mining
 		}
+		add = value:mining_combined_value|FACTOR|2|
 		modifier = {
-			factor = 3
-			num_districts = { type = district_pdhab_mining value >= 4 }
+			factor = 0
+			exists = sector
+			sector = {
+				has_any_sector_focus = yes
+				NOR = {
+					has_sector_focus = "balanced"
+					has_sector_focus = "production"
+				}
+			}
 		}
 	}
 }
@@ -105,9 +137,13 @@ col_dome_food = {
 			is_planet_class = pc_pd_asteroid_hab
 		}
 		exists = owner
+		tec_is_arcology_habitat = no
 	}
 	planet_modifier = {
+		planet_building_hydroponics_farm_build_speed_mult = 0.25
 		planet_farmers_produces_mult = 0.2
+		planet_district_pdhab_food_unlimited_build_speed_mult = 0.25
+		planet_district_pdhab_food_build_speed_mult = 0.25
 	}
 
 	inline_script = colony_types/effects/inline_evolved_resolution_greatergood
@@ -120,14 +156,21 @@ col_dome_food = {
 
 
 	weight_modifier = {
-		base = 200
 		modifier = {
-			factor = 2
-			owner = { has_monthly_income = { resource = food value < 0 } }
+			add = @stickiness
+			has_designation = col_dome_food
 		}
+		add = value:farming_combined_value|FACTOR|2|
 		modifier = {
-			factor = 3
-			num_districts = { type = district_pdhab_food value >= 4 }
+			factor = 0
+			exists = sector
+			sector = {
+				has_any_sector_focus = yes
+				NOR = {
+					has_sector_focus = "balanced"
+					has_sector_focus = "production"
+				}
+			}
 		}
 	}
 }

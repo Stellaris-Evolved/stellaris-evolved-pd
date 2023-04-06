@@ -28,11 +28,7 @@ district_pdhab_housing = {
 	}
 
 	conversion_ratio = 1
-	convert_to = {
-		district_city
-		district_nexus
-		district_hive
-	}
+	inline_script = districts/convert_to/inline_evolved_housing_districts
 
 	resources = {
 		category = planet_districts
@@ -97,15 +93,9 @@ district_pdhab_housing = {
 				trigger = ""
 			}
 			inline_script = {
-				script = jobs/inline_evolved_maintenance_drone
+				script = districts/effects/inline_evolved_tech_housing_2_gestalt
 				count = 1
-				mult = 1
-				display = no_desc
-				trigger = "
-					owner = {
-						has_technology = tech_housing_2
-					}
-				"
+				trigger = ""
 			}
 		# /
 		# Hive
@@ -116,6 +106,19 @@ district_pdhab_housing = {
 			# /
 		# /
 	# /
+
+	# Starnet
+	inline_script = {
+		script = districts/compat/inline_evolved_starnet_housing_district
+		count = 1
+	}
+
+	inline_script = {
+		script = districts/inline_evolved_aibait_housing
+		has_building_slots = "
+			tec_is_fully_upgraded_habitat = yes
+		"
+	}
 }
 
 
@@ -148,9 +151,8 @@ district_pdhab_industrial = {
 	}
 
 	conversion_ratio = 1
-	convert_to = {
-		district_industrial
-	}
+	inline_script = districts/convert_to/inline_evolved_industrial_districts
+
 
 	resources = {
 		category = planet_districts_hab_industrial
@@ -236,10 +238,7 @@ district_pdhab_food_unlimited = {
 	}
 
 	conversion_ratio = 1
-	convert_to = {
-		district_farming
-		district_farming_uncapped
-	}
+	inline_script = districts/convert_to/inline_evolved_farming_districts
 	
 	resources = {
 		category = planet_districts_hab_food
@@ -312,6 +311,12 @@ district_pdhab_food_unlimited = {
 			"
 		}
 	# /
+
+	# Starnet
+	inline_script = {
+		script = districts/compat/inline_evolved_starnet_farming_district
+		count = 1
+	}
 }
 
 district_pdhab_food = {
@@ -346,11 +351,8 @@ district_pdhab_food = {
 	}
 
 	conversion_ratio = 1
-	convert_to = {
-		district_farming
-		district_farming_uncapped
-	}
-
+	inline_script = districts/convert_to/inline_evolved_farming_districts
+	
 	resources = {
 		category = planet_districts_hab_food
 		cost = {
@@ -424,6 +426,12 @@ district_pdhab_food = {
 			"
 		}
 	# /
+
+	# Starnet
+	inline_script = {
+		script = districts/compat/inline_evolved_starnet_farming_district
+		count = 1
+	}
 }
 
 district_pdhab_energy_unlimited = {
@@ -459,11 +467,7 @@ district_pdhab_energy_unlimited = {
 	}
 
 	conversion_ratio = 1
-	convert_to = {
-		district_generator
-		district_generator_uncapped
-		district_hab_commercial
-	}
+	inline_script = districts/convert_to/inline_evolved_generator_districts
 
 	allow = {
 		NOT = { has_modifier = resort_colony }
@@ -479,9 +483,6 @@ district_pdhab_energy_unlimited = {
 		cost = {
 			minerals = @hab_cost
 		}
-		upkeep = {
-			energy = @hab_maintenance
-		}		
 
 		# New production
 			inline_script = {
@@ -545,6 +546,12 @@ district_pdhab_energy_unlimited = {
 			"
 		}
 	# /	
+
+	# Starnet
+	inline_script = {
+		script = districts/compat/inline_evolved_starnet_generator_district
+		count = 1
+	}
 }
 
 district_pdhab_energy = {
@@ -581,10 +588,7 @@ district_pdhab_energy = {
 	}
 
 	conversion_ratio = 1
-	convert_to = {
-		district_generator
-		district_generator_uncapped
-	}
+	inline_script = districts/convert_to/inline_evolved_generator_districts
 
 	resources = {
 		category = planet_districts_hab_energy
@@ -653,6 +657,12 @@ district_pdhab_energy = {
 			"
 		}
 	# /	
+
+	# Starnet
+	inline_script = {
+		script = districts/compat/inline_evolved_starnet_generator_district
+		count = 1
+	}
 }
 
 district_pdhab_mining_unlimited = {
@@ -689,10 +699,7 @@ district_pdhab_mining_unlimited = {
 	}
 
 	conversion_ratio = 1
-	convert_to = {
-		district_mining
-		district_mining_uncapped
-	}	
+	inline_script = districts/convert_to/inline_evolved_mining_districts
 	
 	resources = {
 		category = planet_districts_hab_mining
@@ -766,6 +773,11 @@ district_pdhab_mining_unlimited = {
 			"
 		}
 	# /
+
+	inline_script = {
+		script = districts/compat/inline_evolved_starnet_mining_district
+		count = 1
+	}
 }
 
 district_pdhab_mining = {
@@ -801,10 +813,7 @@ district_pdhab_mining = {
 	}
 
 	conversion_ratio = 1
-	convert_to = {
-		district_mining
-		district_mining_uncapped
-	}	
+	inline_script = districts/convert_to/inline_evolved_mining_districts
 
 	resources = {
 		category = planet_districts_hab_mining
@@ -880,6 +889,11 @@ district_pdhab_mining = {
 			"
 		}
 	# /
+
+	inline_script = {
+		script = districts/compat/inline_evolved_starnet_mining_district
+		count = 1
+	}
 }
 
 district_pdhab_science = {
@@ -910,6 +924,12 @@ district_pdhab_science = {
 		NOT = { has_modifier = military_pd_habitat_ges }
 		NOT = { has_modifier = military_pd_habitat_reg_asteroid }
 		NOT = { has_modifier = military_pd_habitat_ges_asteroid }
+		OR = {
+			NOT = { exists = owner }
+			owner = {
+				has_technology = tech_basic_science_lab_1
+			}
+		}
 	}
 
 	conversion_ratio = 0.5
@@ -926,26 +946,12 @@ district_pdhab_science = {
 			energy = @hab_maintenance
 		}
 
-		
-		# New production
-		produces = {
-			physics_research = 1
-			multiplier = value:tec_automated_production|BASE|4|BASE_VALUE|tec_habitat_base_production|ECO_CAT|planet_researchers|RESOURCE|physics_research|
-		}
-
-		produces = {
-			society_research = 1
-			multiplier = value:tec_automated_production|BASE|4|BASE_VALUE|tec_habitat_base_production|ECO_CAT|planet_researchers|RESOURCE|society_research|
-		}
-
-		produces = {
-			engineering_research = 1
-			multiplier = value:tec_automated_production|BASE|4|BASE_VALUE|tec_habitat_base_production|ECO_CAT|planet_researchers|RESOURCE|engineering_research|
-		}		
-		
 	}
 
-	inline_script = districts/inline_evolved_habitat_scaling_district
+	
+	# Standard
+		inline_script = districts/inline_evolved_habitat_scaling_district
+	# /	
 
 
 	# Jobs
@@ -954,6 +960,14 @@ district_pdhab_science = {
 			count = 1
 			mult = 1
 			display = with_desc
+			trigger = ""
+		}
+
+		inline_script = {
+			script = jobs/inline_evolved_researcher
+			count = 1
+			mult = 1
+			display = no_desc
 			trigger = "
 				tec_is_upgraded_habitat = yes
 			"
@@ -1027,25 +1041,44 @@ district_pdhab_commercial = {
 
 	# Modifiers
 		# Standard
-			planet_modifier = {
-				planet_housing_add = 2
-			}
+		inline_script = districts/inline_evolved_habitat_scaling_district
 		# /
 	# /
 
 	# Jobs
 		inline_script = {
 			script = jobs/inline_evolved_clerk
-			count = 3
+			count = 1
 			mult = 1
 			display = with_desc
 			trigger = ""
 		}
+
+		inline_script = {
+			script = jobs/inline_evolved_clerk
+			count = 1
+			mult = 1
+			display = no_desc
+			trigger = "
+				tec_is_upgraded_habitat = yes
+			"
+		}
+		inline_script = {
+			script = jobs/inline_evolved_clerk
+			count = 1
+			mult = 1
+			display = no_desc
+			trigger = "
+				tec_is_fully_upgraded_habitat = yes
+			"
+		}
+
 		inline_script = {
 			script = districts/effects/inline_evolved_mercantile_trickle_up_economics
 			count = 1
 			trigger = ""
 		}
+		
 		inline_script = {
 			script = districts/effects/inline_evolved_mercantile_commercial_enterprise
 			trigger = "
@@ -1070,10 +1103,11 @@ district_pdhab_commercial = {
 		}
 
 		# machine traders
+		
 		inline_script = {
 			script = jobs/inline_evolved_job
 			job = tec_trade_drone
-			count = 2
+			count = 1
 			mult = 1
 			display = with_desc
 			trigger = "
@@ -1081,6 +1115,32 @@ district_pdhab_commercial = {
 				owner = {
 					tec_is_trade_gestalt = yes
 				}
+			"
+		}
+		inline_script = {
+			script = jobs/inline_evolved_maintenance_drone
+			count = 1
+			mult = 1
+			display = with_desc
+			trigger = "
+				owner = {
+					tec_is_trade_gestalt = yes
+				}
+				tec_is_upgraded_habitat = yes
+			"
+		}
+		inline_script = {
+			script = jobs/inline_evolved_job
+			job = tec_trade_drone
+			count = 1
+			mult = 1
+			display = no_desc
+			trigger = "
+				exists = owner
+				owner = {
+					tec_is_trade_gestalt = yes
+				}
+				tec_is_fully_upgraded_habitat = yes
 			"
 		}
 
@@ -1100,10 +1160,10 @@ district_pdhab_commercial = {
 					NOT = { tec_is_upgraded_habitat = yes }
 				}
 				owner = {
-					has_active_tradition = tr_mercantile_commercial_enterprise
+					has_active_tradition = tr_mercantile_commercial_enterprise_gestalt
 				}
 			}
-			text = tec_mercantile_commercial_enterprise_needs_t2_hab
+			text = tec_mercantile_commercial_enterprise_gestalt_needs_t2_hab
 		}
 	# /
 }

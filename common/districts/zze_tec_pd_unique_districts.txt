@@ -42,75 +42,47 @@ district_archive_housing = {
 
 	inline_script = districts/effects/inline_evolved_tec_artifice_2
 	
-	inline_script = {
-		script = jobs/inline_evolved_maintenance_drone
-		count = 2
-		mult = 1
-		display = with_desc
-		trigger = ""
-	}
+	# Jobs
+		# Regular
 
+		# /
+		# Gestalt
+			inline_script = {
+				script = jobs/inline_evolved_maintenance_drone
+				count = 2
+				mult = 1
+				display = with_desc
+				trigger = ""
+			}
+			inline_script = {
+				script = districts/effects/inline_evolved_tech_housing_2_gestalt
+				count = 1
+				trigger = ""
+			}
+		# /
+		# Hive
+			# Bio/Lithospheric harmony
+				inline_script = districts/effects/inline_evolved_tec_hive_menial
+
+				inline_script = districts/effects/inline_evolved_tec_machine_menial
+			# /
+		# /
+	# /
+
+	# Starnet
 	inline_script = {
-		script = jobs/inline_evolved_maintenance_drone
+		script = districts/compat/inline_evolved_starnet_housing_district
 		count = 1
-		mult = 1
-		display = no_desc
-		trigger = "
-			owner = {
-				has_technology = tech_housing_2
-			}
-		"
 	}
 
 	inline_script = {
-		script = jobs/inline_evolved_farmer
-		regular_count = 0
-		regular_aquatic_count = 0
-		hive_count = 1
-		hive_aquatic_count = 1
-		machine_count = 0
-		mult = 1
-		display = with_desc
-		trigger = "
-			owner = {
-				is_lithoid_empire = no
-				has_valid_civic = civic_tec_hive_menial
-			}
-		"
-	}
-
-	inline_script = {
-		script = jobs/inline_evolved_miner
-		regular_count = 0
-		regular_aquatic_count = 0
-		hive_count = 1
-		hive_aquatic_count = 1
-		machine_count = 0
-		mult = 1
-		display = with_desc
-		trigger = "
-			owner = {
-				is_lithoid_empire = yes
-				has_valid_civic = civic_tec_hive_menial
-			}
-		"
-	}
-
-	inline_script = {
-		script = jobs/inline_evolved_technician
-		regular_count = 0
-		hive_count = 0
-		machine_count = 1
-		machine_aquatic_count = 1
-		mult = 1
-		display = with_desc
-		trigger = "
-			owner = {
-				has_valid_civic = civic_tec_machine_menial
-			}
+		script = districts/inline_evolved_aibait_housing
+		has_building_slots = "
+			tec_is_fully_upgraded_habitat = yes
 		"
 	}
 }
+
 district_archive_energy = {
 	base_buildtime = 240
 	is_capped_by_modifier = no
@@ -152,6 +124,7 @@ district_archive_energy = {
 		trigger = ""
 	}
 }
+
 district_archive_industrial = {
 	base_buildtime = 240
 	is_capped_by_modifier = no
@@ -199,6 +172,7 @@ district_archive_industrial = {
 	}
 
 }
+
 district_archive_science = {
 	base_buildtime = 240
 	is_capped_by_modifier = no
@@ -358,72 +332,43 @@ district_crucible_city = {
 
 	inline_script = districts/effects/inline_evolved_tec_artifice_2
 	
-	inline_script = {
-		script = jobs/inline_evolved_maintenance_drone
-		count = 2
-		mult = 1
-		display = with_desc
-		trigger = ""
-	}
+	# Jobs
+		# Regular
 
+		# /
+		# Gestalt
+			inline_script = {
+				script = jobs/inline_evolved_maintenance_drone
+				count = 2
+				mult = 1
+				display = with_desc
+				trigger = ""
+			}
+			inline_script = {
+				script = districts/effects/inline_evolved_tech_housing_2_gestalt
+				count = 1
+				trigger = ""
+			}
+		# /
+		# Hive
+			# Bio/Lithospheric harmony
+				inline_script = districts/effects/inline_evolved_tec_hive_menial
+
+				inline_script = districts/effects/inline_evolved_tec_machine_menial
+			# /
+		# /
+	# /
+
+	# Starnet
 	inline_script = {
-		script = jobs/inline_evolved_maintenance_drone
+		script = districts/compat/inline_evolved_starnet_housing_district
 		count = 1
-		mult = 1
-		display = no_desc
-		trigger = "
-			owner = {
-				has_technology = tech_housing_2
-			}
-		"
 	}
 
 	inline_script = {
-		script = jobs/inline_evolved_farmer
-		regular_count = 0
-		regular_aquatic_count = 0
-		hive_count = 1
-		hive_aquatic_count = 1
-		machine_count = 0
-		mult = 1
-		display = with_desc
-		trigger = "
-			owner = {
-				is_lithoid_empire = no
-				has_valid_civic = civic_tec_hive_menial
-			}
-		"
-	}
-
-	inline_script = {
-		script = jobs/inline_evolved_miner
-		regular_count = 0
-		regular_aquatic_count = 0
-		hive_count = 1
-		hive_aquatic_count = 1
-		machine_count = 0
-		mult = 1
-		display = with_desc
-		trigger = "
-			owner = {
-				is_lithoid_empire = yes
-				has_valid_civic = civic_tec_hive_menial
-			}
-		"
-	}
-
-	inline_script = {
-		script = jobs/inline_evolved_technician
-		regular_count = 0
-		hive_count = 0
-		machine_count = 1
-		machine_aquatic_count = 1
-		mult = 1
-		display = with_desc
-		trigger = "
-			owner = {
-				has_valid_civic = civic_tec_machine_menial
-			}
+		script = districts/inline_evolved_aibait_housing
+		has_building_slots = "
+			tec_is_fully_upgraded_habitat = yes
 		"
 	}
 }
@@ -574,9 +519,8 @@ district_scrapyard_mining = {
 	}
 
 	conversion_ratio = 1
-	convert_to = {
-		district_mining
-	}
+	inline_script = districts/convert_to/inline_evolved_mining_districts
+
 
 	resources = {
 		category = planet_districts
@@ -669,6 +613,11 @@ district_scrapyard_mining = {
 	inline_script = districts/effects/inline_evolved_tec_eco_keepers_mining
 
 	inline_script = districts/effects/inline_evolved_mining_guilds
+
+	inline_script = {
+		script = districts/compat/inline_evolved_starnet_mining_district
+		count = 1
+	}
 }
 
 district_scrapyard_energy = {
@@ -689,9 +638,8 @@ district_scrapyard_energy = {
 	}
 
 	conversion_ratio = 1
-	convert_to = {
-		district_mining
-	}
+	inline_script = districts/convert_to/inline_evolved_generator_districts
+
 
 	resources = {
 		category = planet_districts
@@ -766,6 +714,12 @@ district_scrapyard_energy = {
 				tec_has_extra_menial_district_job = yes
 			}
 		"
+	}
+
+	# Starnet
+	inline_script = {
+		script = districts/compat/inline_evolved_starnet_generator_district
+		count = 1
 	}
 }
 

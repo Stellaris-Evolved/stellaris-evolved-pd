@@ -49,10 +49,43 @@
 		}
 		
 		ai_weight = {
-			weight = 10
-			modifier = { 
-				factor = 0	
-				owner = { any_owned_planet = { is_planet_class = pc_ecocity } }
+			weight = 100
+			modifier = {
+				add = 5
+				OR = {
+					tec_is_nuked_world = yes
+				}
+			}
+			modifier = {
+				add = 3 
+				exists = owner
+				owner = {
+					OR = {
+						is_materialist = yes
+						has_ethic = ethic_gestalt_extrospective
+					}
+				}
+				is_capital = yes # industrialist ais make capital ecus
+			}
+			modifier = {
+				add = 2
+				exists = owner
+				owner = {
+					OR = {
+						is_materialist = yes
+						has_ethic = ethic_gestalt_extrospective
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				tec_ai_can_ecu = no
+			}
+			modifier = {
+				factor = 0 
+				any_owned_planet = {
+					is_planet_class = pc_ecocity
+				}
 			}
 		}
 	}
@@ -103,7 +136,11 @@
 		}
 
 		ai_weight = {
-			weight = 0
+			weight = 110
+			modifier = {
+				has_ascension_perk = ap_arcology_project
+				factor = 0
+			}
 		}
 	}
 
@@ -155,10 +192,43 @@
 		}
 		
 		ai_weight = {
-			weight = 10
-			modifier = { 
-				factor = 0	
-				owner = { any_owned_planet = { is_planet_class = pc_ecocity } }
+			weight = 105
+			modifier = {
+				add = 5
+				OR = {
+					tec_is_nuked_world = yes
+				}
+			}
+			modifier = {
+				add = 3 
+				exists = owner
+				owner = {
+					OR = {
+						is_materialist = yes
+						has_ethic = ethic_gestalt_extrospective
+					}
+				}
+				is_capital = yes # industrialist ais make capital ecus
+			}
+			modifier = {
+				add = 2
+				exists = owner
+				owner = {
+					OR = {
+						is_materialist = yes
+						has_ethic = ethic_gestalt_extrospective
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				tec_ai_can_ecu = no
+			}
+			modifier = {
+				factor = 0 
+				any_owned_planet = {
+					is_planet_class = pc_ecocity
+				}
 			}
 		}
 	}
@@ -210,7 +280,11 @@
 		}
 	
 		ai_weight = {
-			weight = 0
+			weight = 110
+			modifier = {
+				has_ascension_perk = ap_arcology_project
+				factor = 0
+			}
 		}
 	}
 		
@@ -505,7 +579,44 @@
 		}
 		
 		ai_weight = {
-			weight = 0
+			weight = 100
+			modifier = {
+				add = 5
+				OR = {
+					tec_is_nuked_world = yes
+				}
+			}
+			modifier = {
+				add = 3 
+				exists = owner
+				owner = {
+					OR = {
+						is_militarist = yes
+						has_ethic = ethic_gestalt_apathy
+					}
+				}
+				is_capital = yes # industrialist ais make capital ecus
+			}
+			modifier = {
+				add = 2
+				exists = owner
+				owner = {
+					OR = {
+						is_militarist = yes
+						has_ethic = ethic_gestalt_apathy
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				tec_ai_can_ecu = no
+			}
+			modifier = {
+				factor = 0 
+				any_owned_planet = {
+					is_planet_class = pc_milarc
+				}
+			}
 		}
 	}
 
@@ -559,7 +670,7 @@
 		}
 
 		ai_weight = {
-			weight = 0
+			weight = 110
 		}
 	}
 
@@ -611,7 +722,11 @@
 		}
 
 		ai_weight = {
-			weight = 0
+			weight = 110
+			modifier = {
+				has_ascension_perk = ap_arcology_project
+				factor = 0
+			}
 		}
 	}
 
@@ -664,7 +779,44 @@
 		}
 		
 		ai_weight = {
-			weight = 0
+			weight = 105
+			modifier = {
+				add = 5
+				OR = {
+					tec_is_nuked_world = yes
+				}
+			}
+			modifier = {
+				add = 3 
+				exists = owner
+				owner = {
+					OR = {
+						is_militarist = yes
+						has_ethic = ethic_gestalt_apathy
+					}
+				}
+				is_capital = yes # industrialist ais make capital ecus
+			}
+			modifier = {
+				add = 2
+				exists = owner
+				owner = {
+					OR = {
+						is_militarist = yes
+						has_ethic = ethic_gestalt_apathy
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				tec_ai_can_ecu = no
+			}
+			modifier = {
+				factor = 0 
+				any_owned_planet = {
+					is_planet_class = pc_milarc
+				}
+			}
 		}
 	}
 
@@ -680,8 +832,6 @@
 				influence = 200
 				minerals = 20000
 			}
-
-			
 		}
 
 		potential = {
@@ -717,7 +867,7 @@
 		}
 
 		ai_weight = {
-			weight = 0
+			weight = 110
 		}
 	}
 
@@ -769,7 +919,11 @@
 		}
 
 		ai_weight = {
-			weight = 0
+			weight = 110
+			modifier = {
+				has_ascension_perk = ap_arcology_project
+				factor = 0
+			}
 		}
 	}
 

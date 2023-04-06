@@ -701,7 +701,6 @@ district_arcology_pdtrade = {
 	conversion_ratio = 1
 	convert_to = {
 		district_tec_arcology_trade
-		district_arcology_housing
 	}
 	
 	inline_script = districts/inline_evolved_disabled

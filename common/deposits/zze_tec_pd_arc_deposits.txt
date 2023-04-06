@@ -856,72 +856,9 @@ d_pd_biohivecap_arc = {
 		}
 
 
-		# assembly
-			# spawning
-			triggered_planet_modifier = {
-				potential = {
-					exists = owner
-					owner = { tec_pd_arc_allows_hive_capital_arcologies = yes }
-					tec_has_spawning_buildings = yes
-					planet = { is_capital = yes }
-				}
-				modifier = {	
-					job_spawning_drone_add = 3
-				}
-			}
-
-			# cyto
-			triggered_planet_modifier = {
-				potential = {
-					exists = owner
-					owner = { tec_pd_arc_allows_hive_capital_arcologies = yes }
-					tec_has_genetic_buildings = yes
-					planet = { is_capital = yes }
-				}
-				modifier = {	
-					job_tec_cloner_drone_add = 3
-				}
-			}
-
-			# cloning
-			triggered_planet_modifier = {
-				potential = {
-					exists = owner
-					owner = { tec_pd_arc_allows_hive_capital_arcologies = yes }
-					tec_has_cloning_buildings = yes
-					planet = { is_capital = yes }
-				}
-				modifier = {	
-					job_tec_cloner_drone_add = 3
-				}
-			}
-
-			# robotic
-			triggered_planet_modifier = {
-				potential = {
-					exists = owner
-					owner = { tec_pd_arc_allows_hive_capital_arcologies = yes }
-					tec_has_robotic_buildings = yes
-					planet = { is_capital = yes }
-				}
-				modifier = {	
-					job_tec_replicator_drone_add = 3
-				}
-			}
-
-			# bioservant
-			triggered_planet_modifier = {
-				potential = {
-					exists = owner
-					owner = { tec_pd_arc_allows_hive_capital_arcologies = yes }
-					tec_has_bioservant_buildings = yes
-					planet = { is_capital = yes }
-				}
-				modifier = {	
-					job_tec_bioengineer_drone_add = 3
-				}
-			}
-		# /
+		triggered_planet_modifier = {
+			planet_pop_assembly_organic_add = 6
+		}
 	# /
 
 	potential = {
@@ -1109,72 +1046,9 @@ d_pd_florahivecap_arc = {
 		}
 
 
-		# assembly
-			# spawning
-			triggered_planet_modifier = {
-				potential = {
-					exists = owner
-					owner = { tec_pd_arc_allows_treehive_capital_arcologies = yes }
-					tec_has_spawning_buildings = yes
-					planet = { is_capital = yes }
-				}
-				modifier = {	
-					job_spawning_drone_add = 3
-				}
-			}
-
-			# cyto
-			triggered_planet_modifier = {
-				potential = {
-					exists = owner
-					owner = { tec_pd_arc_allows_treehive_capital_arcologies = yes }
-					tec_has_genetic_buildings = yes
-					planet = { is_capital = yes }
-				}
-				modifier = {	
-					job_tec_cloner_drone_add = 3
-				}
-			}
-
-			# cloning
-			triggered_planet_modifier = {
-				potential = {
-					exists = owner
-					owner = { tec_pd_arc_allows_treehive_capital_arcologies = yes }
-					tec_has_cloning_buildings = yes
-					planet = { is_capital = yes }
-				}
-				modifier = {	
-					job_tec_cloner_drone_add = 3
-				}
-			}
-
-			# robotic
-			triggered_planet_modifier = {
-				potential = {
-					exists = owner
-					owner = { tec_pd_arc_allows_treehive_capital_arcologies = yes }
-					tec_has_robotic_buildings = yes
-					planet = { is_capital = yes }
-				}
-				modifier = {	
-					job_tec_replicator_drone_add = 3
-				}
-			}
-
-			# bioservant
-			triggered_planet_modifier = {
-				potential = {
-					exists = owner
-					owner = { tec_pd_arc_allows_treehive_capital_arcologies = yes }
-					tec_has_bioservant_buildings = yes
-					planet = { is_capital = yes }
-				}
-				modifier = {	
-					job_tec_bioengineer_drone_add = 3
-				}
-			}
-		# /
+		triggered_planet_modifier = {
+			planet_pop_assembly_organic_add = 6
+		}
 	# /
 
 
@@ -1227,29 +1101,8 @@ d_pd_machinecap_arc = {
 
 	# Evolved - Machine Ruler civics
 		inline_script = {
-			script = jobs/inline_evolved_maintenance_civic_machine_swaps
-			trigger= "
-				owner = { tec_pd_arc_allows_machine_capital_arcologies = yes }
-				planet = { is_capital = yes }
-				owner = { tec_has_ruler_civic_machine = yes }
-			"
-			count = 3
-			mult = 1
-			display = no_desc
-		}
-
-		# You are a rare case, sweetie
-		inline_script = { # Reimaginartor
-			script = jobs/inline_evolved_job
-			trigger = "
-				exists = owner
-				owner = {
-					has_valid_civic = civic_tec_machine_reimaginators
-				}
-				owner = { tec_pd_arc_allows_machine_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			"
-			job = tec_reimaginator_drone
+			script = jobs/inline_evolved_prime_drone
+			trigger = ""
 			count = 1
 			mult = 1
 			display = no_desc
@@ -1274,48 +1127,16 @@ d_pd_machinecap_arc = {
 				owner = { tec_pd_arc_allows_machine_capital_arcologies = yes }
 				planet = { is_capital = yes }
 			"
-			count = 6
+			count = 4
 			mult = 1
 			display = no_desc
 		}
 
 		inline_script = {
-			script = jobs/inline_evolved_coordinator
-			trigger = "
-				owner = { tec_pd_arc_allows_machine_capital_arcologies = yes }
-				planet = { is_capital = yes }
-				owner = { tec_has_ruler_civic_machine = yes }
-			"
-			count = -3
-			mult = 1
-			display = no_desc
+			script = modifiers/inline_evolved_assembly_generic
+			mult = 4
+			trigger = ""
 		}
-
-
-		#spawning
-			# common
-			triggered_planet_modifier = {
-				potential = {
-					exists = owner
-					owner = { tec_pd_arc_allows_machine_capital_arcologies = yes }
-					tec_has_cloning_buildings = no
-				}
-				modifier = {	
-					job_replicator_add = 4
-				}
-			}
-
-			triggered_planet_modifier = {
-				potential = {
-					exists = owner
-					owner = { tec_pd_arc_allows_machine_capital_arcologies = yes }
-					tec_has_cloning_buildings = yes
-				}
-				modifier = {	
-					job_tec_cloner_drone_add = 2
-				}
-			}
-		# /
 	# /
 	potential = {
 		has_planetary_diversity_arcologies = yes
@@ -1345,9 +1166,9 @@ d_pd_verticalfarm_arc = {
 
 	resources = {
 		category = planet_deposits
-		produces = {
-			energy = -5
-			exotic_gases = -1
+		upkeep = {
+			energy = 5
+			exotic_gases = 1
 		}
 	}
 
@@ -1412,6 +1233,7 @@ d_pd_necro_arc = {
 			is_planet_class = pc_milarc
 			is_planet_class = pc_corpoarc
 			is_planet_class = pc_hive
+			is_planet_class = pc_hivetidallylocked
 		}
 	}
 	
@@ -1478,5 +1300,72 @@ d_pd_shroud_arc = {
 	
 	drop_weight = {
 		weight = 0
+	}
+}
+
+
+d_pd_capital_spot = {
+	icon = d_pd_necro_arc_spot
+	is_for_colonizable = yes
+	category = deposit_cat_rare
+	
+	use_weights_for_terraforming_swap_types = no
+	
+	planet_modifier = {
+		planet_max_districts_add = -3
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			OR = {
+				tec_is_ringworld = yes
+				tec_is_elysium = yes
+				tec_is_modded_space_arcology = yes
+				AND = {
+					tec_is_habitat = yes
+					tec_is_arcology_habitat = yes
+				}
+			}
+		}
+		planet_max_districts_add = 1
+	}
+	
+
+	potential = {
+		has_planetary_diversity_arcologies = yes
+		tec_pd_arc_allows_capital_arcologies = yes
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_pd_techno_arc_farm = {
+	icon = d_pd_verticalfarm_arc  # d_pd_techno_arc_farm
+	is_for_colonizable = yes
+	category = deposit_cat_rare
+
+	use_weights_for_terraforming_swap_types = no
+
+	planet_modifier = {
+		planet_max_districts_mult = -0.1
+	}
+
+	inline_script = {
+		script = jobs/inline_evolved_farmer
+		trigger = ""
+		regular_count = 0.2
+		regular_aquatic_count = 0.2
+		hive_count = 0.2
+		hive_aquatic_count = 0.2
+		machine_count = 0.2
+		mult = 1
+		display = per_pop
+	}
+
+	potential = {
+		has_planetary_diversity_arcologies = yes
+		is_planet_class = pc_pd_techno_arc
 	}
 }

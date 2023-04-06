@@ -7,3 +7,88 @@ pd_has_psionic_ascension_finished = {
 		tec_has_any_psionic_ascension_finished = yes
 	}
 }
+
+tec_ai_should_allocate_sidereal_budget = {
+	OR = {
+		AND = {
+			has_ascension_perk = ap_tec_sidereal_arcologies
+			any_owned_planet = {
+				AND = {
+					is_planet_class = pc_habitat
+					tec_is_arcology_habitat = no
+					OR = {
+						has_planet_flag = advanced_habitat_2
+						has_planet_flag = payback_habitat
+					}
+				}
+				NOT = { has_planet_flag = tec_block_other_specialziations }
+				tec_ai_can_sidereal_habitat = yes
+			}
+		}
+		AND = {
+			has_ascension_perk = ap_arcology_project
+			any_owned_planet = {
+				AND = {
+					uses_district_set = pdplanethab
+					tec_is_arcology_habitat = no
+					OR = {
+						has_planet_flag = advanced_habitat_2
+						has_planet_flag = payback_habitat
+					}
+				}
+				NOT = { has_planet_flag = tec_block_other_specialziations }
+				tec_ai_can_sidereal_habitat = yes
+			}
+		}
+	}
+	
+}
+
+tec_ai_should_allocate_habitat_upgrade_t2_budget = {
+	OR = {
+		AND = {
+			has_technology = tech_habitat_2
+			any_owned_planet = {
+				is_planet_class = pc_habitat
+				NOR = { 
+					has_planet_flag = advanced_habitat
+					has_planet_flag = payback_habitat
+				}
+			}
+		}
+		AND = {
+			has_technology = tech_pdhabitat_1
+			any_owned_planet = {
+				uses_district_set = pdplanethab
+				NOR = { 
+					has_planet_flag = advanced_habitat
+				}
+			}
+		}
+	}
+}
+
+tec_ai_should_allocate_habitat_upgrade_t3_budget = {
+	OR = {
+		AND = {
+			has_technology = tech_habitat_3
+			any_owned_planet = {
+				is_planet_class = pc_habitat
+				NOR = { 
+					has_planet_flag = advanced_habitat_2
+					has_planet_flag = payback_habitat
+				}
+			}
+		}
+		AND = {
+			has_technology = tech_pdhabitat_2
+			any_owned_planet = {
+				uses_district_set = pdplanethab
+				NOR = { 
+					has_planet_flag = advanced_habitat_2
+				}
+			}
+		}
+	}
+	
+}
