@@ -24,9 +24,8 @@ district_corp_industrial = {
 	}
 
 	conversion_ratio = 1
-	convert_to = {
-		district_arcology_arms_industry
-	}
+	inline_script = districts/convert_to/inline_evolved_ecu_alloy_districts_swaps
+	inline_script = districts/convert_to/inline_evolved_industrial_districts
 
 	resources = {
 		category = planet_districts_industrial
@@ -82,12 +81,8 @@ district_mf_alloy = {
 	}
 	
 	conversion_ratio = 1
-	convert_to = {
-		district_city
-		district_nexus
-		district_hive
-		district_arcology_housing
-	}	
+	inline_script = districts/convert_to/inline_evolved_industrial_districts
+	inline_script = districts/convert_to/inline_evolved_housing_districts
 	
 	resources = {
 		category = planet_districts
@@ -146,12 +141,8 @@ district_bioforge_stomach = {
 	}
 	
 	conversion_ratio = 1
-	convert_to = {
-		district_city
-		district_nexus
-		district_hive
-		district_arcology_housing
-	}	
+	inline_script = districts/convert_to/inline_evolved_industrial_districts
+	inline_script = districts/convert_to/inline_evolved_housing_districts
 	
 	resources = {
 		category = planet_districts
@@ -219,12 +210,10 @@ district_mf_replicator = {
 	}
 	
 	conversion_ratio = 1
-	convert_to = {
-		district_city
-		district_nexus
-		district_hive
-		district_arcology_housing
-	}	
+	inline_script = districts/convert_to/inline_evolved_ecu_alloy_districts_swaps
+	inline_script = districts/convert_to/inline_evolved_unity_districts
+	inline_script = districts/convert_to/inline_evolved_industrial_districts
+	inline_script = districts/convert_to/inline_evolved_housing_districts
 	
 	resources = {
 		category = planet_districts
@@ -282,12 +271,10 @@ district_bioforge_maintenance = {
 	}
 	
 	conversion_ratio = 1
-	convert_to = {
-		district_city
-		district_nexus
-		district_hive
-		district_arcology_housing
-	}	
+	inline_script = districts/convert_to/inline_evolved_ecu_alloy_districts_swaps
+	inline_script = districts/convert_to/inline_evolved_unity_districts
+	inline_script = districts/convert_to/inline_evolved_industrial_districts
+	inline_script = districts/convert_to/inline_evolved_housing_districts
 	
 	resources = {
 		category = planet_districts
@@ -330,11 +317,9 @@ district_pdmilarc_naval = {
 	}
 	
 	conversion_ratio = 1
-	convert_to = {
-		district_city
-		district_nexus
-		district_hive
-	}	
+	inline_script = districts/convert_to/inline_evolved_ecu_cg_districts_swaps
+	inline_script = districts/convert_to/inline_evolved_industrial_districts
+	inline_script = districts/convert_to/inline_evolved_housing_districts
 	
 	resources = {
 		category = planet_districts
@@ -434,11 +419,10 @@ district_pdbiofort_naval = {
 	}
 	
 	conversion_ratio = 1
-	convert_to = {
-		district_city
-		district_nexus
-		district_hive
-	}	
+	inline_script = districts/convert_to/inline_evolved_ecu_cg_districts_swaps
+	inline_script = districts/convert_to/inline_evolved_industrial_districts
+	inline_script = districts/convert_to/inline_evolved_housing_districts
+	
 	
 	resources = {
 		category = planet_districts
@@ -500,11 +484,9 @@ district_pdmachinefort_naval = {
 	}
 	
 	conversion_ratio = 1
-	convert_to = {
-		district_city
-		district_nexus
-		district_hive
-	}	
+	inline_script = districts/convert_to/inline_evolved_ecu_cg_districts_swaps
+	inline_script = districts/convert_to/inline_evolved_industrial_districts
+	inline_script = districts/convert_to/inline_evolved_housing_districts
 	
 	resources = {
 		category = planet_districts
@@ -562,11 +544,9 @@ district_arcology_research_complex = {
 	}
 	
 	conversion_ratio = 1
-	convert_to = {
-		district_city
-		district_nexus
-		district_hive
-	}	
+	inline_script = districts/convert_to/inline_evolved_ecu_alloy_districts_swaps
+	inline_script = districts/convert_to/inline_evolved_industrial_districts
+	inline_script = districts/convert_to/inline_evolved_housing_districts
 	
 	resources = {
 		category = planet_districts
@@ -603,12 +583,10 @@ district_machine_research_district = {
 	potential = { uses_district_set = pdmachinefactory }
 	
 	conversion_ratio = 1
-	convert_to = {
-		district_city
-		district_nexus
-		district_hive
-	}	
-	
+	inline_script = districts/convert_to/inline_evolved_ecu_alloy_districts_swaps
+	inline_script = districts/convert_to/inline_evolved_industrial_districts
+	inline_script = districts/convert_to/inline_evolved_housing_districts
+
 	resources = {
 		category = planet_districts
 		cost = {
@@ -660,12 +638,9 @@ district_bioforge_brain = {
 	}
 	
 	conversion_ratio = 1
-	convert_to = {
-		district_city
-		district_nexus
-		district_hive
-		district_arcology_housing
-	}	
+	inline_script = districts/convert_to/inline_evolved_ecu_alloy_districts_swaps
+	inline_script = districts/convert_to/inline_evolved_industrial_districts
+	inline_script = districts/convert_to/inline_evolved_housing_districts
 	
 	resources = {
 		category = planet_districts
@@ -699,9 +674,9 @@ district_arcology_pdtrade = {
 	is_capped_by_modifier = no
 
 	conversion_ratio = 1
-	convert_to = {
-		district_tec_arcology_trade
-	}
+	inline_script = districts/convert_to/inline_evolved_trade_districts
+	inline_script = districts/convert_to/inline_evolved_generator_districts
+	inline_script = districts/convert_to/inline_evolved_housing_districts
 	
 	inline_script = districts/inline_evolved_disabled
 }
@@ -714,10 +689,9 @@ district_pdhivefort_synapse = {
 	is_capped_by_modifier = no
 	
 	conversion_ratio = 1
-	convert_to = {
-		district_tec_arcology_maintenance
-		district_arcology_leisure
-	}	
+	inline_script = districts/convert_to/inline_evolved_ecu_leisure_districts_swaps
+	inline_script = districts/convert_to/inline_evolved_leisure_districts
+	inline_script = districts/convert_to/inline_evolved_housing_districts
 	
 	inline_script = districts/inline_evolved_disabled
 }
@@ -726,10 +700,9 @@ district_pdmachinefort_synapse = {
 	is_capped_by_modifier = no
 	
 	conversion_ratio = 1
-	convert_to = {
-		district_tec_arcology_maintenance
-		district_arcology_leisure
-	}	
+	inline_script = districts/convert_to/inline_evolved_ecu_leisure_districts_swaps
+	inline_script = districts/convert_to/inline_evolved_leisure_districts
+	inline_script = districts/convert_to/inline_evolved_housing_districts
 	
 	inline_script = districts/inline_evolved_disabled
 }

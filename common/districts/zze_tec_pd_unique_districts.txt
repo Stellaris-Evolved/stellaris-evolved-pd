@@ -19,6 +19,9 @@ district_archive_housing = {
 	potential = {
 		uses_district_set = @pdarchive
 	}
+
+	conversion_ratio = 1
+	inline_script = districts/convert_to/inline_evolved_housing_districts
 	
 	resources = {
 		category = planet_districts
@@ -94,10 +97,10 @@ district_archive_energy = {
 	potential = {
 		uses_district_set = @pdarchive
 	}
-
-	planet_modifier = {
-		planet_housing_add = 3
-	}
+	
+	conversion_ratio = 1
+	inline_script = districts/convert_to/inline_evolved_generator_districts
+	inline_script = districts/convert_to/inline_evolved_trade_districts
 	
 	resources = {
 		category = planet_districts_hab_energy
@@ -111,6 +114,10 @@ district_archive_energy = {
 			script = districts/resources/inline_evolved_tec_generate_basic_resources
 			resource = energy
 		}		
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 3
 	}
 
 	inline_script = {
@@ -136,6 +143,9 @@ district_archive_industrial = {
 	potential = {
 		uses_district_set = @pdarchive
 	}
+
+	conversion_ratio = 1
+	inline_script = districts/convert_to/inline_evolved_industrial_districts
 
 	resources = {
 		category = planet_districts_hab_industrial
@@ -184,6 +194,19 @@ district_archive_science = {
 	potential = {
 		uses_district_set = @pdarchive
 	}
+
+	allow = {
+		OR = {
+			NOT = { exists = owner }
+			owner = {
+				has_technology = tech_basic_science_lab_1
+			}
+		}
+	}
+
+	conversion_ratio = 1
+	inline_script = districts/convert_to/inline_evolved_research_districts
+	inline_script = districts/convert_to/inline_evolved_industrial_districts
 	
 	resources = {
 		category = planet_districts_hab_research
@@ -236,6 +259,10 @@ district_archive_cultural = {
 			}
 		}
 	}
+
+	conversion_ratio = 0.75
+	inline_script = districts/convert_to/inline_evolved_leisure_districts
+	inline_script = districts/convert_to/inline_evolved_generator_districts
 	
 	resources = {
 		category = planet_districts_hab_leisure
@@ -309,6 +336,9 @@ district_crucible_city = {
 		NOT = { has_modifier = resort_colony }
 		NOT = { has_modifier = slave_colony }
 	}
+
+	conversion_ratio = 1
+	inline_script = districts/convert_to/inline_evolved_housing_districts
 
 	resources = {
 		category = planet_districts
@@ -396,6 +426,9 @@ district_crucible_industrial = {
 		NOT = { has_modifier = slave_colony }
 	}
 
+	conversion_ratio = 1
+	inline_script = districts/convert_to/inline_evolved_industrial_districts
+
 	resources = {
 		category = planet_districts_industrial
 		cost = {
@@ -439,14 +472,28 @@ district_crucible_leisure = {
 	show_on_uncolonized = {
 		exists = from
 		uses_district_set = @pdcrucible
-		from = { is_regular_empire = yes }
+		from = {
+			OR = {
+				is_regular_empire = yes
+				has_valid_civic = civic_machine_servitor
+			}
+		}
 	}
 
 	potential = {
 		exists = owner
-		owner = { is_regular_empire = yes }
 		uses_district_set = @pdcrucible
+		owner = {
+			OR = {
+				is_regular_empire = yes
+				has_valid_civic = civic_machine_servitor
+			}
+		}
 	}
+
+	conversion_ratio = 0.75
+	inline_script = districts/convert_to/inline_evolved_leisure_districts
+	inline_script = districts/convert_to/inline_evolved_generator_districts
 
 	resources = {
 		category = planet_districts
@@ -520,8 +567,7 @@ district_scrapyard_mining = {
 
 	conversion_ratio = 1
 	inline_script = districts/convert_to/inline_evolved_mining_districts
-
-
+	
 	resources = {
 		category = planet_districts
 		cost = {
@@ -639,7 +685,7 @@ district_scrapyard_energy = {
 
 	conversion_ratio = 1
 	inline_script = districts/convert_to/inline_evolved_generator_districts
-
+	inline_script = districts/convert_to/inline_evolved_trade_districts
 
 	resources = {
 		category = planet_districts
@@ -741,9 +787,7 @@ district_scrapyard_recyclers = {
 	}
 
 	conversion_ratio = 1
-	convert_to = {
-		district_mining
-	}
+	inline_script = districts/convert_to/inline_evolved_mining_districts
 
 	resources = {
 		category = planet_districts
@@ -806,9 +850,6 @@ district_scrapyard_recyclers = {
 		}
 		text = job_pd_scrap_recycler_effect_desc
 	}
-
-	prerequisites = {
-	}
 }
 
 #Techno Arch
@@ -831,10 +872,8 @@ district_techno_industrial = {
 	}
 
 	conversion_ratio = 1
-	convert_to = {
-		district_arcology_arms_industry
-		district_corp_industrial
-	}
+	inline_script = districts/convert_to/inline_evolved_ecu_alloy_districts_swaps
+	inline_script = districts/convert_to/inline_evolved_industrial_districts
 
 	resources = {
 		category = planet_districts_industrial
@@ -897,5 +936,638 @@ district_techno_industrial = {
 		modifier = {
 			job_techno_drone_add = 0.5
 		}
+	}
+}
+
+#MWF-14
+district_pd_warform_housing = {
+	base_buildtime = 240
+	is_capped_by_modifier = no
+	exempt_from_ai_planet_specialization = yes
+	icon = district_hab_housing
+
+	show_on_uncolonized = {
+		uses_district_set = pdwarform
+	}
+
+	potential = {
+		uses_district_set = pdwarform
+	}
+
+	conversion_ratio = 1
+	inline_script = districts/convert_to/inline_evolved_housing_districts
+	
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = @hab_cost
+		}
+		upkeep = {
+			energy = @hab_maintenance
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			has_planet_flag = pd_warform_repaired_housing
+		}
+		planet_housing_add = 8
+	}
+
+	inline_script = {
+		script = districts/inline_evolved_habitation_housing_modifiers
+		count = 1
+		trigger = ""
+	}
+
+	inline_script = districts/effects/inline_evolved_tec_artifice_2
+	
+	# Jobs
+		# Regular
+
+		# /
+		# Gestalt
+			inline_script = {
+				script = jobs/inline_evolved_maintenance_drone
+				count = 2
+				mult = 1
+				display = with_desc
+				trigger = ""
+			}
+			inline_script = {
+				script = districts/effects/inline_evolved_tech_housing_2_gestalt
+				count = 1
+				trigger = ""
+			}
+		# /
+		# Hive
+			# Bio/Lithospheric harmony
+				inline_script = districts/effects/inline_evolved_tec_hive_menial
+
+				inline_script = districts/effects/inline_evolved_tec_machine_menial
+			# /
+		# /
+	# /
+
+	# Starnet
+	inline_script = {
+		script = districts/compat/inline_evolved_starnet_housing_district
+		count = 1
+	}
+
+	inline_script = {
+		script = districts/inline_evolved_aibait_housing
+		has_building_slots = "
+			tec_is_fully_upgraded_habitat = yes
+		"
+	}
+}
+
+district_pd_warform_energy = {
+	base_buildtime = 240
+	is_capped_by_modifier = no
+	icon = district_hab_energy
+
+	show_on_uncolonized = {
+		uses_district_set = pdwarform
+		has_planet_flag = pd_warform_repaired_power
+	}
+
+	potential = {
+		uses_district_set = pdwarform
+		has_planet_flag = pd_warform_repaired_power
+	}
+
+	conversion_ratio = 0.5
+	inline_script = districts/convert_to/inline_evolved_generator_districts
+	inline_script = districts/convert_to/inline_evolved_trade_districts
+	
+
+	resources = {
+		category = planet_districts_hab_energy
+		cost = {
+			minerals = @hab_cost
+		}
+		upkeep = {
+			energy = @hab_maintenance
+		}
+		inline_script = {
+			script = districts/resources/inline_evolved_tec_generate_basic_resources
+			resource = energy
+		}	
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			has_planet_flag = pd_warform_repaired_power
+		}
+		planet_housing_add = 3
+	}
+
+	inline_script = {
+		script = jobs/inline_evolved_technician
+		regular_count = 3
+		hive_count = 4
+		machine_count = 3
+		machine_aquatic_count = 0
+		mult = 1
+		display = with_desc
+		trigger = "has_planet_flag = pd_warform_repaired_power"
+	}
+}
+
+district_pd_warform_industrial = {
+	base_buildtime = 240
+	is_capped_by_modifier = no
+	icon = district_hab_industrial
+
+	show_on_uncolonized = {
+		uses_district_set = pdwarform
+		has_deposit = d_pd_warform_factory_fixed
+	}
+
+	potential = {
+		uses_district_set = pdwarform
+		has_deposit = d_pd_warform_factory_fixed
+	}
+
+	conversion_ratio = 1
+	inline_script = districts/convert_to/inline_evolved_industrial_districts
+
+	resources = {
+		category = planet_districts_hab_industrial
+		cost = {
+			minerals = @hab_cost
+		}
+		upkeep = {
+			energy = @hab_maintenance
+		}
+		inline_script = districts/resources/inline_evolved_tec_unleashed_industrialization_resources
+		inline_script = districts/resources/inline_evolved_industrial_maintenance_upkeep
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			has_deposit = d_pd_warform_factory_fixed
+		}
+		planet_housing_add = 3
+	}
+
+	# Traditions
+		inline_script = districts/effects/inline_evolved_tec_artifice_final_1
+	# /
+	# Civics
+		inline_script = districts/effects/inline_evolved_tec_unleashed_industrialization
+	# /
+	# Edicts
+		inline_script = districts/effects/inline_evolved_industrial_maintenance
+	# /
+
+	inline_script = {
+		script = districts/inline_evolved_industrial_split_jobs
+		count = 1
+		mult = 1
+		trigger = "has_deposit = d_pd_warform_factory_fixed"
+		display = with_desc
+	}
+}
+district_pd_warform_science = {
+	base_buildtime = 240
+	is_capped_by_modifier = no
+	icon = district_hab_science
+
+	show_on_uncolonized = {
+		uses_district_set = pdwarform
+		OR = {
+			has_planet_flag = pd_warform_regular_research
+			has_planet_flag = pd_warform_organic_research
+		}
+	}
+
+	potential = {
+		uses_district_set = pdwarform
+		OR = {
+			has_planet_flag = pd_warform_regular_research
+			has_planet_flag = pd_warform_organic_research
+		}
+	}
+
+	allow = {
+		OR = {
+			NOT = { exists = owner }
+			owner = {
+				has_technology = tech_basic_science_lab_1
+			}
+		}
+	}
+
+	conversion_ratio = 1
+	inline_script = districts/convert_to/inline_evolved_research_districts
+	inline_script = districts/convert_to/inline_evolved_industrial_districts
+
+	resources = {
+		category = planet_districts_hab_research
+		cost = {
+			minerals = @hab_cost
+		}
+		upkeep = {
+			energy = @hab_maintenance
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+			has_planet_flag = pd_warform_organic_research
+		}
+		modifier = {
+			job_warform_researcher_add = 3
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_hive_empire = yes }
+			has_planet_flag = pd_warform_organic_research
+		}
+		modifier = {
+			job_warform_brain_drone_add = 3
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_machine_empire = yes }
+			has_planet_flag = pd_warform_organic_research
+		}
+		modifier = {
+			job_warform_calculator_add = 3
+		}
+	}
+
+	inline_script = {
+		script = jobs/inline_evolved_researcher
+		count = 3
+		mult = 1
+		display = with_desc
+		trigger = ""
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+			has_planet_flag = pd_warform_organic_research
+		}
+		text = job_warform_researcher_effect_desc
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_hive_empire = yes }
+			has_planet_flag = pd_warform_organic_research
+		}
+		text = job_warform_brain_drone_effect_desc
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_machine_empire = yes }
+			has_planet_flag = pd_warform_organic_research
+		}
+		text = job_warform_calculator_effect_desc
+	}
+}
+district_pd_warform_blue = {
+	base_buildtime = 240
+	is_capped_by_modifier = no
+	exempt_from_ai_planet_specialization = yes
+	icon = district_hab_cultural
+
+	show_on_uncolonized = {
+		uses_district_set = pdwarform
+		OR = {
+			has_planet_flag = pd_warform_peace_room
+			has_planet_flag = pd_warform_biotrophy_room
+		}
+	}
+
+	potential = {
+		uses_district_set = pdwarform
+		OR = {
+			has_planet_flag = pd_warform_peace_room
+			has_planet_flag = pd_warform_biotrophy_room
+		}
+	}
+
+	conversion_ratio = 1
+	convert_to = {
+		district_pd_warform_blue
+		district_pd_warform_cultural
+		district_pd_warform_red
+		district_pd_warform_orange
+	}
+	inline_script = districts/convert_to/inline_evolved_leisure_districts
+	inline_script = districts/convert_to/inline_evolved_generator_districts
+
+	resources = {
+		category = planet_districts_hab_leisure
+		cost = {
+			minerals = @hab_cost
+		}
+		upkeep = {
+			energy = @hab_maintenance
+		}
+	}
+
+	planet_modifier = {
+		planet_housing_add = 3
+	}
+
+	inline_script = {
+		script = jobs/inline_evolved_culture_worker
+		count = 1
+		mult = 1
+		display = with_desc
+		trigger = ""
+	}
+
+	inline_script = {
+		script = jobs/inline_evolved_bureaucrat
+		count = 1
+		mult = 1
+		display = with_desc
+		trigger = ""
+	}
+
+	inline_script = {
+		script = jobs/inline_evolved_entertainer
+		count = 1
+		mult = 1
+		display = with_desc
+		trigger = ""
+	}
+
+
+	inline_script = {
+		script = jobs/inline_evolved_maintenance_drone
+		count = 1
+		mult = 1
+		display = with_desc
+		trigger = "
+			owner = {
+				is_machine_empire = yes
+				has_valid_civic = civic_machine_servitor
+			}
+		"
+	}
+
+	inline_script = {
+		script = jobs/inline_evolved_job
+		job = bio_trophy
+		count = 5
+		mult = 1
+		display = with_desc
+		trigger = "
+			exists = owner
+			owner = {
+				is_machine_empire = yes
+				has_valid_civic = civic_machine_servitor
+			}
+		"
+	}
+}
+district_pd_warform_red = {
+	base_buildtime = 240
+	is_capped_by_modifier = no
+	exempt_from_ai_planet_specialization = yes
+	icon = district_pdhab_mil
+
+	show_on_uncolonized = {
+		uses_district_set = pdwarform
+		has_planet_flag = pd_warform_war_room
+	}
+
+	potential = {
+		uses_district_set = pdwarform
+		has_planet_flag = pd_warform_war_room
+	}
+
+	conversion_ratio = 1
+	convert_to = {
+		district_pd_warform_blue
+		district_pd_warform_cultural
+		district_pd_warform_red
+		district_pd_warform_orange
+	}
+	inline_script = districts/convert_to/inline_evolved_leisure_districts
+	inline_script = districts/convert_to/inline_evolved_generator_districts
+
+	resources = {
+		category = planet_districts_hab_leisure
+		cost = {
+			minerals = @hab_cost
+		}
+		upkeep = {
+			energy = @hab_maintenance
+		}
+	}
+
+	planet_modifier = {
+		planet_housing_add = 3
+	}
+
+	inline_script = {
+		script = jobs/inline_evolved_soldier
+		count = 1
+		mult = 1
+		display = with_desc
+		trigger = ""
+	}
+
+	inline_script = {
+		script = jobs/inline_evolved_warrior_drone
+		count = 1
+		mult = 1
+		display = with_desc
+		trigger = ""
+	}
+
+	inline_script = {
+		script = jobs/inline_evolved_cadet
+		count = 1
+		mult = 1
+		display = with_desc
+		trigger = ""
+	}
+
+	inline_script = {
+		script = jobs/inline_evolved_clerk
+		count = 1
+		mult = 1
+		display = with_desc
+		trigger = ""
+	}
+
+	inline_script = {
+		script = jobs/inline_evolved_maintenance_drone
+		count = 1
+		mult = 1
+		display = with_desc
+		trigger = ""
+	}
+}
+
+district_pd_warform_orange = {
+	base_buildtime = 240
+	is_capped_by_modifier = no
+	exempt_from_ai_planet_specialization = yes
+	icon = district_nexus
+
+	show_on_uncolonized = {
+		uses_district_set = pdwarform
+		has_planet_flag = pd_warform_machine_room
+	}
+
+	potential = {
+		uses_district_set = pdwarform
+		has_planet_flag = pd_warform_machine_room
+	}
+
+	conversion_ratio = 1
+	convert_to = {
+		district_pd_warform_blue
+		district_pd_warform_cultural
+		district_pd_warform_red
+		district_pd_warform_orange
+	}
+	inline_script = districts/convert_to/inline_evolved_leisure_districts
+	inline_script = districts/convert_to/inline_evolved_generator_districts
+
+
+	resources = {
+		category = planet_districts_hab_leisure
+		cost = {
+			minerals = @hab_cost
+		}
+		upkeep = {
+			energy = @hab_maintenance
+		}
+	}
+
+	planet_modifier = {
+		planet_housing_add = 3
+	}
+
+	inline_script = {
+		script = jobs/inline_evolved_evaluator
+		count = 1
+		mult = 1
+		display = with_desc
+		trigger = ""
+	}
+
+	inline_script = {
+		script = jobs/inline_evolved_warrior_drone
+		count = 1
+		mult = 1
+		display = with_desc
+		trigger = ""
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = {
+				is_machine_empire = no
+			}
+		}
+		text = warform_this_district_is_machine
+	}
+}
+district_pd_warform_cultural = {
+	base_buildtime = 240
+	is_capped_by_modifier = no
+	exempt_from_ai_planet_specialization = yes
+	icon = district_nexus
+
+	show_on_uncolonized = {
+		uses_district_set = pdwarform
+		has_planet_flag = pd_warform_origin_start
+		exists = from
+	}
+
+	potential = {
+		exists = owner
+		uses_district_set = pdwarform
+		has_planet_flag = pd_warform_origin_start
+	}
+
+	conversion_ratio = 1
+	convert_to = {
+		district_pd_warform_blue
+		district_pd_warform_cultural
+		district_pd_warform_red
+		district_pd_warform_orange
+	}
+	inline_script = districts/convert_to/inline_evolved_leisure_districts
+	inline_script = districts/convert_to/inline_evolved_generator_districts
+
+	resources = {
+		category = planet_districts_hab_leisure
+		cost = {
+			minerals = @hab_cost
+		}
+		upkeep = {
+			energy = @hab_maintenance
+		}
+	}
+
+	planet_modifier = {
+		planet_housing_add = 3
+	}
+
+	inline_script = {
+		script = jobs/inline_evolved_entertainer
+		count = 3
+		mult = 1
+		display = with_desc
+		trigger = ""
+	}
+
+	inline_script = {
+		script = jobs/inline_evolved_maintenance_drone
+		count = 1
+		mult = 1
+		display = with_desc
+		trigger = "
+			owner = {
+				is_machine_empire = yes
+				has_valid_civic = civic_machine_servitor
+			}
+		"
+	}
+
+	inline_script = {
+		script = jobs/inline_evolved_job
+		job = bio_trophy
+		count = 5
+		mult = 1
+		display = with_desc
+		trigger = "
+			exists = owner
+			owner = {
+				is_machine_empire = yes
+				has_valid_civic = civic_machine_servitor
+			}
+		"
 	}
 }

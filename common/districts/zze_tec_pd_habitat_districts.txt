@@ -27,7 +27,7 @@ district_pdhab_housing = {
 		NOT = { has_modifier = military_pd_habitat_ges_asteroid }
 	}
 
-	conversion_ratio = 1
+	conversion_ratio = 0.75
 	inline_script = districts/convert_to/inline_evolved_housing_districts
 
 	resources = {
@@ -150,7 +150,7 @@ district_pdhab_industrial = {
 		NOT = { has_modifier = military_pd_habitat_ges_asteroid }
 	}
 
-	conversion_ratio = 1
+	conversion_ratio = 0.5
 	inline_script = districts/convert_to/inline_evolved_industrial_districts
 
 
@@ -237,8 +237,9 @@ district_pdhab_food_unlimited = {
 		NOT = { has_modifier = military_pd_habitat_ges_asteroid }
 	}
 
-	conversion_ratio = 1
+	conversion_ratio = 0.5
 	inline_script = districts/convert_to/inline_evolved_farming_districts
+	inline_script = districts/convert_to/inline_evolved_industrial_districts
 	
 	resources = {
 		category = planet_districts_hab_food
@@ -352,6 +353,7 @@ district_pdhab_food = {
 
 	conversion_ratio = 1
 	inline_script = districts/convert_to/inline_evolved_farming_districts
+	inline_script = districts/convert_to/inline_evolved_industrial_districts
 	
 	resources = {
 		category = planet_districts_hab_food
@@ -466,8 +468,9 @@ district_pdhab_energy_unlimited = {
 		tec_is_arcology_habitat = no
 	}
 
-	conversion_ratio = 1
+	conversion_ratio = 0.5
 	inline_script = districts/convert_to/inline_evolved_generator_districts
+	inline_script = districts/convert_to/inline_evolved_trade_districts
 
 	allow = {
 		NOT = { has_modifier = resort_colony }
@@ -586,9 +589,10 @@ district_pdhab_energy = {
 		NOT = { has_modifier = military_pd_habitat_reg_asteroid }
 		NOT = { has_modifier = military_pd_habitat_ges_asteroid }
 	}
-
+	
 	conversion_ratio = 1
 	inline_script = districts/convert_to/inline_evolved_generator_districts
+	inline_script = districts/convert_to/inline_evolved_trade_districts
 
 	resources = {
 		category = planet_districts_hab_energy
@@ -698,8 +702,9 @@ district_pdhab_mining_unlimited = {
 		NOT = { has_modifier = military_pd_habitat_ges_asteroid }
 	}
 
-	conversion_ratio = 1
+	conversion_ratio = 0.5
 	inline_script = districts/convert_to/inline_evolved_mining_districts
+	inline_script = districts/convert_to/inline_evolved_industrial_districts
 	
 	resources = {
 		category = planet_districts_hab_mining
@@ -814,7 +819,8 @@ district_pdhab_mining = {
 
 	conversion_ratio = 1
 	inline_script = districts/convert_to/inline_evolved_mining_districts
-
+	inline_script = districts/convert_to/inline_evolved_industrial_districts
+	
 	resources = {
 		category = planet_districts_hab_mining
 		cost = {
@@ -933,9 +939,8 @@ district_pdhab_science = {
 	}
 
 	conversion_ratio = 0.5
-	convert_to = {
-		district_tec_hab_arcology_research
-	}
+	inline_script = districts/convert_to/inline_evolved_research_districts
+	inline_script = districts/convert_to/inline_evolved_industrial_districts
 	
 	resources = {
 		category = planet_districts_hab_research
@@ -1023,11 +1028,8 @@ district_pdhab_commercial = {
 	}
 
 	conversion_ratio = 0.5
-	convert_to = {
-		district_hab_energy
-		district_tec_hab_arcology_trade
-		district_tec_hab_arcology_maintenance
-	}
+	inline_script = districts/convert_to/inline_evolved_trade_districts
+	inline_script = districts/convert_to/inline_evolved_generator_districts
 
 	resources = {
 		category = planet_districts_hab_trade
@@ -1214,11 +1216,8 @@ district_pdhab_cultural = {
 	}
 
 	conversion_ratio = 0.5
-	convert_to = {
-		district_hab_energy
-		district_tec_hab_arcology_leisure
-	}
-
+	inline_script = districts/convert_to/inline_evolved_leisure_districts
+	inline_script = districts/convert_to/inline_evolved_generator_districts
 
 	resources = {
 		category = planet_districts_hab_leisure

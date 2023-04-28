@@ -50,6 +50,7 @@ district_pdexotic_generator = {
 
 	conversion_ratio = 1
 	inline_script = districts/convert_to/inline_evolved_generator_districts
+	inline_script = districts/convert_to/inline_evolved_trade_districts
 
 	resources = {
 		category = planet_districts
@@ -173,6 +174,7 @@ district_pdexotic_generator_uncapped = {
 
 	conversion_ratio = 1
 	inline_script = districts/convert_to/inline_evolved_generator_districts
+	inline_script = districts/convert_to/inline_evolved_trade_districts
 
 	resources = {
 		category = planet_districts
