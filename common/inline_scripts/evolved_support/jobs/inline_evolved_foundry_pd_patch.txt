@@ -1,0 +1,65 @@
+
+# PD Crucible
+inline_script = { # PD Crucible Foundry
+    script = jobs/inline_evolved_job
+    trigger = "
+        exists = owner
+        exists = planet
+		planet = {
+			uses_district_set = pdcrucible
+		}
+
+
+        $trigger$
+
+        owner = {
+            tec_uses_regular_empire_jobs = { cached = yes }
+        }
+    "
+    job = crucible_foundry
+    count = $count$
+    mult = $mult$
+    display = $display$
+}
+inline_script = { # PD Crucible Alloy drone
+    script = jobs/inline_evolved_job
+    trigger = "
+        exists = owner
+        exists = planet
+        planet = {
+            uses_district_set = pdcrucible
+        }
+
+
+        $trigger$
+
+        owner = {
+            is_hive_empire = yes
+        }
+    "
+    job = crucible_alloy_drone
+    count = $count$
+    mult = $mult$
+    display = $display$
+}
+inline_script = { # PD Crucible Alloy drone
+    script = jobs/inline_evolved_job
+    trigger = "
+        exists = owner
+        exists = planet
+        planet = {
+            uses_district_set = pdcrucible
+        }
+
+        $trigger$
+
+        owner = {
+            is_machine_empire = yes
+        }
+    "
+    job = crucible_fabricator
+    count = $count$
+    mult = $mult$
+    display = $display$
+}
+# /

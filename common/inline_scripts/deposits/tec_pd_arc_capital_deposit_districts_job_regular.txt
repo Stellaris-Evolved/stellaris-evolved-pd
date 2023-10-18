@@ -1,0 +1,124 @@
+# deposits/tec_pd_arc_capital_deposit_districts_job_regular
+
+# Evolved - Add per pop rebranded civics
+inline_script = {
+	script = jobs/capital/inline_evolved_add_ruler_civic_regular
+	trigger = "
+			owner = { $trigger$ = yes }
+			planet = { is_capital = yes }
+		"
+	display = no_desc
+	count = 2
+	mult = 1
+}
+inline_script = {
+	script = jobs/capital/inline_evolved_add_job_civic_regular
+	trigger = "
+		owner = { $trigger$ = yes }
+		planet = { is_capital = yes }
+	"
+	display = no_desc
+	count = 3
+	mult = 1
+}
+
+inline_script = { # Statecraft - Imperial Admin
+	script = jobs/inline_evolved_job
+	trigger = "
+		exists = owner
+		owner = {
+			is_regular_empire = yes
+			has_active_tradition = tr_tec_statecraft_final_2
+		}
+		owner = { $trigger$ = yes }
+		planet = { is_capital = yes }
+	"
+	job = tec_imperial_admin
+	display = no_desc
+	count = 2
+	mult = 1
+}
+# /
+
+# Evolved - Politician swaps and common
+inline_script = {
+	script = jobs/inline_evolved_politician
+	trigger = "
+		owner = {
+			tec_has_ruler_civic = no
+		}
+		owner = { $trigger$ = yes }
+		planet = { is_capital = yes }
+	"
+	display = no_desc
+	count = 4
+	mult = 1
+}
+
+inline_script = {
+	script = jobs/inline_evolved_politician
+	trigger = "
+		owner = {
+			tec_has_ruler_civic = yes
+		}
+		owner = { $trigger$ = yes }
+		planet = { is_capital = yes }
+	"
+	display = no_desc
+	count = 2
+	mult = 1
+}
+
+inline_script = {
+	script = jobs/inline_evolved_politician_civic_swaps
+	trigger = "
+		exists = owner
+		owner = { $trigger$ = yes }
+		planet = { is_capital = yes }
+		owner = {
+			tec_has_ruler_civic = yes
+		}
+	"
+	display = no_desc
+	count = 2
+	mult = 1
+}
+
+inline_script = {
+	script = jobs/inline_evolved_executive_civic_swaps
+	trigger = "
+		exists = owner
+		owner = { $trigger$ = yes }
+		planet = { is_capital = yes }
+		owner = {
+			tec_has_ruler_civic = yes
+		}
+	"
+	display = no_desc
+	count = 2
+	mult = 1
+}
+
+# Other
+triggered_planet_modifier = {
+	potential = {
+		exists = owner
+		owner = { $trigger$ = yes }
+		planet = { is_capital = yes }
+	}
+	modifier = {
+		job_$security_job$_add = 8
+}
+
+
+inline_script = {
+	script = jobs/inline_evolved_culture_worker
+	trigger = "
+		owner = { $trigger$ = yes }
+		planet = { is_capital = yes }
+	"
+	display = no_desc
+	count = 6
+	mult = 1
+}
+# /

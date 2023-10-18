@@ -1,0 +1,89 @@
+# deposits/tec_pd_arc_capital_deposit_districts_job_hive
+
+# Evolved - maintainance swaps
+inline_script = {
+	script = jobs/inline_evolved_synapse_civic_swaps
+	trigger= "
+		owner = { $trigger$ = yes }
+		planet = { is_capital = yes }
+	"
+	count = 3
+	mult = 1
+	display = no_desc
+}
+
+inline_script = {
+	script = jobs/inline_evolved_maintenance_civic_hive_swaps
+	trigger = "
+		owner = { $trigger$ = yes }
+		planet = { is_capital = yes }
+	"
+	count = 2
+	mult = 1
+	display = no_desc
+}
+# Traditions and etc
+inline_script = { # Statecraft - Admin Drone - uses 1 per (tier - 1) / 2 jobs formula
+	script = jobs/inline_evolved_job
+	trigger = "
+		exists = owner
+		owner = {
+			is_hive_empire = yes
+			has_active_tradition = tr_tec_statecraft_final_2_hive
+		}
+		owner = { $trigger$ = yes }
+		planet = { is_capital = yes }
+	"
+	job = tec_hive_admin_drone
+	count = 2
+	mult = 1
+	display = no_desc
+}
+# /
+
+# Evolved - common
+inline_script = {
+	script = jobs/inline_evolved_patrol_drone
+	trigger = "
+		owner = { $trigger$ = yes }
+		planet = { is_capital = yes }
+	"
+	count = 8
+	mult = 1
+	display = no_desc
+}
+
+inline_script = {
+	script = jobs/inline_evolved_synapse
+	trigger = "
+		exists = owner
+		owner = { $trigger$ = yes }
+		planet = { is_capital = yes }
+	"
+	count = 6
+	mult = 1
+	display = no_desc
+}
+
+inline_script = {
+	script = jobs/inline_evolved_synapse
+	trigger = "
+		exists = owner
+		owner = {
+			tec_has_ruler_civic_hive = yes
+		}
+		owner = { $trigger$ = yes }
+		planet = { is_capital = yes }
+	"
+	count = -3
+	mult = 1
+	display = no_desc
+}
+
+
+inline_script = {
+	script = modifiers/inline_evolved_assembly_generic
+	mult = 6
+	trigger = ""
+}
+# /

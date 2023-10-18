@@ -278,15 +278,7 @@ sulfur_ent = {
 		potential = {
 			always = yes
 		}
-		planet_amenities_add = 10
-		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			always = yes
-		}
-		planet_amenities_add = 4
+		planet_amenities_add = 14
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
 	}
 
@@ -379,7 +371,7 @@ sulfur_ent_drone = {
 		potential = {
 			always = yes
 		}
-		planet_amenities_add = 5
+		planet_amenities_no_happiness_add = 5
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
 	}
 
@@ -395,7 +387,7 @@ sulfur_ent_drone = {
 				}
 			}
 		}
-		planet_amenities_no_happiness_add = 1
+		planet_amenities_no_happiness_add = 2
 		mult = value:scripted_modifier_mult|MODIFIER|pop_job_amenities_mult|
 	}
 

@@ -2,33 +2,41 @@
 		has_upgraded_capital = yes
 	}
 
-	planet_modifier = {
-        planet_farmers_food_produces_add = 0.5
+	inline_script = {
+		script = modifiers/inline_evolved_farmer_efficiency
+		trigger = ""
+		count = 0.5
+		mult = 1
 	}
 
-	triggered_planet_modifier = {
-		potential = {
+	inline_script = {
+		script = modifiers/inline_evolved_farmer_efficiency
+		trigger = "
 			exists = owner
 			owner = { has_technology = tech_food_processing_1 }
-		}
-		planet_farmers_food_produces_add = 0.5
+		"
+		count = 0.5
+		mult = 1
 	}
 
-	triggered_planet_modifier = {
-		potential = {
+	inline_script = {
+		script = modifiers/inline_evolved_farmer_efficiency
+		trigger = "
 			exists = owner
 			owner = { has_technology = tech_food_processing_2 }
-		}
-		planet_farmers_food_produces_add = 1
+		"
+		count = 1
+		mult = 1
 	}
 
 	inline_script = {
 		script = jobs/inline_evolved_farmer
 		regular_count = 2
-		regular_aquatic_count = 2
+		regular_secondary_count = 2
 		hive_count = 2
-		hive_aquatic_count = 2
+		hive_secondary_count = 2
 		machine_count = 2
+		machine_secondary_count = 2
 		mult = 1
 		display = with_desc
 		trigger = ""

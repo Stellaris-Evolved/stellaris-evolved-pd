@@ -23,6 +23,7 @@ decision_tec_pdplanethab_arcology_civil = {
 	}
 
 	potential = {
+		always = no
 		exists = owner
 		# PD is going to be a headache for compatibility
 		uses_district_set = pdplanethab
@@ -225,6 +226,7 @@ decision_tec_pdplanethab_arcology_industrial = {
 	}
 
 	potential = {
+		always = no
 		exists = owner
 		# PD is going to be a headache for compatibility
 		uses_district_set = pdplanethab
@@ -476,6 +478,7 @@ decision_tec_pdplanethab_arcology_project_militarized = {
 	}
 
 	potential = {
+		always = no
 		uses_district_set = pdplanethab
 		NOR = {
 			is_planet_class = pc_pd_gas_giant_hab
@@ -590,6 +593,7 @@ decision_tec_pdplanethab_arcology_project_admin = {
 	}
 
 	potential = {
+		always = no
 		uses_district_set = pdplanethab
 		NOR = {
 			is_planet_class = pc_pd_gas_giant_hab
@@ -729,6 +733,7 @@ decision_tec_pdplanethab_arcology_project_science = {
 	}
 
 	potential = {
+		always = no
 		uses_district_set = pdplanethab
 		NOR = {
 			is_planet_class = pc_pd_gas_giant_hab

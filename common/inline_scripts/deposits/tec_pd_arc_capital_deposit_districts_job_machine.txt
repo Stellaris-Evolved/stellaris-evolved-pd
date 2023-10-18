@@ -1,0 +1,87 @@
+# deposits/tec_pd_arc_capital_deposit_districts_job_machine
+
+triggered_modifier = {
+	potential = {
+		exists = owner
+		owner = { $trigger$ = yes }
+		planet = { is_capital = yes }
+	}
+	planet_jobs_tec_prime_drone_produces_mult = 0.25
+}
+
+inline_script = {
+	script = jobs/inline_evolved_prime_drone
+	trigger = "
+		exists = owner
+		owner = { $trigger$ = yes }
+		planet = { is_capital = yes }
+	"
+	count = 1
+	mult = 1
+	display = no_desc
+}
+
+inline_script = {
+	script = modifiers/inline_evolved_assembly_generic
+	mult = 4
+	trigger = "
+		exists = owner
+		owner = { $trigger$ = yes }
+		owner = {
+			has_valid_civic = civic_tec_machine_reimaginator_cluster
+		}
+		planet = { is_capital = yes }
+	"
+}
+# Evolved - common
+inline_script = {
+	script = jobs/inline_evolved_patrol_drone
+	trigger = "
+		owner = { $trigger$ = yes }
+		planet = { is_capital = yes }
+	"
+	count = 8
+	mult = 1
+	display = no_desc
+}
+
+inline_script = {
+	script = jobs/inline_evolved_coordinator
+	trigger = "
+		owner = { $trigger$ = yes }
+		planet = { is_capital = yes }
+
+		owner = {
+			NOT = { has_valid_civic = civic_machine_servitor }
+		}
+	"
+	count = 4
+	mult = 1
+	display = no_desc
+}
+
+inline_script = {
+	script = jobs/inline_evolved_job
+	trigger = "
+		owner = { $trigger$ = yes }
+		planet = { is_capital = yes }
+
+		owner = {
+			has_valid_civic = civic_machine_servitor
+		}
+	"
+	job = pd_capital_bio_politician
+	count = 4
+	mult = 1
+	display = no_desc
+}
+
+inline_script = {
+	script = modifiers/inline_evolved_assembly_generic
+	mult = 4
+	trigger = "
+		owner = { $trigger$ = yes }
+		planet = { is_capital = yes }
+	"
+}
+# /

@@ -6,21 +6,18 @@ tec_pd_arc_allows_capital_arcologies = {
 		is_planet_class = pc_milarc
 		is_planet_class = pc_ringworld_habitable
 		is_planet_class = pc_corpoarc
-		is_planet_class = pc_hive
+		is_pd_hive_world = yes
 		is_planet_class = pc_bioforge
 		is_planet_class = pc_biofort
 		is_planet_class = pc_megafloratol
 		is_planet_class = pc_megafloraforge
 		is_planet_class = pc_megaflorafort
-		is_planet_class = pc_machine
+		is_pd_machine = yes
 		is_planet_class = pc_machine_factory
 		is_planet_class = pc_machine_fort
 		is_planet_class = pc_pd_techno_arc
-		
-		and = {
-			tec_is_habitat = yes
-			has_planet_flag = tec_arcology_habitat
-		}
+		tec_is_ringworld = yes
+		tec_is_habitat = yes
 		tec_is_hive_world = yes
 		tec_is_machine_world = yes
 		tec_is_ecoworld = yes
@@ -67,9 +64,15 @@ tec_pd_arc_allows_treehive_capital_arcologies = {
 
 tec_pd_arc_allows_machine_capital_arcologies = {
 	optimize_memory
-	is_machine_empire = yes 
+	is_machine_empire = yes
+	NOT = { has_valid_civic = civic_machine_servitor }
 }
 
+tec_pd_arc_allows_rogue_machine_capital_arcologies = {
+	optimize_memory
+	is_machine_empire = yes
+	has_valid_civic = civic_machine_servitor
+}
 
 tec_pd_arc_uses_city_planet_entity = {
 	optimize_memory
@@ -137,6 +140,7 @@ tec_pd_arc_allows_necro_arcologies = {
 		has_valid_civic = civic_tec_hive_necrophage
 		has_valid_civic = civic_hive_cordyceptic_drones
 		has_origin = origin_necrophage
+		has_ascension_perk = ap_mechromancy
 	}
 }
 

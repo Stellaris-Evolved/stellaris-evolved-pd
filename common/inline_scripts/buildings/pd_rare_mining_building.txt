@@ -1,34 +1,42 @@
 allow = {
 	has_upgraded_capital = yes
 }
-	
-planet_modifier = {
-	planet_miners_minerals_produces_add = 0.5
+
+inline_script = {
+	script = modifiers/inline_evolved_miner_efficiency
+	trigger = ""
+	count = 0.5
+	mult = 1
 }
 
-triggered_planet_modifier = {
-	potential = {
-		exists = owner
-		owner = { has_technology = tech_mineral_purification_1 }
-	}
-	planet_miners_minerals_produces_add = 0.5
+inline_script = {
+	script = modifiers/inline_evolved_miner_efficiency
+	trigger = "
+			exists = owner
+			owner = { has_technology = tech_mineral_purification_1 }
+		"
+	count = 0.5
+	mult = 1
 }
 
-triggered_planet_modifier = {
-	potential = {
-		exists = owner
-		owner = { has_technology = tech_mineral_purification_2 }
-	}
-	planet_miners_minerals_produces_add = 1
+inline_script = {
+	script = modifiers/inline_evolved_miner_efficiency
+	trigger = "
+			exists = owner
+			owner = { has_technology = tech_mineral_purification_2 }
+		"
+	count = 1
+	mult = 1
 }
 
 inline_script = {
 	script = jobs/inline_evolved_miner
 	regular_count = 2
-	regular_aquatic_count = 2
+	regular_secondary_count = 2
 	hive_count = 2
-	hive_aquatic_count = 2
+	hive_secondary_count = 2
 	machine_count = 2
+	machine_secondary_count = 2
 	mult = 1
 	display = with_desc
 	trigger = ""

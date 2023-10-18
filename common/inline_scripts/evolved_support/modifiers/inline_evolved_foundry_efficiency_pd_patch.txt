@@ -1,0 +1,36 @@
+
+triggered_planet_modifier = {
+	potential = {
+		exists = owner
+		exists = planet
+		planet = {
+			uses_district_set = pdcrucible
+		}
+
+		$trigger$
+	}
+	modifier = {
+		planet_metallurgists_energy_upkeep_add = @[$count$ * 2]
+	}
+	mult = $mult$
+}
+
+triggered_planet_modifier = {
+	potential = {
+		exists = owner
+		exists = planet
+		planet = {
+			uses_district_set = pdcrucible
+		}
+
+		$trigger$
+
+		owner = {
+			tec_is_quantum_alloys_empire = yes
+		}
+	}
+	modifier = {
+		planet_metallurgists_alloys_produces_add = @[$count$ / 2]
+	}
+	mult = $mult$
+}
